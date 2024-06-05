@@ -1,0 +1,102 @@
+.text-xs {
+    font-size: 1rem !important;
+    line-height: 1rem;
+}
+.text-xl {
+    font-size: 1.5rem !important;
+
+}
+
+          .max-w-screen-lg {
+            max-width: 1154px !important;
+            }
+            .absolute{
+            position:absolute !important;
+            }
+            .bg-blue-800 {
+            --tw-bg-opacity: 1;
+            background-color: #1e355e !important;
+            }
+            .text-primary {
+    color: rgb(var(--v-theme-primary)) !important;
+}
+
+.form-input {
+    align-items: center;
+    color: inherit;
+    column-gap: 2px;
+    display: flex;
+    flex-wrap: wrap;
+    letter-spacing: .009375em;
+    border-radius:5px !important;
+    opacity: var(--v-high-emphasis-opacity);
+    min-height: 52px !important;
+    min-width: 0;
+    padding-inline:6px 16px !important;
+    padding-top: var(--v-field-input-padding-top);
+    padding-bottom: var(--v-field-input-padding-bottom);
+    position: relative;
+    width: 100%;
+}
+.border-b {
+    border-radius: 2px;
+}
+.border {
+    border-radius: 2px;
+}
+.bg-card-header{
+    background-color: #eee;
+}
+.min-widht-input{
+    min-width: 70%;
+}
+.border-bottom{
+  
+    border-bottom: 1px solid grey;
+      border-top: none !important;
+       border-left: none !important;
+        border-right: none !important;
+    border-radius: 0px !important;
+}
+
+select.border-bottom:focus {
+  border-bottom: 1px solid grey;
+      border-top: none !important;
+       border-left: none !important;
+        border-right: none !important;
+    border-radius: 0px !important;
+    box-shadow: none !important;
+}
+
+
+input.border-bottom:focus {
+  border-bottom: 1px solid grey;
+      border-top: none !important;
+       border-left: none !important;
+        border-right: none !important;
+    border-radius: 0px !important;
+    box-shadow: none !important;
+}
+
+.rounded-full{
+    width: 60px
+}
+
+input{
+    background: white !important;
+    border-radius: 2px !important;
+}
+input:focus{
+     box-shadow: none !important;
+     border:1px solid #1e355e !important;
+}
+.text-blue-500{
+    color:#1e355e !important;
+}
+.bg-blue-700 {
+    --tw-bg-opacity: 1;
+    background-color: #1e355e !important;
+}
+.bg-red-500{
+    background-color: #1b2a4ae3 !important;
+}
