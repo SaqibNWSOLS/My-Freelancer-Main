@@ -44,18 +44,4 @@
           </body>
           
         </html>
-        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-           <script src="{{ asset('admin_assets/js/feather.min.js')}}"></script>
-    <script src="{{ asset('admin_assets/js/feather-custom.js')}}"></script>
-    <!-- Select Js -->
-    <script src="{{ asset('admin_assets/js/custom-select.js')}}"></script>
-    <!-- Apex Chart Js -->
-    <script src="{{ asset('admin_assets/js/apexchart/apexcharts.js')}}"></script>
-    <script src="{{ asset('admin_assets/js/apexchart/apex-common.js')}}"></script>
-    <script src="{{ asset('admin_assets/js/apexchart/unique-custom.js')}}"></script>
-    <!-- Sidebar Js -->
-    <script src="{{ asset('admin_assets/js/sidebar.js')}}"></script>
-    <!-- customizer js-->
-    <script src="{{ asset('admin_assets/js/customizer.js')}}"></script>
-    <!-- Custom script   -->
-    <script src="{{ asset('admin_assets/js/script.js')}}"></script>
+       

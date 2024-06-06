@@ -44,6 +44,8 @@
 </template>
 
 <script>
+
+const dashboard = route('dashboard');
 export default {
   data() {
     return {

@@ -25,3 +25,29 @@ import Footer from './../Components/Admin/Footer.vue'
 </template>
 <style src="@/admin_assets/css/style.css"></style>
 <style src="@/admin_assets/css/vendors/custom-select.css"></style>
+
+
+<script>
+export default {
+  name: 'AdminScripts',
+  mounted() {
+    this.loadScript('admin_assets/js/feather.min.js');
+    this.loadScript('admin_assets/js/feather-custom.js');
+    this.loadScript('admin_assets/js/custom-select.js');
+    this.loadScript('admin_assets/js/apexchart/apexcharts.js');
+    this.loadScript('admin_assets/js/apexchart/apex-common.js');
+    this.loadScript('admin_assets/js/apexchart/unique-custom.js');
+    this.loadScript('admin_assets/js/sidebar.js');
+    this.loadScript('admin_assets/js/customizer.js');
+    this.loadScript('admin_assets/js/script.js');
+  },
+  methods: {
+    loadScript(src) {
+      const script = document.createElement('script');
+      script.src = src;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }
+}
+</script>

@@ -16,7 +16,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('admin-login',[AuthenticatedSessionController::class,'adminLogin']);
+Route::get('admin-login',[AuthenticatedSessionController::class,'adminLogin'])->name('admin-dashboard');
 
 Route::get('admin-dashboard',[DashboardController::class,'index']);
 
