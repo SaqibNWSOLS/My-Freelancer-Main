@@ -41,7 +41,7 @@
                   </div>
                   <div class="form-group" v-cloak>
                     <p class="tb-label">{{ pageDescriptionLabel }}</p>
-                    <CkeditorComponent v-model="form.description" style="height:300px"></CkeditorComponent>
+                    
                   </div>
                   <div class="form-group tb-md-50">
                     <label class="tb-label">{{ seoKeywordLabel }}</label>
@@ -108,14 +108,13 @@
 
 <script>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import CkeditorComponent from '@/Components/CkEditor.vue';
 
 import axios from 'axios';
 
 export default {
   components: {
 AuthenticatedLayout,
-CkeditorComponent,
+
 },
   data() {
     return {

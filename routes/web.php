@@ -19,7 +19,8 @@ Route::get('/', function () {
 Route::get('admin-login',[AuthenticatedSessionController::class,'adminLogin']);
 
 
-Route::post('upload-image',             [MediaController::class, 'uploadFile' ])->name('upload-image');
+
+Route::post('upload-image', [MediaController::class, 'uploadFile' ])->name('upload-image');
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth'])->name('dashboard');
