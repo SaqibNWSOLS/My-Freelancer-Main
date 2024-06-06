@@ -6,14 +6,16 @@
         <div class="!flex items-center justify-center h-full p-[.9375rem] common-animate-main ratio_asos">
           <div class=" grid grid-cols-12 gap-0 mx-auto w-full max-w-[70%] xl:max-w-[50%] md:max-w-[70%] sm:max-w-[80%] 2sm:max-w-[100%] xl:flex xl:justify-center">
             <div class="relative col-span-5 bg-white 2xl:col-span-6 z-1 xl:col-span-12 rounded-xl max-w-[29.375rem] min-w-[18.75rem] sm:min-w-[22.75rem] 2sm:min-w-[18.75rem] h-max">
-              <form class="theme-form flex flex-col gap-3 !m-0 p-8 2sm:p-4" >
+              <form class="theme-form flex flex-col gap-3 !m-0 p-8 2sm:p-4" @submit.prevent="submit" novalidate >
                 <h3>My Freelancer Account</h3>
                 <p>Enter your email id and password for log in to your account</p>
                 <div>
-                  <input type="email" placeholder="Enter your id" required>
+                  <input type="email" placeholder="Enter your id" required v-model="form.email">
+                  <span text-danger> {{ form.errors.email }}</span>
                 </div>
                 <div class="relative">
-                  <input type="password" id="password" name="password" required="" placeholder="Enter your Password">
+                  <input type="password" id="password" name="password" required placeholder="Enter your Password" v-model="form.password">
+                  <span text-danger> {{ form.errors.password }}</span>
                   <div class="password-icon"><i class="cursor-pointer w-4 h-4 stroke-title right-[25px] rtl:right-unset top-1/2 rtl:left-[25px] absolute -translate-y-1/2  showHidePassword" data-feather="eye"> </i><i class="cursor-pointer w-4 h-4 stroke-title right-[25px] rtl:right-unset top-1/2 rtl:left-[25px] absolute -translate-y-1/2  showHidePassword" data-feather="eye-off"> </i></div>
                 </div>
                 <div class="flex justify-between items-center gap-1">
@@ -23,7 +25,7 @@
                     </label><span>Remember Me</span>
                   </div>
                   <div class="!mb-0"><a href="forgot-password.html">Forgot Password? </a></div>
-                </div><a class="btn btn-primary !text-white hover:drop-shadow-lg my-2" href="index.html">Sign in</a>
+                </div><button type="submit" class="btn btn-primary !text-white hover:drop-shadow-lg my-2" >Sign in</button>
                 
                 
               </form>
