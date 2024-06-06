@@ -17,7 +17,6 @@
         href="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.bubble.css"
         rel="stylesheet"
         />
-        <script src="https://cdn.tailwindcss.com"></script>
         <!-- Core build with no theme, formatting, non-essential modules -->
         <link
           href="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.core.css"
@@ -28,9 +27,11 @@
             <title>My Freelancer</title>
             <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" type="text/css">
 
-            <style type="text/css">
-              
-            </style>
+          <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
             <!-- Scripts -->
             @routes
             @vite([
@@ -43,4 +44,18 @@
           </body>
           
         </html>
-        
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+           <script src="{{ asset('admin_assets/js/feather.min.js')}}"></script>
+    <script src="{{ asset('admin_assets/js/feather-custom.js')}}"></script>
+    <!-- Select Js -->
+    <script src="{{ asset('admin_assets/js/custom-select.js')}}"></script>
+    <!-- Apex Chart Js -->
+    <script src="{{ asset('admin_assets/js/apexchart/apexcharts.js')}}"></script>
+    <script src="{{ asset('admin_assets/js/apexchart/apex-common.js')}}"></script>
+    <script src="{{ asset('admin_assets/js/apexchart/unique-custom.js')}}"></script>
+    <!-- Sidebar Js -->
+    <script src="{{ asset('admin_assets/js/sidebar.js')}}"></script>
+    <!-- customizer js-->
+    <script src="{{ asset('admin_assets/js/customizer.js')}}"></script>
+    <!-- Custom script   -->
+    <script src="{{ asset('admin_assets/js/script.js')}}"></script>
