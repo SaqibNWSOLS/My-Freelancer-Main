@@ -1,5 +1,4 @@
 <template>
-    <AdminLayout>
     <main class="page-wrapper"> 
       <!-- Page Body Start-->
       <div class="page-body h-[100vh] !mt-0 bg-cover bg-no-repeat  bg-[url('../../assets/images/dotsbg.jpg')]">
@@ -38,9 +37,8 @@
       </div>
       <!-- Page Body End-->
     </main>
-</AdminLayout>
 </template>
-
+<style src="@/admin_assets/css/style.css"></style>
 <script setup>
 import { useRouter } from "vue-router";
 import App from '@/Layouts/App.vue'
