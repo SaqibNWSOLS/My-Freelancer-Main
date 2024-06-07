@@ -81,7 +81,7 @@
                       <svg>
                         <use href="@/admin_assets/svg/sprite.svg#Paper"></use>
                       </svg>
-                      <span class="sidebar-name">Settings</span>
+                      <span class="sidebar-name">Country</span>
                     </span>
                     <svg>
                       <use href="@/admin_assets/svg/sprite.svg#Arrow-Right-2"></use>
@@ -89,17 +89,62 @@
                   </a>
                   <ul class="sidebar-submenu">
                     <li>
-                      <a href="checkbox-radio.html">Country</a>
+                      <a :href="route('countries.index')">List</a>
+                    
                     </li>
                     <li>
-                      <a href="form-validation.html">State</a>
+                      <a :href="route('countries.create')">Create</a>
                     </li>
-                    <li>
-                      <a href="input-textarea.html">City</a>
-                    </li>
-                   
                   </ul>
                 </li>
+
+                   <li class="sidebar-list">
+                  <a class="sidebar-link sidebar-title" href="javascript:void(1)">
+                    <span>
+                      <svg>
+                        <use href="@/admin_assets/svg/sprite.svg#Paper"></use>
+                      </svg>
+                      <span class="sidebar-name">State</span>
+                    </span>
+                    <svg>
+                      <use href="@/admin_assets/svg/sprite.svg#Arrow-Right-2"></use>
+                    </svg>
+                  </a>
+                  <ul class="sidebar-submenu">
+                    <li>
+                      <a :href="route('states.index')">List</a>
+                    
+                    </li>
+                    <li>
+                      <a :href="route('states.create')">Create</a>
+                    </li>
+                  </ul>
+                </li>
+
+                 <li class="sidebar-list">
+                  <a class="sidebar-link sidebar-title" href="javascript:void(2)">
+                    <span>
+                      <svg>
+                        <use href="@/admin_assets/svg/sprite.svg#Paper"></use>
+                      </svg>
+                      <span class="sidebar-name">City</span>
+                    </span>
+                    <svg>
+                      <use href="@/admin_assets/svg/sprite.svg#Arrow-Right-2"></use>
+                    </svg>
+                  </a>
+                  <ul class="sidebar-submenu">
+                    <li>
+                      <a :href="route('cities.index')">List</a>
+                    
+                    </li>
+                    <li>
+                      <a :href="route('cities.create')">Create</a>
+                    </li>
+                  </ul>
+                </li>
+
+
               </ul>
             </nav>
           </aside>
