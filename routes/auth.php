@@ -40,6 +40,11 @@ Route::middleware('auth')->group(function () {
       Route::get('step2', [RegisteredUserController::class, 'step2'])
                 ->name('step2');
 
+
+ Route::post('verify-email-code', [RegisteredUserController::class, 'VerfiyEmailCode'])
+                ->name('verify-email-code');
+ Route::post('email-code', [RegisteredUserController::class, 'emailCode'])
+                ->name('email-code');
 Route::get('verify-email', [RegisteredUserController::class, 'step3'])
                 ->name('verification.notice');
   Route::post('step2', [RegisteredUserController::class, 'storeStep2']);

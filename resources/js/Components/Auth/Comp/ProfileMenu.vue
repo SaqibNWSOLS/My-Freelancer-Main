@@ -9,7 +9,7 @@
        <div v-if="isMenuOpen" @mouseover="openMenu" style="width:max-content" class="absolute z-10 top-8 right-0 bg-white shadow-md rounded-md mt-1">
       <ul>
         <li class="py-2 px-4 cursor-pointer hover:bg-gray-100"><a :href="route('profile.index')">Manage Profile</a></li>
-        <li class="py-2 px-4 cursor-pointer hover:bg-gray-100" :href="route('job.create')" v-if="$page.props.user.roles.includes('Freelacner')" ><a :href="route('front-view')">View My Page</a></li>
+        <li class="py-2 px-4 cursor-pointer hover:bg-gray-100" :href="route('job.create')" v-if="$page.props.user.roles.includes('Freelancer')" ><a :href="route('front-view')">View My Page</a></li>
         <li v-for="(item, index) in items" :key="index" :value="index" class="py-2 px-4 cursor-pointer hover:bg-gray-100">
           {{ item.title }}
         </li>

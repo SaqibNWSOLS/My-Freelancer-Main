@@ -43,7 +43,7 @@ export default {
 
    return {
       showModal: false,
-      croppedUrl: baseUrl+this.userDetail?.image,
+      croppedUrl: this.userDetail?.image ? baseUrl+this.userDetail?.image : 'https://w7.pngwing.com/pngs/846/897/png-transparent-user-male-avatar-account-profile-web-ui-color-icon.png',
       screenName: this.userDetail?.name, // Add a data property for screen name
     };
   },

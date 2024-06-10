@@ -10,13 +10,13 @@ defineProps<{
 
 <template>
   <header class="fixed left-0 bg-red-500 right-0 z-30 px-4 lg:px-10 text-white">
-    <div class="relative flex py-1 px-1 border-b border-b-gray-400 text-base lg:text-lg">
+    <div class="relative flex py-4 px-1 border-b border-b-gray-400 text-base lg:text-lg">
       <button class="lg:hidden" @click="openMobileMenu = !openMobileMenu">
       <img v-if="!openMobileMenu" width="20" src="@/assets/bars-solid.svg" />
       <img v-else width="20" src="@/assets/xmark-solid.svg" />
     </button>
       <p class="flex items-center py-2 space-x-3">
-        <img width="120" src="@/assets/logo.png" />
+        <img width="120" src="@/assets/logo2.png" />
       </p>
       <nav class="flex items-center ml-auto">
         <ul class="*:inline-block *:mx-2 *:px-3 *:py-1 *:cursor-pointer hidden lg:block">
