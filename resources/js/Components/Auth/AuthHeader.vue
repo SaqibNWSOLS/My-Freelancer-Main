@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-blue-500 p-4">
+  <div class="bg-blue-100 p-4">
     <div class="max-w-screen-lg mx-auto ">
       <div class="flex justify-center  items-center space-x-4">
         <!-- Logo -->

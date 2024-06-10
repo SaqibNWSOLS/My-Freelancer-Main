@@ -1,5 +1,5 @@
 <template>
-<div class="container bg-blue-500  mx-auto">
+<div class="container bg-blue-100  mx-auto">
   <div class="rounded-lg p-3 overflow-hidden max-w-screen-lg mx-auto">
     <div class="flex justify-start">
       <a href="/">
