@@ -39,7 +39,7 @@
             {{ email }}
           </div>
           <i class="mdi mdi-check-decagram text-blue-700 ml-2"></i>
-          <button class="text-gray-500 ml-2">
+          <button @click="selectTab('email-preference')" class="text-gray-500 ml-2">
             Verify Different Email
           </button>
         </div>
@@ -154,7 +154,10 @@ import { ref } from "vue";
 const props = defineProps({
     userDetail: {
         type: Object,
-    }
+    }, countries: {
+        type: Array,
+    },
+    selectTab:Function
 });
 console.log(props.userDetail);
 const dialog = ref(false)

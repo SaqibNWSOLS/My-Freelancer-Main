@@ -21,7 +21,7 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('/');
 Route::get('/front-view', [FreelancerController::class, 'FrontView'])->name('front-view');
 
 Route::get('admin-login',[AuthenticatedSessionController::class,'adminLogin'])->name('admin-dashboard');
@@ -47,9 +47,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
    Route::resource('/bill-board', BillBoardController::class);
 
    Route::post('billboard-attach',[BillBoardController::class,'billBoardAttchs'])->name('billboard-attach');
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+   
 });
 
 Route::resource('countries', CountryController::class);

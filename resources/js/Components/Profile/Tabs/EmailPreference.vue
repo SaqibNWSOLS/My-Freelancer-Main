@@ -1,5 +1,5 @@
 <template>
-  <div class="border flex flex-col gap-5 shadow-md rounded-lg">
+  <div class="border flex flex-col gap-5 shadow-md ">
     <div class="border-b bg-card-header">
       <h2 class="text-xl p-4">Edit Contact Information</h2>
     </div>

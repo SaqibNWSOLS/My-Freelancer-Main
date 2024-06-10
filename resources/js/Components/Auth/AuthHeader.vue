@@ -4,7 +4,7 @@
       <div class="flex justify-center  items-center space-x-4">
         <!-- Logo -->
         <div class="flex-grow">
-          <a :href="route('dashboard')">
+          <a :href="route('/')">
             <img
               src="@/assets/logo2.png"
               alt="Myfreelancer Logo"

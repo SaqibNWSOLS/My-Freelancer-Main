@@ -48,12 +48,12 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
  $user = Auth::user();
          if ($user->hasRole('Admin')) {
-        return redirect()->intended(route('admin-dashboard'));
+        return redirect()->intended(route('admin-profile.index'));
     } else {
-        return redirect()->intended(route('dashboard')); // Replace 'other-dashboard' with your desired route for non-admin users
+        return redirect()->intended(route('profile.index')); // Replace 'other-profile.index' with your desired route for non-admin users
     }
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->intended(route('profile.index', absolute: false));
     }
 
     /**

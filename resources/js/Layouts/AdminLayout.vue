@@ -34,9 +34,6 @@ export default {
     this.loadScript('admin_assets/js/feather.min.js');
     this.loadScript('admin_assets/js/feather-custom.js');
     this.loadScript('admin_assets/js/custom-select.js');
-    this.loadScript('admin_assets/js/apexchart/apexcharts.js');
-    this.loadScript('admin_assets/js/apexchart/apex-common.js');
-    this.loadScript('admin_assets/js/apexchart/unique-custom.js');
     this.loadScript('admin_assets/js/sidebar.js');
     this.loadScript('admin_assets/js/customizer.js');
     this.loadScript('admin_assets/js/script.js');

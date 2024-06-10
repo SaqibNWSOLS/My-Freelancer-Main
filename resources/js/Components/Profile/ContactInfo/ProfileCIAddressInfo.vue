@@ -13,7 +13,7 @@
                 @change="handleAddressUpdate"
                 class="w-full border-bottom   py-2 focus:outline-none focus:border-bottom"
               >
-                <option v-for="item in COUNTRIES" :key="item" :value="item">{{ item }}</option>
+                <option v-for="item in countries" :key="item" :value="item.name">{{ item.name }}</option>
               </select>
               <p class="text-red-500 text-sm">{{ form.errors.country }}</p>
             </div>
@@ -112,6 +112,8 @@ import { Head, Link, useForm } from '@inertiajs/vue3';
 const props = defineProps({
     userDetail: {
         type: Object,
+    }, countries: {
+        type: Array,
     }
 });
 

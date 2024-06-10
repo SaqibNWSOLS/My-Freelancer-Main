@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="mb-8"><b>Instant Messages</b></p>
+    <p class="mb-8"><b>Skype Id.</b></p>
     <div class="grid grid-cols-10 gap-1 justify-evenly">
       <div class="col-span-6">
         <div class="w-2/3">

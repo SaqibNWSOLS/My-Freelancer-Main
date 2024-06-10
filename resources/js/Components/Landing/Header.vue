@@ -1,12 +1,3 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-const openMobileMenu = ref(false)
-const showSearchBar = ref(false)
-
-defineProps<{
-  animate: number
-}>()
-</script>
 
 <template>
   <header class="fixed left-0 bg-red-500 right-0 z-30 px-4 lg:px-10 text-white">
@@ -16,7 +7,7 @@ defineProps<{
       <img v-else width="20" src="@/assets/xmark-solid.svg" />
     </button>
       <p class="flex items-center py-2 space-x-3">
-        <img width="120" src="@/assets/logo2.png" />
+        <a :href="route('/')"><img width="120" src="@/assets/logo2.png" /></a>
       </p>
       <nav class="flex items-center ml-auto">
         <ul class="*:inline-block *:mx-2 *:px-3 *:py-1 *:cursor-pointer hidden lg:block">
@@ -178,3 +169,12 @@ defineProps<{
     </div>
   </header>
 </template>
+<script setup lang="ts">
+import { ref } from 'vue'
+const openMobileMenu = ref(false)
+const showSearchBar = ref(false)
+
+defineProps<{
+  animate: number
+}>()
+</script>

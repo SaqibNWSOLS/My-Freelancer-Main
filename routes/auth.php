@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\VerifyMobileController;
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -40,7 +41,8 @@ Route::middleware('auth')->group(function () {
       Route::get('step2', [RegisteredUserController::class, 'step2'])
                 ->name('step2');
 
-
+  Route::get('verify-mobile', [VerifyMobileController::class, 'create'])
+                ->name('verify-mobile');
  Route::post('verify-email-code', [RegisteredUserController::class, 'VerfiyEmailCode'])
                 ->name('verify-email-code');
  Route::post('email-code', [RegisteredUserController::class, 'emailCode'])

@@ -73,7 +73,7 @@ public function VerfiyEmailCode(Request $request)
             'email' => $request->email,
         ]);
 
-         return redirect(route('dashboard', absolute: false));
+         return redirect(route('profile.index', absolute: false));
     } else {
 
          return response()->json(['res' => 'Provided code is wrong'], 400);
@@ -142,7 +142,7 @@ public function storeStep3(Request $request): RedirectResponse
 */    if (Auth::user()->verification_code == $finalCode) {
 
         Auth::user()->markEmailAsVerified();
-         return redirect(route('dashboard', absolute: false));
+         return redirect(route('profile.index', absolute: false));
     }
 
     // Return an Inertia response with validation errors

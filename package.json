@@ -28,7 +28,9 @@
         "quill": "^2.0.2",
         "vee-validate": "^4.12.8",
         "vue-cropperjs": "^5.0.0",
+        "vue-otp-input": "^1.0.0",
         "vue-router": "^4.3.2",
+        "vue3-otp-input": "^0.5.21",
         "vuedraggable": "^4.1.0",
         "vuelidate": "^0.7.7"
     }

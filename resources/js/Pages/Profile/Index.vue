@@ -9,14 +9,9 @@
           <div class="flex flex-col justify-center items-center my-6">
     <label for="profile-upload" class="cursor-pointer">
       <img :src="image" class="rounded-full  w-24 h-24" alt="Profile Image">
-      <input
-        type="file"
-        id="profile-upload"
-        class="hidden profile-upload"
-        @change="handleImageChange"
-      />
+     
     </label>
-    <p class="font-medium mt-4">{{ name }}</p>
+    <p class="font-medium mt-4">{{ userDetail.name }}</p>
   </div>
 
   <ul   class=" -mb-px text-sm font-medium" id="default-styled-tab" data-tabs-toggle="#default-styled-tab-content" data-tabs-active-classes="text-purple-600 hover:text-purple-600 dark:text-purple-500 dark:hover:text-purple-500 border-purple-600 dark:border-purple-500" data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300" role="tablist">
@@ -48,7 +43,7 @@
         <div class="w-full p-4">
             <div class="tabs-content mt-4">
               <div key="contact-information" v-show="selectedTab === 'contact-information'">
-          <ContactInformation  :userDetail="userDetail" :countries="countries" />
+          <ContactInformation  :userDetail="userDetail" :countries="countries" :selectTab="selectTab" />
         </div>
         <div key="profile-front-page" v-show="selectedTab === 'profile-front-page'">
           <ProfileFrontPage :profileFront="profileFront" :verfication="verfication" :userDetail="userDetail" :countries="countries" />
@@ -132,7 +127,7 @@ const tabs = reactive([
   {
     title: "Screen Identity",
     value: "screen-identity",
-    icon: "mdi-fit-to-screen",
+    icon: "mdi-camera-metering-center",
   },
   {
     title: "Email Preference",

@@ -8,9 +8,9 @@
       </div>
       <div class="p-4">
         <div class="flex flex-col gap-4">
-          <ProfileCIPersonalInfo :userDetail="props.userDetail" />
+          <ProfileCIPersonalInfo :userDetail="props.userDetail" :selectTab="selectTab" />
           <hr class="border-t" />
-          <ProfileCIAddressInfo :userDetail="props.userDetail"  />
+          <ProfileCIAddressInfo :userDetail="props.userDetail" :countries="countries"  />
           <hr class="border-t" />
           <ProfileCIInstantMessages  :userDetail="props.userDetail" />
         </div>
@@ -33,7 +33,11 @@ import ProfileCIInstantMessages from '@/Components/Profile/ContactInfo/ProfileCI
 const props = defineProps({
     userDetail: {
         type: Object,
-    }
+    },
+    countries: {
+        type: Array,
+    },
+    selectTab:Function
 });
 console.log(props.userDetail)
 
