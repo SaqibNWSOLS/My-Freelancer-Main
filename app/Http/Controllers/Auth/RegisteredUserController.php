@@ -66,7 +66,7 @@ public function VerfiyEmailCode(Request $request)
         $finalCode .= $code;
     }
 /*Auth::user()->verification_code;
-*/    if (123456 == $finalCode) {
+*/    if (Auth::user()->verification_code == $finalCode) {
 
        
         $user = User::where('id',Auth::id())->update([
@@ -101,7 +101,7 @@ public function VerfiyEmailCode(Request $request)
             'password' => Hash::make(rand(1,100)),
         ]);
 
-        event(new Registered($user));
+      //  event(new Registered($user));
 
         Auth::login($user);
 
@@ -139,7 +139,7 @@ public function storeStep3(Request $request): RedirectResponse
         $finalCode .= $code;
     }
 /*Auth::user()->verification_code;
-*/    if (123456 == $finalCode) {
+*/    if (Auth::user()->verification_code == $finalCode) {
 
         Auth::user()->markEmailAsVerified();
          return redirect(route('dashboard', absolute: false));
