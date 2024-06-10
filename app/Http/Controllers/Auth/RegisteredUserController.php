@@ -36,6 +36,51 @@ class RegisteredUserController extends Controller
         return Inertia::render('Auth/Register3');
     }
 
+    public function emailCode(Request $request){
+
+        $request->validate([
+            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+        ]);
+
+        $verificationCode = random_int(100000, 999999);
+
+        $user = User::where('id',Auth::id())->update([
+            'verification_code' => $verificationCode,
+        ]);
+
+          Mail::to(Auth::user()->email)->send(new VerificationCodeMail($verificationCode));
+
+
+    }
+
+public function VerfiyEmailCode(Request $request)
+{
+    // Validate the request to ensure codeInputs is an array and is present
+    $validated = $request->validate([
+        'verificationCode' => 'required|array',
+    ]);
+
+    $codes = $validated['verificationCode'];
+    $finalCode = '';
+    foreach ($codes as $code) {
+        $finalCode .= $code;
+    }
+/*Auth::user()->verification_code;
+*/    if (123456 == $finalCode) {
+
+       
+        $user = User::where('id',Auth::id())->update([
+            'email' => $request->email,
+        ]);
+
+         return redirect(route('dashboard', absolute: false));
+    } else {
+
+         return response()->json(['res' => 'Provided code is wrong'], 400);
+    }
+
+    
+}
 
 
     /**

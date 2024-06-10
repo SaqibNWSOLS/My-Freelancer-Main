@@ -113,7 +113,7 @@ const    tab="contact-information";
 
 import { ref, reactive } from "vue";
 
-const image = ref(baseUrl+props.userDetail.image);
+const image =props.userDetail?.image ? `${baseUrl}${props.userDetail.image}` : ref('https://w7.pngwing.com/pngs/846/897/png-transparent-user-male-avatar-account-profile-web-ui-color-icon.png');
 const name = ref("");
 const selectedTab = ref('contact-information'); // Make selectedTab reactive
 const selectTab = (index) => {

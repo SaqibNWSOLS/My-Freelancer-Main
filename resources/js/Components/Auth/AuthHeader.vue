@@ -6,9 +6,9 @@
         <div class="flex-grow">
           <a :href="route('dashboard')">
             <img
-              src="@/assets/logo.png"
+              src="@/assets/logo2.png"
               alt="Myfreelancer Logo"
-              class="w-42 h-8 object-cover filter contrast-130 mix-blend-multiply"
+              class="w-42 h-8 object-cover "
             />
           </a>
         </div>
