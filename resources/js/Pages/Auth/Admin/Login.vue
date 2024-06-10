@@ -23,7 +23,6 @@
                       <input class="peer" type="checkbox"><span class="checkbox-indicator peer-checked:!bg-primary !border-primary"> <i data-feather="check"></i></span>
                     </label><span>Remember Me</span>
                   </div>
-                  <div class="!mb-0"><a href="forgot-password.html">Forgot Password? </a></div>
                 </div><button type="submit" class="btn btn-primary !text-white hover:drop-shadow-lg my-2" >Sign in</button>
                 
                 
