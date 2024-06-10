@@ -1,1 +1,0 @@
-import{m as a,o as s,c as n,w as r,a as c,u as l,Z as u,b as e,t as p}from"./app-ByFFVmqj.js";const m=e("h1",null,"Welcome",-1),f={__name:"index",props:{user:Object},setup(t){return(_,i)=>{const o=a("Layout");return s(),n(o,null,{default:r(()=>[c(l(u),{title:"Welcome"}),m,e("p",null,"Hello "+p(t.user.name)+", welcome to your first Inertia app!",1)]),_:1})}}};export{f as default};
