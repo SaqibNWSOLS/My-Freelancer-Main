@@ -1,0 +1,191 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\ProfileUpdateRequest;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
+use Inertia\Response;
+use App\Models\User;
+use Validator;
+use App\Models\Setting\Country;
+use App\Models\Verfication;
+use Hash;
+use App\Models\Profile;
+use App\Models\BillBoard;
+use Session;
+class ProfileController extends Controller
+{
+    /**
+     * Display the user's profile form.
+     */
+    public function index(Request $request): Response
+    {
+
+         $verfication=Verfication::where('users_id',Auth::id())->first();
+         $countries = Country::all(); 
+         $profileFront=Profile::where('users_id',Auth::id())->first();
+         $billBoards=BillBoard::where('users_id',Auth::id())->get();
+         $billBoardDraft=BillBoard::where('id',session('billBoardId'))->first();
+        return Inertia::render('Profile/Index', ['userDetail'=>Auth::user(),'countries' => $countries,'verfication'=>$verfication,'profileFront'=> $profileFront,'billBoards'=>$billBoards,'billBoardDraft'=>$billBoardDraft,
+            'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
+            'status' => session('status'),
+        ]);
+    }
+
+    public function updatePassword(Request $request)
+    {
+      $request->validate([
+            'password' => 'required|string',
+            'password_confirmation'=>'required|string|same:password|min:6'
+        ]);
+     
+        $user = User::where('id',Auth::id())->first();
+      
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return back()->with('success', 'Password has been updated!');
+    }
+
+    public function update(Request $request){
+         $profile=Profile::where('users_id',Auth::id())->first();
+    if(empty($profile)){
+    $profile= new Profile();
+}
+        $input = $request->all();
+
+        $input['users_id']=Auth::id();
+
+    // Update the user's address
+    $profile->fill($input)->save();
+    }
+
+        public function profileImages(Request $request){
+        
+        
+ $base64_pattern = '/^data:image\/(png|jpeg|jpg|gif);base64,/i';
+ if ($request->has('headerImage') &&  preg_match($base64_pattern, $request->input('headerImage')) === 1) {
+    $imageData = $request->input('headerImage');
+
+    if (!empty($imageData)) {
+        list($type, $imageData) = explode(';', $imageData);
+        list(, $imageData) = explode(',', $imageData);
+
+  $decodedImage = base64_decode($imageData);
+
+        $filename = 'image_' . time() . '.png'; // You may adjust the extension according to the mime type
+
+        $path = public_path('uploads/' . $filename);
+
+        file_put_contents($path, $decodedImage);
+        $imagePath = 'uploads/' . $filename;
+
+       $profile=Profile::where('users_id',Auth::id())->first();
+    if(empty($profile)){
+    $profile= new Profile();
+}
+        $profile->header_image = $imagePath;
+        $profile->save();
+        return redirect(route('profile.index', [], false));
+    }
+    }
+
+     if ($request->has('headerPhoto') &&  preg_match($base64_pattern, $request->input('headerPhoto')) === 1) {
+    $imageData = $request->input('headerPhoto');
+
+    if (!empty($imageData)) {
+        list($type, $imageData) = explode(';', $imageData);
+        list(, $imageData) = explode(',', $imageData);
+
+  $decodedImage = base64_decode($imageData);
+
+        $filename = 'image_' . time() . '.png'; // You may adjust the extension according to the mime type
+
+        $path = public_path('uploads/' . $filename);
+
+        file_put_contents($path, $decodedImage);
+        $imagePath = 'uploads/' . $filename;
+
+       $profile=Profile::where('users_id',Auth::id())->first();
+    if(empty($profile)){
+    $profile= new Profile();
+}
+        $profile->header_photo = $imagePath;
+        $profile->save();
+        return redirect(route('profile.index', [], false));
+    }
+    }
+    }
+
+   public function updateAddress(Request $request) {
+    $user = User::find(Auth::id());
+    if (!$user) {
+        return response()->json([
+            'message' => 'User not found',
+            'data' => null,
+            'status' => false,
+            'response_code' => 404
+        ], 404);
+    }
+
+    $input = $request->all();
+
+    // Update the user's address
+    $user->fill($input)->save();
+
+    // Redirect back to the user's profile using Inertia
+    return back();
+}
+
+
+     public function profilePicUpload(Request $request)
+    {
+        // Validate the request
+        $request->validate([
+            'image' => 'required', // Assuming you have custom validation rule for base64 image
+        ]);
+ $base64_pattern = '/^data:image\/(png|jpeg|jpg|gif);base64,/i';
+ if ($request->has('image') &&  preg_match($base64_pattern, $request->input('image')) === 1) {
+    // Get the base64 image data
+    $imageData = $request->input('image');
+
+    // Check if image data is not empty
+    if (!empty($imageData)) {
+        // Extract the mime type and image data
+        list($type, $imageData) = explode(';', $imageData);
+        list(, $imageData) = explode(',', $imageData);
+
+        // Decode the base64 image data
+        $decodedImage = base64_decode($imageData);
+
+        $filename = 'image_' . time() . '.png'; // You may adjust the extension according to the mime type
+
+        $path = public_path('uploads/' . $filename);
+
+        // Save the image
+        file_put_contents($path, $decodedImage);
+        $imagePath = 'uploads/' . $filename;
+
+        $user = Auth::user();
+        $user->image = $imagePath;
+        $user->name=$request->screenName;
+        $user->save();
+
+        // Redirect to profile index
+        return redirect(route('profile.index', [], false));
+    }
+    
+}else {
+         $user = Auth::user();
+        $user->name=$request->screenName;
+        $user->save();
+          return redirect(route('profile.index', [], false));
+    }
+
+    }
+}
