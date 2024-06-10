@@ -71,9 +71,9 @@ import LinkedIn from '@/assets/linkedin.svg'
         <li class="py-1"><a class="cursor-pointer hover:underline">Help & Support</a></li>
         <li class="py-1"><a class="cursor-pointer hover:underline">Trust & Safety</a></li>
         <li class="py-1"><a class="cursor-pointer hover:underline">Writing & Translation</a></li>
-        <li class="py-1"><a class="cursor-pointer hover:underline">Selling on Fiverr</a></li>
-        <li class="py-1"><a class="cursor-pointer hover:underline">Buying on Fiverr</a></li>
-        <li class="py-1"><a class="cursor-pointer hover:underline">Fiverr Guides </a></li>
+        <li class="py-1"><a class="cursor-pointer hover:underline">Selling on My Freelancer</a></li>
+        <li class="py-1"><a class="cursor-pointer hover:underline">Buying on My Freelancer</a></li>
+        <li class="py-1"><a class="cursor-pointer hover:underline">My Freelancer Guides </a></li>
         <li class="py-1"><a class="cursor-pointer hover:underline">Learn <br /><span
               class="text-gray-700 text-sm">Online Courses</span> </a></li>
       </ul>
@@ -102,10 +102,10 @@ import LinkedIn from '@/assets/linkedin.svg'
       <h4 class="font-bold pb-2">Business Solutions</h4>
       <ul class="text-gray-700">
         <li class="py-1"><a class="cursor-pointer hover:underline">About Business Solutions</a></li>
-        <li class="py-1"><a class="cursor-pointer hover:underline">Fiverr Pro</a></li>
-        <li class="py-1"><a class="cursor-pointer hover:underline">Fiverr Certified</a></li>
+        <li class="py-1"><a class="cursor-pointer hover:underline">My Freelancer Pro</a></li>
+        <li class="py-1"><a class="cursor-pointer hover:underline">My Freelancer Certified</a></li>
         <li class="py-1"><a class="cursor-pointer hover:underline">Become an Agency</a></li>
-        <li class="py-1"><a class="cursor-pointer hover:underline">Fiverr Enterprise</a></li>
+        <li class="py-1"><a class="cursor-pointer hover:underline">My Freelancer Enterprise</a></li>
         <li class="py-1"><a class="cursor-pointer hover:underline">ClearVoice <br /><span
               class="text-gray-700 text-sm">Content Marketing</span></a></li>
         <li class="py-1"><a class="cursor-pointer hover:underline">Working Not Working</a></li>

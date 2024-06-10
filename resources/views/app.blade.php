@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Fonts -->
-    
+    <link rel="shortcut icon" href="{{asset('favicon.png')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/css/intlTelInput.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/common.css') }}">
     <link

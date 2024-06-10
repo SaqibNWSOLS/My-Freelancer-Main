@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-100 p-4">
+  <div class="bg-blue-500 p-4">
     <div class="max-w-screen-lg mx-auto ">
       <div class="flex justify-center  items-center space-x-4">
         <!-- Logo -->
@@ -21,9 +21,9 @@
         <!-- Buttons (optional) -->
         <div class="flex space-x-2 items-center">
           <PostButton />
-          <GroupMenu />
+          <!-- <GroupMenu />
           <NotificationMenu />
-          <ChatMenu />
+          <ChatMenu /> -->
           <ProfileMenu />
         </div>
       </div>

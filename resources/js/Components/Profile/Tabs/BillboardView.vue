@@ -63,7 +63,7 @@ const addNewBillboard = () => {
 }
 
 const finish=()=>{
-router.post(route('bill-board'),{finish:true}, {
+router.post(route('bill-board.store'),{finish:true}, {
         onSuccess: () => list.value = true, 
     });
 }
