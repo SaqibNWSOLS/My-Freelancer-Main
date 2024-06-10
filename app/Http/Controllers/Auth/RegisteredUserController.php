@@ -48,7 +48,7 @@ class RegisteredUserController extends Controller
             'verification_code' => $verificationCode,
         ]);
 
-          Mail::to(Auth::user()->email)->send(new VerificationCodeMail($verificationCode));
+          Mail::to($request->email)->send(new VerificationCodeMail($verificationCode));
 
 
     }
