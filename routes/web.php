@@ -35,7 +35,7 @@ Route::get('/verifications', [VerficationController::class, 'index'])->name('ver
 
 Route::get('admin-login',[AuthenticatedSessionController::class,'adminLogin'])->name('admin-dashboard');
 
-Route::get('admin-dashboard',[DashboardController::class,'index']);
+Route::get('admin-dashboard',[DashboardController::class,'index'])->name('admin-dashboard');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
