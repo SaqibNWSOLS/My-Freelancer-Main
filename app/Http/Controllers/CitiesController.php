@@ -44,8 +44,7 @@ class CitiesController extends Controller
 
         $city = Cities::create($validatedData);
 
-        return response()->json(['statusCode' => 200, 'success' => 'Your request has been added!', 'data' => $city])
-            ->setStatusCode(200);
+        return redirect(route('cities.index', [], false));
     }
 
     /**
@@ -80,8 +79,7 @@ class CitiesController extends Controller
 
         $cities->update($validatedData);
 
-        return response()->json(['statusCode' => 200, 'success' => 'City has been updated successfully!', 'data' => $cities])
-            ->setStatusCode(200);
+         return redirect(route('cities.index', [], false));
     }
 
     /**
@@ -90,6 +88,6 @@ class CitiesController extends Controller
     public function destroy(Cities $city)
     {
         $city->delete();
-        return response()->json(['statusCode' => 200, 'success' => 'City has been deleted successfully!']);
+        return redirect(route('cities.index', [], false));
     }
 }

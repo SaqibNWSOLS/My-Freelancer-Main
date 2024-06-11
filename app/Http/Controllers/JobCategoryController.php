@@ -31,8 +31,7 @@ class JobCategoryController extends Controller
 
         $jobCategory = JobCategory::create($validatedData);
 
-        return response()->json(['statusCode' => 200, 'success' => 'Your request has been added!', 'data' => $jobCategory])
-            ->setStatusCode(Response::HTTP_OK);
+         return redirect(route('jobCategory.index', [], false));
     }
 
     public function show(JobCategory $jobCategory)
@@ -55,15 +54,14 @@ class JobCategoryController extends Controller
 
         $jobCategory->update($validatedData);
 
-        return response()->json(['statusCode' => 200, 'success' => 'JobCategory has been updated successfully!', 'data' => $jobCategory])
-            ->setStatusCode(Response::HTTP_OK);
+        return redirect(route('jobCategory.index', [], false));
     }
 
     public function destroy(JobCategory $jobCategory)
 {
     $jobCategory->delete();
 
-    return response()->json(['statusCode' => 200, 'success' => 'JobCategory has been deleted successfully!']);
+    return redirect(route('jobCategory.index', [], false));
 }
 
 

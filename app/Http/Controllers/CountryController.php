@@ -39,8 +39,7 @@ class CountryController extends Controller
 
         $country = Country::create($validatedData);
 
-        return response()->json(['statusCode' => 200, 'success' => 'Your request has been added!', 'data' => $country])
-            ->setStatusCode(Response::HTTP_OK);
+        return redirect(route('countries.index', [], false));
     }
 
     /**
@@ -73,8 +72,7 @@ class CountryController extends Controller
 
         $country->update($validatedData);
 
-        return response()->json(['statusCode' => 200, 'success' => 'Country has been updated successfully!', 'data' => $country])
-            ->setStatusCode(Response::HTTP_OK);
+        return redirect(route('countries.index', [], false));
     }
 
     /**
@@ -84,6 +82,6 @@ class CountryController extends Controller
     {
         $country->delete();
 
-      return response()->json(['statusCode' => 200, 'success' => 'Country has been deleted successfully!']);
+      return redirect(route('countries.index', [], false));
     }
 }

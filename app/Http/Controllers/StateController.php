@@ -42,8 +42,7 @@ class StateController extends Controller
 
         $state = State::create($validatedData);
 
-        return response()->json(['statusCode' => 200, 'success' => 'Your request has been added!', 'data' => $state])
-            ->setStatusCode(200); // Alternatively, use Response::HTTP_OK
+         return redirect(route('states.index', [], false));
     }
 
     /**
@@ -76,7 +75,7 @@ class StateController extends Controller
 
         $state->update($validatedData);
 
-         return redirect()->route('states.index')->with('success', 'State has been updated successfully!');
+         return redirect(route('states.index', [], false))->with('success', 'State has been updated successfully!');
     }
 
     /**
@@ -86,6 +85,6 @@ class StateController extends Controller
     {
         $state->delete();
 
-       return response()->json(['statusCode' => 200, 'success' => 'State has been deleted successfully!']);
+       r return redirect(route('states.index', [], false));
     }
 }
