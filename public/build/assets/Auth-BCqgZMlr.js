@@ -1,1 +1,0 @@
-import{o as a,d as t,i as o,a as s,K as c,F as r}from"./app-Bq7Eq4Rd.js";import{_}from"./Header.vue_vue_type_script_setup_true_lang-CP371SI4.js";const l={class:"max-w-screen-lg mx-auto"},n={class:"w-full p-4"},m=s("div",{class:"mt-[130px]"},null,-1),f={__name:"Auth",setup(d){return(e,i)=>(a(),t(r,null,[o(_),s("div",l,[s("div",n,[m,c(e.$slots,"default")])])],64))}};export{f as _};
