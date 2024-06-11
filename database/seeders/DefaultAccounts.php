@@ -35,7 +35,7 @@ class DefaultAccounts extends Seeder
            DB::statement('TRUNCATE TABLE model_has_roles');
   DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-        $roles = ['Admin', 'Employer','Feelancer'];
+        $roles = ['Admin', 'Employer','Freelancer'];
         foreach($roles as $role){
             $exist = Role::where( 'name', $role )->exists();
             if(!$exist){
