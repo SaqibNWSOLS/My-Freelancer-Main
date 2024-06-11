@@ -49,9 +49,7 @@
         :class="{'border-red-500':  form.errors.password }" 
         class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
       />
-      <p v-for="error of v.$errors" :key="error.$uid">
-      {{ error.$message }}
-    </p>
+    
       <span class="text-red-500 text-sm">{{ form.errors.password}}</span>
     </div>
     <div>
