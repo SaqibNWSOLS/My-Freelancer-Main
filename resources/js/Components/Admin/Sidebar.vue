@@ -144,6 +144,71 @@
                   </ul>
                 </li>
 
+                   <li class="title">Employees</li>
+                <li class="sidebar-list">
+                  <a class="sidebar-link sidebar-title" :href="route('employees.index')">
+                    <span>
+                      <svg>
+                        <use href="@/admin_assets/svg/sprite.svg#Paper"></use>
+                      </svg>
+                      <span class="sidebar-name">Employee</span>
+                    </span>
+                    <svg>
+                      <use href="@/admin_assets/svg/sprite.svg#Arrow-Right-2"></use>
+                    </svg>
+                  </a>
+                  
+                </li>
+
+                   <li class="title">Freelancers</li>
+                <li class="sidebar-list">
+                  <a class="sidebar-link sidebar-title" :href="route('freelancers.index')">
+                    <span>
+                      <svg>
+                        <use href="@/admin_assets/svg/sprite.svg#Paper"></use>
+                      </svg>
+                      <span class="sidebar-name">Freelancer</span>
+                    </span>
+                    <svg>
+                      <use href="@/admin_assets/svg/sprite.svg#Arrow-Right-2"></use>
+                    </svg>
+                  </a>
+                  
+                </li>
+                <li class="title">Verifications</li>
+                <li class="sidebar-list">
+                  <a class="sidebar-link sidebar-title" :href="route('verifications.index')">
+                    <span>
+                      <svg>
+                        <use href="@/admin_assets/svg/sprite.svg#Paper"></use>
+                      </svg>
+                      <span class="sidebar-name">Verification</span>
+                    </span>
+                    <svg>
+                      <use href="@/admin_assets/svg/sprite.svg#Arrow-Right-2"></use>
+                    </svg>
+                  </a>
+                  
+                </li>
+
+                  <li class="title">Job Category</li>
+                <li class="sidebar-list">
+                  <a class="sidebar-link sidebar-title" :href="route('jobCategory.index')">
+                    <span>
+                      <svg>
+                        <use href="@/admin_assets/svg/sprite.svg#Paper"></use>
+                      </svg>
+                      <span class="sidebar-name">Verification</span>
+                    </span>
+                    <svg>
+                      <use href="@/admin_assets/svg/sprite.svg#Arrow-Right-2"></use>
+                    </svg>
+                  </a>
+                  
+                </li>
+
+               
+
 
               </ul>
             </nav>

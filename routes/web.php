@@ -12,7 +12,11 @@ use App\Http\Controllers\CitiesController;
 use App\Http\Controllers\VerficationController;
 use App\Http\Controllers\BillBoardController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\JobCategoryController;
 use App\Http\Controllers\FreelancerController;
+use App\Http\Controllers\EmployeeController;
+
+
 use App\Http\Controllers\ProxyController;
 
 Route::get('/', function () {
@@ -24,6 +28,10 @@ Route::get('/', function () {
     ]);
 })->name('/');
 Route::get('/front-view', [FreelancerController::class, 'FrontView'])->name('front-view');
+Route::get('/freelancers', [FreelancerController::class, 'index'])->name('freelancers.index');
+Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index');
+
+Route::get('/verifications', [VerficationController::class, 'index'])->name('verifications.index');
 
 Route::get('admin-login',[AuthenticatedSessionController::class,'adminLogin'])->name('admin-dashboard');
 
@@ -57,5 +65,9 @@ Route::get('/proxy', [ProxyController::class, 'proxy']);
 Route::resource('countries', CountryController::class);
 Route::resource('states', StateController::class);
 Route::resource('cities', CitiesController::class);
+
+Route::resource('jobCategory', JobCategoryController::class);
+
+
 
 require __DIR__.'/auth.php';

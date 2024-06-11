@@ -6,12 +6,19 @@ use Illuminate\Http\Request;
 use App\Models\Verfication;
 use Auth;
 use Str;
+use Inertia\Inertia;
+
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\RedirectResponse;
 
 class VerficationController extends Controller
 {
-   
+   public function index()
+{
+    $verifications = Verfication::get(); 
+    return Inertia::render('Verification/Index', ['verifications' => $verifications]);
+}
+
    public function store(Request $request)
    {
 

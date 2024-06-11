@@ -76,6 +76,8 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Profile::class);
     }
 
+    
+
     /**
         * Get the user that owns the user account settings.
     */

@@ -27,12 +27,13 @@
                                 <tr v-for="(state, index) in states" :key="state.id">
                                     <td class="min-w-[1.25rem]">{{ index + 1 }}</td>
                                     <td class="min-w-[8.125rem]">{{ state.name }}</td>
-                                  <td>{{ state.country.name }}</td>
+                                  <td> {{ state.country ? state.country.name : 'N/A' }}</td>
+                                 
                                     <td class="min-w-[11.125rem]">{{ state.status }}</td>
                                     <td>
 
                                         <a :href="route('states.edit', state.id)" class="text-white btn btn-warning hover:-translate-y-1 hover:transition-all hover:ease-in-out" style="margin:10px">Edit</a>
-                                        <button @click="deleteCountry('states.destroy',state.id)" class="text-white btn btn-danger hover:-translate-y-1 hover:transition-all hover:ease-in-out">Delete</button>
+                                        <button @click="deleteCountry(state.id)" class="text-white btn btn-danger hover:-translate-y-1 hover:transition-all hover:ease-in-out">Delete</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -60,11 +61,23 @@ export default {
         editState(id) {
             Inertia.get(route('states.edit', id));
         },
-        deleteState(id) {
-            if (confirm('Are you sure you want to delete this state?')) {
-                Inertia.delete(route('states.destroy', id));
+        async deleteCountry(id) {
+        if (confirm('Are you sure you want to delete this editState?')) {
+            try {
+                const response = await this.$inertia.delete(route('states.destroy', id));
+                if (response && response.statusCode === 200) {
+                    location.reload();
+                } else {
+                   
+                    console.error('Failed to delete State:', response);
+                   
+                }
+            } catch (error) {
+                console.error('An error occurred while deleting State:', error);
+            
             }
-        },
+        }
+    },
     },
 }
 </script>

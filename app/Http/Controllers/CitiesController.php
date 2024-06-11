@@ -87,11 +87,9 @@ class CitiesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cities $cities)
+    public function destroy(Cities $city)
     {
-        $cities->delete();
-
-        return response()->json(['statusCode' => 200, 'success' => 'City has been deleted successfully!'])
-            ->setStatusCode(200);
+        $city->delete();
+        return response()->json(['statusCode' => 200, 'success' => 'City has been deleted successfully!']);
     }
 }

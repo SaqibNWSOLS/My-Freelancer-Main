@@ -32,7 +32,7 @@
                                     <td>
 
                                         <a :href="route('countries.edit', country.id)" class="text-white btn btn-warning hover:-translate-y-1 hover:transition-all hover:ease-in-out" style="margin:10px">Edit</a>
-                                        <button @click="deleteCountry('countries.destroy',country.id)" class="text-white btn btn-danger hover:-translate-y-1 hover:transition-all hover:ease-in-out">Delete</button>
+                                        <button @click="deleteCountry(country.id)" class="text-white btn btn-danger hover:-translate-y-1 hover:transition-all hover:ease-in-out">Delete</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -59,11 +59,23 @@ export default {
         editCountry(id) {
             Inertia.get(route('countries.edit', id));
         },
-        deleteCountry(id) {
-            if (confirm('Are you sure you want to delete this country?')) {
-                Inertia.delete(route('countries.destroy', id));
+        async deleteCountry(id) {
+        if (confirm('Are you sure you want to delete this Country?')) {
+            try {
+                const response = await this.$inertia.delete(route('countries.destroy', id));
+                if (response && response.statusCode === 200) {
+                    location.reload();
+                } else {
+                   
+                    console.error('Failed to delete Country:', response);
+                   
+                }
+            } catch (error) {
+                console.error('An error occurred while deleting Country:', error);
+            
             }
-        },
+        }
+    },
     },
 }
 </script>

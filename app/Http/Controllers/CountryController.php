@@ -56,7 +56,8 @@ class CountryController extends Controller
      */
     public function edit(Country $country)
     {
-        return Inertia::render('Setting/Countries/Edit', ['country' => $country]);
+        
+        return Inertia::render('Setting/Countries/Edit', ['country' => $country ]);
     }
 
     /**
@@ -83,6 +84,6 @@ class CountryController extends Controller
     {
         $country->delete();
 
-    return redirect()->route('Setting/Countries.Index')->with('success', 'Country has been deleted successfully!');
+      return response()->json(['statusCode' => 200, 'success' => 'Country has been deleted successfully!']);
     }
 }
