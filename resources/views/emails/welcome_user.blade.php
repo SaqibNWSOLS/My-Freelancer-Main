@@ -56,7 +56,7 @@
         </div>
         <div class="content">
             <div class="logo">
-                <img src="{{ asset('images/logo/Myfreelancer-logo-white.jpeg') }}" alt="Logo">
+                <img src="{{ asset('images/logo.png') }}" alt="Logo">
             </div>
             <p class="welcome-message">Dear {{ $userName }},</p>
             <p class="user-name">Welcome to our platform!</p>

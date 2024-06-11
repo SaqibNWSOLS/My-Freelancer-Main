@@ -5,7 +5,7 @@ const goToPostJob = () => router.push({ path: "/app/post-job" });
 </script>
 
 <template>
-  <a :href="route('job.create')" v-if="$page.props.user.roles.includes('Employer')" class="py-1 text-xs btn-text" >
+  <a :href="route('job.create')" v-if="$page.props.user.roles.includes('Employer')" style="color:white" class="py-1 text-xs btn-text" >
     <i class="mdi mdi-plus mr-2"></i>
     Post Job
   </a>
