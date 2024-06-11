@@ -85,6 +85,6 @@ class StateController extends Controller
     {
         $state->delete();
 
-       r return redirect(route('states.index', [], false));
+       return redirect(route('states.index', [], false));
     }
 }
