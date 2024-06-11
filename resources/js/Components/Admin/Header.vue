@@ -8,7 +8,7 @@
                     <use href="@/admin_assets/svg/sprite.svg#Category"></use>
                   </svg>
                 </button>
-                <h1 class="flex items-center gap-1 text-xl font-extrabold leading-none sm:hidden dark:text-white 4xl:text-lg">Unique</h1>
+                <h1 class="flex items-center gap-1 text-xl font-extrabold leading-none sm:hidden dark:text-white 4xl:text-lg">My Freelancer</h1>
               </div>
               <div class="right-header flex items-center flex-1 sm:gap-[calc(7px_+_(14_-_7)_*_((100vw_-_320px)_/_(1920_-_320)))] gap-[calc(16px_+_(20_-_16)_*_((100vw_-_320px)_/_(1920_-_320)))]  justify-end">
                 <div class="search-box-wrapper transition-all duration-300 max-w-[40%] lg:scale-0 lg:opacity-0 lg:invisible lg:px-body-space lg:max-w-full w-full lg:z-[5] flex-1 lg:absolute lg:left-0">

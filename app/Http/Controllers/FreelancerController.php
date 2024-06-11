@@ -7,7 +7,6 @@ use Inertia\Response;
 use App\Models\User;
 use Spatie\Permission\Traits\HasRoles;
 use Inertia\Inertia;
-use Symfony\Component\HttpFoundation\Response;
 use App\Models\Profile;
 use Auth;
 

@@ -2,8 +2,8 @@
 	   <div class="page-sidebar sidebar-dark unique-sidebar">
           <aside class="sidebar">
             <div class="logo-wrapper">
-              <a href="index.html">
-                <img class="w-full full-sidebar" src="@/admin_assets/images/logo/logo.png" alt="logo">
+              <a href="admin-dashboard">
+                <img class="w-full full-sidebar" src="@/assets/logo2.png" alt="logo">
               </a>
               <button class="sidebar-btn">
                 <svg class="w-6 h-6">
@@ -11,19 +11,12 @@
                 </svg>
               </button>
             </div>
-            <div class="search-wrapper">
-              <div class="search-box">
-                <input class="search" placeholder="Search" type="search">
-                <svg class="w-5 h-5 cursor-pointer">
-                  <use href="@/admin_assets/svg/sprite.svg#Search"></use>
-                </svg>
-              </div>
-            </div>
+        
             <nav class="sidebar-main">
               <ul class="sidebar-links custom-scroll">
                 <li class="title">Dashboard</li>
                 <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title" :href="route('admin-dashboard')">
+                  <a class="sidebar-link sidebar-title" href="admin-dashboard">
                     <span>
                       <svg>
                         <g id="Iconly/Two-tone/Home__Home" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
