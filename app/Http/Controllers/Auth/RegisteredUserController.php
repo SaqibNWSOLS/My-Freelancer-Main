@@ -140,11 +140,13 @@ public function storeStep3(Request $request): RedirectResponse
 */    if (Auth::user()->verification_code == $finalCode) {
 
         Auth::user()->markEmailAsVerified();
+        $user=Auth::user();
+        Mail::to($user->email)->send(new WelcomeMail($user->name));
+
          return redirect(route('profile.index', absolute: false));
     }
-Mail::to($user->email)->send(new WelcomeMail($user->name));
     // Return an Inertia response with validation errors
-  return redirect(route('verification.notice', absolute: false));
+  return redirect(route('verification.notice', absolute: false))->with('res','Provided code is wrong.');
 }
     
 }
