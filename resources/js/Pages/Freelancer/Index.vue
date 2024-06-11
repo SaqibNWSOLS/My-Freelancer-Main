@@ -15,6 +15,11 @@
                                 <tr class="dark:bg-sidebar-dark2">
                                     <th>No</th>
                                     <th> Name</th>
+                                  <th> Email</th>
+                                  <th> Phone</th>
+                                  <th> Country</th>
+                                  <th> State</th>
+                                  <th> City</th>
                                   
                                 </tr>
                             </thead>
@@ -22,8 +27,11 @@
                                 <tr v-for="(freelancer, index) in freelancers" :key="freelancer.id">
                                     <td >{{ index + 1 }}</td>
                                     <td > {{ freelancer.name }}</td>
-                                   
-                                   
+                                   <td > {{ freelancer.email }}</td>
+                                   <td > {{ freelancer.phone }}</td>
+                                   <td > {{ freelancer.country }}</td>
+                                   <td > {{ freelancer.state }}</td>
+                                   <td > {{ freelancer.city }}</td>
                                 </tr>
                             </tbody>
                         </table>
