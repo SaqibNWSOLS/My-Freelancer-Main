@@ -61,7 +61,7 @@ class VerficationController extends Controller
         $imagePath = 'uploads/' . $filename;
 
         // Update user's image path
-        $verfication->gov_id_front = $imagePath;
+        $verfication->current_photo = $imagePath;
         $verfication->save();
 
         // Redirect to profile inde

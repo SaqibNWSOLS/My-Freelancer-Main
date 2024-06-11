@@ -120,6 +120,7 @@ input:focus{
 }
 .bg-blue-100 li {
     color: black;
+    text-align: left;
 }
 .bg-blue-100 button {
     color: white;
@@ -155,6 +156,6 @@ input:focus{
 }
 input::placeholder {
   font-size: 15px;
-  text-align: center;
+  text-align: left;
   font-weight: 600;
 }

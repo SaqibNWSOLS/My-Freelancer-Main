@@ -102,9 +102,9 @@
  
         <ul class="*:inline-block *:px-3 *:py-2 *:cursor-pointer hidden lg:block ml-9">
         <li><a class="bg-[rgb(29 56 100)]-500 hover:bg-[rgb(29 56 100)]-700 text-white font-bold py-2 px-4 border-whites rounded" href="https://support.myfreelancer.com/" target="_blank" style="font-family: Poppins;">Support</a></li>
-          <li  v-if="!$page?.props?.user?.name"> <a href="/login">Login</a></li>
-          <li  v-if="!$page?.props?.user?.name"> <a href="/register">Sign Up</a></li>
-           <li  v-if="$page?.props?.user?.name"><a href="/profile">Profile</a></li>
+          <li  v-if="!$page?.props?.auth?.user?.name"> <a href="/login">Login</a></li>
+          <li  v-if="!$page?.props?.auth?.user?.name"> <a href="/register">Sign Up</a></li>
+           <li  v-if="$page?.props?.auth?.user?.name"><a href="/profile">Profile</a></li>
         </ul>
       </nav>
     </div>

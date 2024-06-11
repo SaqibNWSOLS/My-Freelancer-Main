@@ -10,9 +10,9 @@
       <ul>
         <li class="py-2 px-4 cursor-pointer hover:bg-gray-100"><a :href="route('profile.index')">Manage Profile</a></li>
         <li class="py-2 px-4 cursor-pointer hover:bg-gray-100" :href="route('job.create')" v-if="$page.props.user.roles.includes('Freelancer')" ><a :href="route('front-view')">View My Page</a></li>
-        <li v-for="(item, index) in items" :key="index" :value="index" class="py-2 px-4 cursor-pointer hover:bg-gray-100">
+        <!-- <li v-for="(item, index) in items" :key="index" :value="index" class="py-2 px-4 cursor-pointer hover:bg-gray-100">
           {{ item.title }}
-        </li>
+        </li> -->
         <li class="py-2 px-4 cursor-pointer hover:bg-gray-100" ><a :href="route('logout')">Logout</a></li>
       </ul>
     </div>

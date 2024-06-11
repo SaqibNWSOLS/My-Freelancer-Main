@@ -13,6 +13,7 @@ use App\Http\Controllers\VerficationController;
 use App\Http\Controllers\BillBoardController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\FreelancerController;
+use App\Http\Controllers\ProxyController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -49,6 +50,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
    Route::post('billboard-attach',[BillBoardController::class,'billBoardAttchs'])->name('billboard-attach');
    
 });
+
+Route::get('/proxy', [ProxyController::class, 'proxy']);
+
 
 Route::resource('countries', CountryController::class);
 Route::resource('states', StateController::class);

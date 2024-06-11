@@ -50,12 +50,12 @@
               {{ phone }}
             </div>
             <div class="ml-4">
-              <button
+              <a
                 class="text-gray-500"
-                @click="dialog = true"
+               :href="route('verify-mobile')"
               >
                 Change | Remove
-              </button>
+              </a>
             </div>
             <div v-if="dialog">
               <div class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal">

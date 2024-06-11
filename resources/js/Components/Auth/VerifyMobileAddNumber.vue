@@ -47,8 +47,8 @@ onMounted(() => {
   iti = intlTelInput(phone.value, {
     initialCountry: "auto",
     geoIpLookup: function(success, failure) {
-      fetch("https://ipapi.co/json")
-        .then(function(res) { return res.json(); })
+      fetch("/proxy")
+        .then(function(res) {  return res.json(); })
         .then(function(data) { success(data.country_code); })
         .catch(function() { failure(); });
     },

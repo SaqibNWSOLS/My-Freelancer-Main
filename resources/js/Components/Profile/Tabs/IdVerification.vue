@@ -7,11 +7,11 @@
         <div class="flex flex-wrap lg:flex-nowrap gap-4 p-4">
             <div class="border border-blue-600 pt-4 w-56 grid text-center space-y-2"
                 :class="VerificationStatus.contactInfo === 0 ? 'border-gray-600' : ''">
-                <div class="text-center justify-center d-flex" style="margin-top:-40px"> <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <div class="text-center justify-center flex" style="margin-top:-40px"> <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="10" cy="14" r="7" fill="green" fill-opacity="0.24"/>
                     <path d="M6 13L10 16L17 7" stroke="#222222" stroke-width="1.2"/>
                 </svg></div>
-                <div class="text-center justify-center d-flex  mt-6"><img class="inline" width="24" src="@/assets/new/address-card.svg" /></div>
+                <div class="text-center justify-center flex  mt-6"><img class="inline" width="24" src="@/assets/new/address-card.svg" /></div>
                 <h3 class="font-bold space-x-2 text-sm">
                 
                 <span>Contact Information</span>
@@ -29,11 +29,11 @@
             </div>
             <div class="border border-blue-600 grid pt-4 w-56 text-center space-y-2"
                 :class="VerificationStatus.currentPhoto === 0 ? 'border-gray-600' : ''">
-                <div class="text-center justify-center d-flex" style="margin-top:-40px"> <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <div class="text-center justify-center flex" style="margin-top:-40px"> <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="10" cy="14" r="7" fill="green" fill-opacity="0.24"/>
                     <path d="M6 13L10 16L17 7" stroke="#222222" stroke-width="1.2"/>
                 </svg></div>
-                <div class="text-center justify-center d-flex mt-6">  <img class="inline" width="24" src="@/assets/new/address-card.svg" /></div>
+                <div class="text-center justify-center flex mt-6">  <img class="inline" width="24" src="@/assets/new/address-card.svg" /></div>
                 <h3 class="font-bold space-x-2 text-sm">
                 
                 <span>Current Photo</span>
@@ -51,7 +51,7 @@
             </div>
             <div class="border border-blue-600 grid pt-4 w-56 text-center space-y-2"
                 :class="VerificationStatus.govId === 0 ? 'border-gray-600' : ''">
-                <div class="text-center justify-center d-flex" style="margin-top:-38px">
+                <div class="text-center justify-center flex" style="margin-top:-38px">
                     <h2 ><b style="color:red; border:2px solid red; padding:0px 2px">Pending</b></h2>
                 </div>
                 <h3 class="font-bold space-x-2 text-sm  mt-6">
@@ -71,7 +71,7 @@
             </div>
             <div class="border border-blue-600 pt-4 mt-4 w-56 text-center grid space-y-2"
                 :class="VerificationStatus.proofOfAddress === 0 ? 'border-gray-600' : ''">
-                <div class="text-center justify-center d-flex" style="margin-top:-38px">
+                <div class="text-center justify-center flex" style="margin-top:-38px">
                     <h2 ><b style="color:red; border:2px solid red; padding:0px 2px">Pending</b></h2>
                 </div>
                 <h3 class="font-bold space-x-2 text-sm  mt-6">
