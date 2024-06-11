@@ -198,7 +198,7 @@
                       <svg>
                         <use href="@/admin_assets/svg/sprite.svg#Paper"></use>
                       </svg>
-                      <span class="sidebar-name">Verification</span>
+                      <span class="sidebar-name">Job Category</span>
                     </span>
                     <svg>
                       <use href="@/admin_assets/svg/sprite.svg#Arrow-Right-2"></use>
