@@ -2,10 +2,8 @@
   <header class='p-4 border-b border-black'>
         <div class='theme-container flex flex-wrap gap-5 justify-between px-2 max-w-[1250px] mx-auto w-full; '>
             <div class='flex flex-col md:flex-row justify-center items-center w-full md:w-max gap-4 '>
-                <figure class=''>
-                    <image src='./images/main_logo.png' class='h-[40px] w-[200px]' alt='profile' height={50}
-                        width={150} />
-                </figure>
+                    <a :href="route('/')"><img src='@/assets/images/main_logo.png' class='h-[40px] w-[200px]' alt='profile' height={50}
+                        width={150} /></a>
                 <div class='flex w-full'>
                     <input class='border w-full border-black rounded-l-md outline-0  px-5 md:w-[350px]'
                         placeholder=' What services are you looking for today? ' type='text' parentClass='mb-4' />
@@ -25,7 +23,7 @@
                 <div class='flex gap-3 items-center h-full'>
                     <h2 class='font-bold'> Orders</h2>
                     <figure class='shrink-0'>
-                        <image src='./images/image119.png' class='rounded-full h-[40px] w-[40px]' alt='profile'
+                        <img src='@/assets/images/image119.png' class='rounded-full h-[40px] w-[40px]' alt='profile'
                             height={40} width={40} />
                     </figure>
                     <span class='font-bold text-green-700'>$158.25</span>
@@ -47,31 +45,31 @@
         <div class="slider-container">
             <div class="slider">
                 <div class="slide slide1 graphics-design h-[350px] w-full flex flex-col justify-center gap-10 items-center"
-                    style="background-image: url(./images/image158.png);">
+                    style="background-image: url(@/assets/images/image158.png);">
                     <h1 class="  text-5xl md:text-6xl  font-bold ">Graphics & Design</h1>
                     <div class="flex items-center px-2 font-bold border border-black">
                         <figure>
-                            <image src='./images/image052.png' class="h-[40px] w-[40px]" height={40} width={40} alt='' />
+                            <img src='@/assets/images/image052.png' class="h-[40px] w-[40px]" height={40} width={40} alt='' />
                         </figure>
                         <h2 class="">How MyFreelancer Works</h2>
                     </div>
                 </div>
                 <div class="slide slide2 graphics-design h-[350px] w-full flex flex-col justify-center gap-10 items-center"
-                    style="background-image: url(./images/pexels-ann-h-45017-1762851.jpg);">
+                    style="background-image: url(@/assets/images/pexels-ann-h-45017-1762851.jpg);">
                     <h1 class="  text-5xl md:text-6xl  font-bold ">Graphics & Design</h1>
                     <div class="flex items-center px-2 font-bold border border-black">
                         <figure>
-                            <image src='./images/image052.png' class="h-[40px] w-[40px]" height={40} width={40} alt='' />
+                            <img src='@/assets/images/image052.png' class="h-[40px] w-[40px]" height={40} width={40} alt='' />
                         </figure>
                         <h2 class="">How MyFreelancer Works</h2>
                     </div>
                 </div>
                 <div class="slide slide3 graphics-design h-[350px] w-full flex flex-col justify-center gap-10 items-center"
-                    style="background-image: url(./images/pexels-enginakyurt-10838922.jpg);">
+                    style="background-image: url(@/assets/images/pexels-enginakyurt-10838922.jpg);">
                     <h1 class="  text-5xl md:text-6xl  font-bold ">Graphics & Design</h1>
                     <div class="flex items-center px-2 font-bold border border-black">
                         <figure>
-                            <image src='./images/image052.png' class="h-[40px] w-[40px]" height={40} width={40} alt='' />
+                            <img src='@/assets/images/image052.png' class="h-[40px] w-[40px]" height={40} width={40} alt='' />
                         </figure>
                         <h2 class="">How MyFreelancer Works</h2>
                     </div>
@@ -89,17 +87,17 @@
             <h2 class="text-2xl font-bold">Most popular in Graphics & Design</h2>
             <div class="flex gap-2">
                 <button class="prev-btn">
-                    <image src='./images/image020.png' class="" height={40} width={40} alt='' />
+                    <img src='@/assets/images/image020.png' class="" height={40} width={40} alt='' />
                 </button>
                 <button class="next-btn">
-                    <image src='./images/image019.png' class="" height={40} width={40} alt='' />
+                    <img src='@/assets/images/image019.png' class="" height={40} width={40} alt='' />
                 </button>
             </div>
         </div>
         <div class="flex gap-10  p-7 md:p-4  flex-wrap md:flex-nowrap ">
             <div class="flex items-center gap-2 border-2 rounded-md border-gray-300 px-5 py-1 ">
                 <figure>
-                    <image src='./images/image017.png' class=" h-[50px] w-[60px]" height={40} width={40} alt='' />
+                    <img src='@/assets/images/image017.png' class=" h-[50px] w-[60px]" height={40} width={40} alt='' />
                 </figure>
                 <h2 class="font-bold">Minimalist Logo Design</h2>
                 <span><i class="fa-solid fa-arrow-right"></i></span>
@@ -107,14 +105,14 @@
 
             <div class="flex items-center gap-2 border-2 rounded-md border-gray-300 px-5 py-1">
                 <figure>
-                    <image src='./images/image017.png' class=" h-[50px] w-[60px]" height={40} width={40} alt='' />
+                    <img src='@/assets/images/image017.png' class=" h-[50px] w-[60px]" height={40} width={40} alt='' />
                 </figure>
                 <h2 class="font-bold">Minimalist Logo Design</h2>
                 <span><i class="fa-solid fa-arrow-right"></i></span>
             </div>
             <div class="flex items-center gap-2 border-2 rounded-md border-gray-300 px-5 py-1">
                 <figure>
-                    <image src='./images/image017.png' class=" h-[50px] w-[60px]" height={40} width={40} alt='' />
+                    <img src='@/assets/images/image017.png' class=" h-[50px] w-[60px]" height={40} width={40} alt='' />
                 </figure>
                 <h2 class="font-bold">Minimalist Logo Design</h2>
                 <span><i class="fa-solid fa-arrow-right"></i></span>
@@ -128,7 +126,7 @@
             <div class="grid  grid-cols-1 md:grid-cols-4  gap-3">
                 <div class=" ">
                     <figure>
-                        <image src='./images/image053.png' class="h-full w-full" height={40} width={40} alt='' />
+                        <img src='@/assets/images/image053.png' class="h-full w-full" height={40} width={40} alt='' />
                     </figure>
                     <ul class="">
                         <p class="font-bold">Logo & Brand Identity</p>
@@ -141,7 +139,7 @@
 
                 <div class=" ">
                     <figure>
-                        <image src='./images/image054.png' class="h-full w-full" height={40} width={40} alt='' />
+                        <img src='@/assets/images/image054.png' class="h-full w-full" height={40} width={40} alt='' />
                     </figure>
                     <ul class="">
                         <p class="font-bold">Web & App Design </p>
@@ -154,7 +152,7 @@
                 </div>
                 <div class=" ">
                     <figure>
-                        <image src='./images/image055.png' class="h-full w-full" height={40} width={40} alt='' />
+                        <img src='@/assets/images/image055.png' class="h-full w-full" height={40} width={40} alt='' />
                     </figure>
                     <ul class="">
                         <p class="font-bold">Art & Illustration</p>
@@ -168,7 +166,7 @@
                 </div>
                 <div class=" ">
                     <figure>
-                        <image src='./images/image056.png' class="h-full w-full" height={40} width={40} alt='' />
+                        <img src='@/assets/images/image056.png' class="h-full w-full" height={40} width={40} alt='' />
                     </figure>
                     <ul class="">
                         <p class="font-bold">Marketing Design </p>
@@ -182,7 +180,7 @@
                 </div>
                 <div class=" ">
                     <figure class="bg-sky-300">
-                        <image src='./images/image145.png' class="h-full w-full" height={40} width={40} alt='' />
+                        <img src='@/assets/images/image145.png' class="h-full w-full" height={40} width={40} alt='' />
                     </figure>
                     <ul class="">
                         <p class="font-bold">Gaming</p>
@@ -193,7 +191,7 @@
                 </div>
                 <div class=" ">
                     <figure>
-                        <image src="./images/image143.png" class="h-full w-full" height={40} width={40} alt='' />
+                        <img src="@/assets/images/image143.png" class="h-full w-full" height={40} width={40} alt='' />
                     </figure>
                     <ul class="">
                         <p class="font-bold">Visual Design</p>
@@ -206,7 +204,7 @@
                 </div>
                 <div class=" ">
                     <figure>
-                        <image src='./images/image142.png' class="h-full w-full" height={40} width={40} alt='' />
+                        <img src='@/assets/images/image142.png' class="h-full w-full" height={40} width={40} alt='' />
                     </figure>
                     <ul class="">
                         <p class="font-bold">Print Design</p>
@@ -219,7 +217,7 @@
                 </div>
                 <div class=" ">
                     <figure>
-                        <image src='./images/image141.png' class="h-full w-full" height={40} width={40} alt='' />
+                        <img src='@/assets/images/image141.png' class="h-full w-full" height={40} width={40} alt='' />
                     </figure>
                     <ul class="">
                         <p class="font-bold">Packaging & Covers</p>
@@ -232,7 +230,7 @@
                 </div>
                 <div class=" ">
                     <figure class="bg-sky-300">
-                        <image src='./images/image138.png' class="h-full w-full" height={40} width={40} alt='' />
+                        <img src='@/assets/images/image138.png' class="h-full w-full" height={40} width={40} alt='' />
                     </figure>
                     <ul class="">
                         <p class="font-bold">Architecture & Building Design</p>
@@ -244,7 +242,7 @@
                 </div>
                 <div class=" ">
                     <figure class="border-2 border-gray-400 rounded-lg bg-sky-300">
-                        <image src='./images/image139.png' class="h-full w-full" height={40} width={40} alt='' />
+                        <img src='@/assets/images/image139.png' class="h-full w-full" height={40} width={40} alt='' />
                     </figure>
                     <ul class="">
                         <p class="font-bold">Product & Characters Design</p>
@@ -257,7 +255,7 @@
                 </div>
                 <div class=" ">
                     <figure class="border-2  border-gray-400 rounded-md bg-slate-100">
-                        <image src='./images/image136.png' class="h-full w-full" height={40} width={40} alt='' />
+                        <img src='@/assets/images/image136.png' class="h-full w-full" height={40} width={40} alt='' />
                     </figure>
                     <ul class="">
                         <p class="font-bold">Fashion & Merchandise</p>
@@ -271,7 +269,7 @@
                 </div>
                 <div class=" ">
                     <figure>
-                        <image src='./images/image140.png' class="h-full w-full" height={40} width={40} alt='' />
+                        <img src='@/assets/images/image140.png' class="h-full w-full" height={40} width={40} alt='' />
                     </figure>
                     <ul class="">
                         <p class="font-bold">Miscellaneous </p>
@@ -331,12 +329,12 @@
     }
     .slide1 {
         
-        background-image: url(./images/image158.png);
+        background-image: url(@/assets/images/image158.png);
     }
 
     .slide2 {
         /* background-color: #2ca02c; */
-        background-image: url(./images/pexels-ann-h-45017-176251.jpg);
+        background-image: url(@/assets/images/pexels-ann-h-45017-176251.jpg);
     }
 
     .slide3 {
