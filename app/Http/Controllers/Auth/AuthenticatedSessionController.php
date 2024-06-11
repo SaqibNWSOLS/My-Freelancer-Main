@@ -28,8 +28,14 @@ class AuthenticatedSessionController extends Controller
     }
 
 
-    public function adminLogin(): Response
+    public function adminLogin(Request $request): Response
     {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
         return Inertia::render('Auth/Admin/Login', [
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status'),
