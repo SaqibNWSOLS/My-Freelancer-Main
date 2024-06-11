@@ -11,6 +11,15 @@
       </p>
       <nav class="flex items-center ml-auto">
         <ul class="*:inline-block *:mx-2 *:px-3 *:py-1 *:cursor-pointer hidden lg:block">
+           <li
+            class="relative group border border-transparent hover:rounded-full"
+            :class="
+              animate === 4
+                ? 'hover:text-white hover:bg-[#112F62]'
+                : 'hover:text-blue-950 hover:bg-white'
+            "
+          ><a :href="route('categories')">Browse Categories</a>
+        </li>
           <li
             class="relative group border border-transparent hover:rounded-full"
             :class="

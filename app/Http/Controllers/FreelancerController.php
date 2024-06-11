@@ -21,6 +21,11 @@ class FreelancerController extends Controller
 
         return Inertia::render('Freelancer/Index', ['freelancers' => $freelancers]);
     }
+
+    public function Categories(){
+
+       return Inertia::render('Categories');
+    }
     
 
     public function frontView(){

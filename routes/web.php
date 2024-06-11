@@ -27,6 +27,8 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 })->name('/');
+Route::get('/categories', [FreelancerController::class, 'Categories'])->name('categories');
+
 Route::get('/front-view', [FreelancerController::class, 'FrontView'])->name('front-view');
 Route::get('/freelancers', [FreelancerController::class, 'index'])->name('freelancers.index');
 Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index');

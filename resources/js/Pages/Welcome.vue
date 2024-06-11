@@ -19,15 +19,16 @@
       <div class="lg:px-10 px-8 gap-6 grid justify-items-center lg:justify-center grid-cols-1 md:grid-cols-2  pb-10"
         :class="animate === 2 ? 'bg-white' : 'text-white bg-[#1B2A4A]' ">
         <div class="space-y-5">
-          <h4 class="font-bold text-xl lg:text-3xl ">Quick Course Intro</h4>
+          <h4 class="font-bold text-xl lg:text-3xl ">My Freelancer</h4>
           <div class="w-[450px] h-96 bg-gray-400 rounded-md">
             <img src="https://img.freepik.com/free-vector/freelancer-flexible-remote-work-locations-isometric-flowchart-with-shared-office-writing-home-outdoor-with-laptop-vector-illustration_1284-30324.jpg" class="h-96 w-[450px] ">
           </div>
         </div>
         <div class="space-y-5 px-8 text-base lg:text-xl">
-          <h4 class="font-bold text-xl lg:text-3xl">What you will learn</h4>
-          <p class="">In this lecture series, you'll gain a well-rounded understanding of front-end web performance
-            that'll empower you to deliver sites quickly and reliably.</p>
+          <h4 class="font-bold text-xl lg:text-3xl">Welcome To My Freelancer</h4>
+          <p class="">Where Possibilities and Talent Unite <br>
+            Join us and be part of a platform dedicated to excellence, affordability, and innovation in the freelance industry.
+          </p>
           <ul class="space-y-5">
             <li class="flex gap-1"><v-icon color="green-darken-2" icon="mdi-checkbox-marked-circle"
                 size="large"></v-icon> You’ll learn how to effectively think about and prioritize web performance today.
@@ -46,6 +47,28 @@
         </div>
 
       </div>
+      <div class="justify-content-center flex mt-[100px]" style=" align-items:center;justify-content:center">
+        <div style="max-width:1310px;">
+        <h1 class="text-lg lg:text-3xl">Join My Freelancer Today </h1>
+        <p class="mt-3">Join a vibrant community where opportunity and talent collide by clicking Sign Up Now My Freelancer is your ticket to success, whether you are trying to hire or get employed.</p>
+
+        <h1 class="text-lg lg:text-3xl mt-5">Revolutionizing the Freelance Industry</h1>
+        <p class="mt-3">Experience the future of freelancing with My Freelancer, where we are transforming the industry by offering premium services with significantly lower fees. Our goal is to disrupt the conventional model, providing the same high-quality services at a fraction of the cost.</p>
+          <h1 class="text-lg lg:text-3xl mt-5">Why Choose Us?</h1>
+          <ul class="mt-3">
+            <li><b>Lower Fees:</b> Enjoy exceptional services with 75% less in fees compared to other platforms.</li>
+            <li><b>Open Communication:</b> Transparent communication ensures your requirements are understood, leading to accurate and timely project completion.</li>
+            <li><b>Exemplary Standards:</b> Our platform requires developers to uphold exemplary standards of care and professionalism.</li>
+            <li><b>Diverse Opportunities:</b> Explore a wide range of freelance projects across various industries and skill levels.</li>
+          </ul>
+
+          <h1 class="lg:text-3xl mt-5">Contact Us</h1>
+          <p class="mt-3">Do you require help or have any questions? Our help desk is 24/7 available to assist you! </p>
+          <h1 class="lg:text-3xl mt-5">Follow Us</h1>
+          <p class="mt-3">Keep up with the most recent developments and possibilities. (Facebook, Instagram, twitter links to be added here)</p>
+      </div>
+
+    </div>
       <div class="justify-content-center flex" style=" align-items:center;justify-content:center">
         <div style="max-width:1310px;">
           
