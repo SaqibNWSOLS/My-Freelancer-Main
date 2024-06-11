@@ -35,6 +35,7 @@
 import intlTelInput from 'intl-tel-input';
 import 'intl-tel-input/build/css/intlTelInput.css';
 import { ref, onMounted } from "vue";
+import axios from 'axios'
 const phone = ref(null)
 
 const props = defineProps({
@@ -47,8 +48,8 @@ onMounted(() => {
   iti = intlTelInput(phone.value, {
     initialCountry: "auto",
     geoIpLookup: function(success, failure) {
-      fetch("/proxy")
-        .then(function(res) {  return res.json(); })
+      axios.get("https://ipapi.co/json")
+        .then(function(res) { return res.json(); })
         .then(function(data) { success(data.country_code); })
         .catch(function() { failure(); });
     },
