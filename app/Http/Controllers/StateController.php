@@ -86,6 +86,6 @@ class StateController extends Controller
     {
         $state->delete();
 
-        return redirect()->route('Setting/States.Index')->with('success', 'State has been deleted successfully!');
+       return response()->json(['statusCode' => 200, 'success' => 'State has been deleted successfully!']);
     }
 }
