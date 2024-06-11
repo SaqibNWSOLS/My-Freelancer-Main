@@ -192,6 +192,18 @@
                   </a>
                   
                 </li>
+                <li class="sidebar-list">
+                  <a class="sidebar-link sidebar-title" :href="route('logout')">
+                    <span>
+                      <svg>
+                        <use href="@/admin_assets/svg/sprite.svg#Paper"></use>
+                      </svg>
+                      <span class="sidebar-name">Logout</span>
+                    </span>
+                   
+                  </a>
+                  
+                </li>
 <!-- 
                   <li class="title">Job Category</li>
                 <li class="sidebar-list">
