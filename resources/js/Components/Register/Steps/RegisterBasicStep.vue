@@ -52,7 +52,7 @@
     </div>
     <div class="flex justify-end flex-col md:flex-row">
       <button
-      
+       :disabled="!isFormValid"
         type="submit"
         class="btn btn-primary text-lg bg-primary text-white py-2 px-4 pr-10 pl-10 rounded"
       >
@@ -72,6 +72,9 @@
 <script setup>
 
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import useVuelidate from '@vuelidate/core'
+import { required, email } from '@vuelidate/validators'
+import { computed } from 'vue';
 
 const props = defineProps({
   step: Number,
@@ -87,6 +90,18 @@ const form = useForm({
     email: '',
     name: '',
 });
+
+const rules = {
+  email: { required, email },
+  name: { required },
+};
+
+const v$ = useVuelidate(rules, form);
+
+const isFormValid = computed(() => {
+  return v$.value.$invalid === false;
+});
+
 const submit = () => {
     form.post(route('register'), {
         onFinish: () => console.log(3),

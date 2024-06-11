@@ -15,6 +15,10 @@ class MobileVerify
      */
     public function handle(Request $request, Closure $next): Response
     {
+
+         if (!$request->user() || !$request->user()->email_verified_at) {
+            return redirect('verify-email');
+        }
         if (!$request->user() || !$request->user()->phone_verified_at) {
             return redirect('verify-mobile');
         }

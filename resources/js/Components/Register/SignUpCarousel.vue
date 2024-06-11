@@ -13,27 +13,27 @@
             <div v-if="i === 0" class="flex flex-col items-center gap-4">
               <!-- top headings -->
               <div class="flex justify-center w-full">
-                <div class="w-1/3"></div>
-                <div class="w-1/3">Customers</div>
-                <div class="w-1/3">Freelancers</div>
+                <div class="w-1/4"></div>
+                <div class="w-2/4">Customers Freelancers</div>
+                <div class="w-1/4"></div>
               </div>
               <!-- up-work details -->
               <div class="flex justify-center w-full">
-                <div class="w-1/3">upwork</div>
-                <div class="w-1/3">20%</div>
-                <div class="w-1/3">0%</div>
+                <div class="w-2/4">upwork</div>
+                <div class="w-1/4">20%</div>
+                <div class="w-1/4">0%</div>
               </div>
               <!-- fiverr details -->
               <div class="flex justify-center w-full">
-                <div class="w-1/3">fiverr</div>
-                <div class="w-1/3">20%</div>
-                <div class="w-1/3">5%</div>
+                <div class="w-2/4">fiverr</div>
+                <div class="w-1/4">20%</div>
+                <div class="w-1/4">5%</div>
               </div>
               <!-- my-freelancer details -->
               <div class="flex justify-center w-full">
-                <div class="w-1/3 text-xl">myFreelancer</div>
-                <div class="w-1/3 text-xl">0%</div>
-                <div class="w-1/3 text-xl">5%</div>
+                <div class="w-2/4">myFreelancer</div>
+                <div class="w-1/4">0%</div>
+                <div class="w-1/4">5%</div>
               </div>
             </div>
             <div v-else-if="i === 1" class="flex justify-center text-center">
@@ -87,7 +87,7 @@ const prevSlide = () => {
 };
 
 onMounted(() => {
-  setInterval(nextSlide, 3000); // Automatically move to the next slide every 3 seconds
+  setInterval(nextSlide, 30000); // Automatically move to the next slide every 3 seconds
 });
 </script>
 

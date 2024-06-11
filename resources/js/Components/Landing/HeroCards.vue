@@ -1,6 +1,9 @@
 <template>
+  <div class="absolute mt-28">
+    
+  
 <div
-  class="grid grid-cols-1 lg:grid-cols-2 justify-items-center w-full gap-y-6 lg:flex-row justify-between absolute top-0 mx-4 lg:px-14 flex-col mt-28"
+  class="grid grid-cols-1 lg:grid-cols-2 justify-items-center w-full gap-y-6 lg:flex-row justify-between   top-0 mx-4 lg:px-14 flex-col"
   :class="[animate === 0 ? 'animateEnter' : 'animateLeave']"
   >
   <div class="flex-1 flex-grow pt-6 space-y-3 z-10 text-white">
@@ -20,7 +23,7 @@
   </div>
 </div>
 <div
-  class="grid grid-cols-1 lg:grid-cols-2 justify-items-center w-full gap-y-6 lg:flex-row justify-between absolute top-0 mx-4 lg:mx-10 flex-col mt-28"
+  class="grid grid-cols-1 lg:grid-cols-2 justify-items-center w-full gap-y-6 lg:flex-row justify-between absolute top-0 mx-4 lg:mx-10 flex-col "
   :class="[animate === 1 ? 'animateEnter' : 'animateLeave']"
   >
   <div class="pt-6 space-y-4 z-10 text-white">
@@ -54,7 +57,7 @@
 </div>
 
 <div
-  class="grid grid-cols-1 lg:grid-cols-2 justify-items-center w-full gap-y-6 lg:flex-row justify-between absolute top-0 mx-4 lg:px-14 flex-col mt-28"
+  class="grid grid-cols-1 lg:grid-cols-2 justify-items-center w-full gap-y-6 lg:flex-row justify-between absolute top-0 mx-4 lg:px-14 flex-col "
   :class="[animate === 2 ? 'animateEnter' : 'animateLeave']"
   >
   <div class="flex-1 flex-grow pt-6 space-y-3 z-10 text-white">
@@ -81,7 +84,7 @@
 
 
 <div
-  class="grid grid-cols-1 lg:grid-cols-2 justify-items-center w-full gap-y-6 lg:flex-row justify-between absolute top-0 mx-4 lg:mx-10 flex-col mt-28"
+  class="grid grid-cols-1 lg:grid-cols-2 justify-items-center w-full gap-y-6 lg:flex-row justify-between absolute top-0 mx-4 lg:mx-10 flex-col "
   :class="[animate === 3 ? 'animateEnter' : 'animateLeave']"
   >
   <div class="pt-6 space-y-5 z-10 text-white max-w-3xl">
@@ -104,8 +107,11 @@
     />
   </div>
 </div>
-<ProceedTest />
-  </template>
+<div class="grid grid-cols-1 lg:grid-cols-2 justify-items-center w-full gap-y-6 lg:flex-row justify-between   top-0 mx-4 lg:px-14 flex-col">
+
+  <ProceedTest />
+</div>
+</div>  </template>
   <style>
   .animateEnter {
   opacity: 0;

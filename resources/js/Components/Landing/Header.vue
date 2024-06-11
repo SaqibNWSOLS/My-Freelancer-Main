@@ -20,7 +20,7 @@
             "
           >
             Find Talent
-            <svg
+           <!--  <svg
               width="8"
               class="inline-block pb-1 fill-white group-hover:fill-black"
               xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +38,7 @@
                 <li class="hover:bg-slate-300 border-b border-blue-200"><a>Link 2</a></li>
                 <li class="hover:bg-slate-300"><a>Link 3</a></li>
               </ul>
-            </div>
+            </div> -->
           </li>
           <li
             class="relative group border border-transparent hover:rounded-full"
@@ -49,7 +49,7 @@
             "
           >
             Find Work
-            <svg
+         <!--    <svg
               width="8"
               class="inline-block pb-1 fill-white group-hover:fill-black"
               xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +67,7 @@
                 <li class="hover:bg-slate-300 border-b border-blue-200"><a>Link 2</a></li>
                 <li class="hover:bg-slate-300"><a>Link 3</a></li>
               </ul>
-            </div>
+            </div> -->
           </li>
           <li
             class="relative group border border-transparent hover:rounded-full"
@@ -78,7 +78,7 @@
             "
           >
             Why MyFreelancer
-            <svg
+           <!--  <svg
               width="8"
               class="inline-block pb-1 fill-white group-hover:fill-black"
               xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +96,7 @@
                 <li class="hover:bg-slate-300 border-b border-blue-200"><a>Link 2</a></li>
                 <li class="hover:bg-slate-300"><a>Link 3</a></li>
               </ul>
-            </div>
+            </div> -->
           </li>
         </ul>
  

@@ -46,7 +46,7 @@
         </div>
 
       </div>
-      <div class="justify-content-center d-flex" style=" align-items:center;justify-content:center">
+      <div class="justify-content-center flex" style=" align-items:center;justify-content:center">
         <div style="max-width:1310px;">
           
        

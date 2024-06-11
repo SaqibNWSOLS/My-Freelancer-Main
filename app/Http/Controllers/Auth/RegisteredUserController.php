@@ -14,6 +14,8 @@ use Inertia\Inertia;
 use Inertia\Response;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\VerificationCodeMail;
+use App\Mail\WelcomeMail;
+use Session;
 
 
 class RegisteredUserController extends Controller
@@ -33,7 +35,7 @@ class RegisteredUserController extends Controller
 
       public function step3(): Response
     {
-        return Inertia::render('Auth/Register3');
+        return Inertia::render('Auth/Register3',[ 'flash' => session('res')]);
     }
 
     public function emailCode(Request $request){
@@ -130,23 +132,22 @@ public function storeStep3(Request $request): RedirectResponse
 {
     // Validate the request to ensure codeInputs is an array and is present
     $validated = $request->validate([
-        'codeInputs' => 'required|array',
+        'codeInputs' => 'required',
     ]);
 
-    $codes = $validated['codeInputs'];
-    $finalCode = '';
-    foreach ($codes as $code) {
-        $finalCode .= $code;
-    }
+    $finalCode = $validated['codeInputs'];
+    
 /*Auth::user()->verification_code;
 */    if (Auth::user()->verification_code == $finalCode) {
 
         Auth::user()->markEmailAsVerified();
+        $user=Auth::user();
+        Mail::to($user->email)->send(new WelcomeMail($user->name));
+
          return redirect(route('profile.index', absolute: false));
     }
-
     // Return an Inertia response with validation errors
-  return redirect(route('verification.notice', absolute: false));
+  return redirect(route('verification.notice', absolute: false))->with(['res' => 'Provided code is wrong']);
 }
     
 }

@@ -51,7 +51,7 @@
     background-color: #eee;
 }
 .min-widht-input{
-    min-width: 70%;
+    min-width: 46%;
 }
 .border-bottom{
   
@@ -158,4 +158,9 @@ input::placeholder {
   font-size: 15px;
   text-align: left;
   font-weight: 600;
+}
+
+button:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
 }

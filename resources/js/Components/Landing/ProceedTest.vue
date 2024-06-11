@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#dcdcdc2b] pb-10 relative px-4 md:ml-[-37px] lg:px-10 -mt-[2px] text-white" style="height:258px; max-width:600px; margin-top:69px; border-radius:10px 58px 62px 42px">
+  <div class="bg-[#262a46bd] pb-10 relative px-4 md:ml-[-37px] lg:px-10 -mt-[2px] text-white" style="height:258px; max-width:600px;  border-radius:10px 58px 62px 42px">
     <form class="pt-10">
       <h3 class="mb-3 text-xl lg:text-3xl font-bold">Join the MyFreelancer Revolution!</h3>
       <p class="text-white text-base lg:text-lg">Better freelancer services without all the fees</p>
