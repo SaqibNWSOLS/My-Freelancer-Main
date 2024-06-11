@@ -43,6 +43,13 @@ Route::middleware('auth')->group(function () {
 
   Route::get('verify-mobile', [VerifyMobileController::class, 'create'])
                 ->name('verify-mobile');
+
+   Route::post('verify-mobile', [VerifyMobileController::class, 'verifyMobile'])
+                ->name('verify-mobile');
+
+  Route::post('send-code', [VerifyMobileController::class, 'sencCode'])
+                ->name('send-code');
+
  Route::post('verify-email-code', [RegisteredUserController::class, 'VerfiyEmailCode'])
                 ->name('verify-email-code');
  Route::post('email-code', [RegisteredUserController::class, 'emailCode'])

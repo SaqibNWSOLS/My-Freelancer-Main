@@ -3,11 +3,9 @@
 namespace App\Models;
 
 use App\Models\Profile;
-use App\Models\EmailTemplate;
 use Laravel\Cashier\Billable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\UserAccountSetting;
-use App\Models\UserIdentification;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 use App\Notifications\EmailNotification;
@@ -39,6 +37,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'image',
         'email_verified_at',
+        'phone_verified_at',
         'phone',
         'address',
         'country',
@@ -80,22 +79,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
         * Get the user that owns the user account settings.
     */
-    public function userAccountSetting(){
-        return $this->hasOne(UserAccountSetting::class);
-    }
-
-    /**
-        * Get the user that owns the User Identification.
-    */
-    public function userIdentity(){
-        return $this->hasOne(UserIdentification::class);
-    }
-    /**
-     * Send the password reset notification.
-     *
-     * @param  string  $token
-     * @return void
-     */
+    
     public function sendPasswordResetNotification($token)
     {
 

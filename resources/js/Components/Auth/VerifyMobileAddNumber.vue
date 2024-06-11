@@ -7,8 +7,9 @@
     </p>
   </div>
   <div class="w-full flex">
-    <input ref="phone" id="phoneC" name="phone" type="tel" class="py-2 bg-white border shadow-sm text-black w-full">
+    <input  ref="phone" v-model="form.phone" id="phoneC" name="phone" type="tel" class="py-2 bg-white border shadow-sm text-black w-full">
   </div>
+  <p class="text-danger">{{ props.form?.errors?.phone }}</p>
   <div class="w-full">
     <h6 class="text-base font-semibold">Would you like to verify your number?</h6>
     <p class="text-sm">You will receive a 6-digit code</p>
@@ -34,8 +35,13 @@
 import intlTelInput from 'intl-tel-input';
 import 'intl-tel-input/build/css/intlTelInput.css';
 import { ref, onMounted } from "vue";
+const phone = ref(null)
 
-const phone = ref(null);
+const props = defineProps({
+  next: Function,
+  form: Object,
+});
+
 let iti = null;
 onMounted(() => {
   iti = intlTelInput(phone.value, {
@@ -52,11 +58,12 @@ onMounted(() => {
   });
 });
 
-const props = defineProps({
-  next: Function,
-});
 
 const updateMobileNumber = async () => {
-  props.next()
+
+   props.form.post(route('send-code'), {
+        onSuccess: () =>props.next(),
+    });
+  
 };
 </script>
