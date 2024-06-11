@@ -190,7 +190,7 @@
                   </a>
                   
                 </li>
-
+<!-- 
                   <li class="title">Job Category</li>
                 <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title" :href="route('jobCategory.index')">
@@ -206,7 +206,7 @@
                   </a>
                   
                 </li>
-
+ -->
                
 
 
