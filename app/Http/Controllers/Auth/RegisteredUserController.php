@@ -15,6 +15,7 @@ use Inertia\Response;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\VerificationCodeMail;
 use App\Mail\WelcomeMail;
+use Session;
 
 
 class RegisteredUserController extends Controller
@@ -34,7 +35,7 @@ class RegisteredUserController extends Controller
 
       public function step3(): Response
     {
-        return Inertia::render('Auth/Register3');
+        return Inertia::render('Auth/Register3',[ 'flash' => session('res')]);
     }
 
     public function emailCode(Request $request){
@@ -146,7 +147,7 @@ public function storeStep3(Request $request): RedirectResponse
          return redirect(route('profile.index', absolute: false));
     }
     // Return an Inertia response with validation errors
-  return redirect(route('verification.notice', absolute: false))->with('res','Provided code is wrong.');
+  return redirect(route('verification.notice', absolute: false))->with(['res' => 'Provided code is wrong']);
 }
     
 }

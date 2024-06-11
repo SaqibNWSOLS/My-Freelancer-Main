@@ -11,7 +11,7 @@
         <h4 class="text-2xl text-center text-primary">Sign Up</h4>
         <RegisterBasicStep :step="step" :nextStep="nextStep" />
         <RegisterAccountTypeStep :step="step" :previousStep="previousStep" :nextStep="nextStep" />
-        <RegisterVerifyEmailStep :step="step" />
+        <RegisterVerifyEmailStep :step="step" :flash="flash" />
         <p class="text-center mb-10">
           Already have a account? <a href="/login" class="text-primary">Log In</a>
         </p>
@@ -39,6 +39,10 @@ import RegisterVerifyEmailStep from '@/Components/Register/Steps/RegisterVerifyE
 import Auth from '@/Layouts/Auth.vue'
 
 const step = ref(2);
+
+const props = defineProps({
+  flash: Object,
+});
 
 const nextStep = () => ++step.value;
 const previousStep = () => --step.value;

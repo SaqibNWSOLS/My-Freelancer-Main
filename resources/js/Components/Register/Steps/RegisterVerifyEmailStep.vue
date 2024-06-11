@@ -13,6 +13,9 @@
            <v-otp-input v-model:value="form.codeInputs" :num-inputs="6" class="otp-input"></v-otp-input>
 
       </div>
+       <div class="w-full text-center mt-4">
+    <div v-if="props.flash" class="text-danger">{{ props.flash }}</div>
+</div>
       <p v-if="errorMessage" class="text-center text-red-500">{{ errorMessage }}</p>
     </div>
     <div class="text-right">
@@ -46,6 +49,7 @@ const props = defineProps({
   step: Number,
   setBasicInfo: Function,
   nextStep: Function,
+  flash: Object,
 });
 
 
