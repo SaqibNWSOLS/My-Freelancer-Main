@@ -12,19 +12,19 @@ class JobCategoryController extends Controller
 {
       public function index()
     {
-     $jobCategories = JobCategory::all(); 
+     $jobCategories = JobCategory::with('parentDetail')->get(); 
         return Inertia::render('Job/JobCategory/Index', ['jobCategories' => $jobCategories]);
     }
 
     public function create()
     {
-        return Inertia::render('Job/JobCategory/Create');
+         $jobCategories = JobCategory::where('parent_id',0)->get(); 
+        return Inertia::render('Job/JobCategory/Create', ['jobCategories' => $jobCategories]);
     }
 
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'parent_id' => 'required|string|max:255',
             'name' => 'required|string|max:255',
             'status' => 'required|in:active,inactive',
         ]);
@@ -41,15 +41,15 @@ class JobCategoryController extends Controller
 
       public function edit(JobCategory $jobCategory)
     {
-        return Inertia::render('Job/JobCategory/Edit', ['jobCategory' => $jobCategory]);
+        $jobCategories = JobCategory::where('parent_id',0)->get(); 
+        return Inertia::render('Job/JobCategory/Edit', ['jobCategory' => $jobCategory,'jobCategories' => $jobCategories]);
     }
 
         public function update(Request $request, JobCategory $jobCategory)
     {
         $validatedData = $request->validate([
-            'parent_id' => 'required|max:255',
             'name' => 'required|string|max:255',
-            'status' => 'required|in:Active,Inactive',
+            'status' => 'required|in:active,inactive',
         ]);
 
         $jobCategory->update($validatedData);

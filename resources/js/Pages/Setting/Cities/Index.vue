@@ -31,8 +31,10 @@
                                     <td class="min-w-[8.125rem]">{{ city.state ? city.state.name : 'N/A' }}</td>
                                     <td class="min-w-[11.125rem]">{{ city.status }}</td>
                                     <td>
-                                        <a :href="route('cities.edit', city.id)" class="text-white btn btn-warning hover:-translate-y-1 hover:transition-all hover:ease-in-out" style="margin:10px">Edit</a>
-                                         <button @click="deleteCity(city.id)" class="text-white btn btn-danger hover:-translate-y-1 hover:transition-all hover:ease-in-out">Delete</button>
+                                           <a :href="route('cities.edit', city.id)" lass="hover:-translate-y-1 hover:transition-all hover:ease-in-out" style="margin:10px"><i class="mdi mdi-pencil"></i></a>
+                                        <button @click="deleteCity(city.id)" class="hover:-translate-y-1 hover:transition-all hover:ease-in-out"><i class="mdi mdi-delete" style="color:red"></i></button>
+
+                                       
                                     </td>
                                 </tr>
                             </tbody>

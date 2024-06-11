@@ -31,9 +31,10 @@
                                  
                                     <td class="min-w-[11.125rem]">{{ state.status }}</td>
                                     <td>
+                                         <a :href="route('states.edit', state.id)" lass="hover:-translate-y-1 hover:transition-all hover:ease-in-out" style="margin:10px"><i class="mdi mdi-pencil"></i></a>
+                                        <button @click="deleteCountry(state.id)" class="hover:-translate-y-1 hover:transition-all hover:ease-in-out"><i class="mdi mdi-delete" style="color:red"></i></button>
 
-                                        <a :href="route('states.edit', state.id)" class="text-white btn btn-warning hover:-translate-y-1 hover:transition-all hover:ease-in-out" style="margin:10px">Edit</a>
-                                        <button @click="deleteCountry(state.id)" class="text-white btn btn-danger hover:-translate-y-1 hover:transition-all hover:ease-in-out">Delete</button>
+                                      
                                     </td>
                                 </tr>
                             </tbody>

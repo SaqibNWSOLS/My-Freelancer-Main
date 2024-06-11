@@ -164,3 +164,8 @@ button:disabled {
   opacity: 0.8;
   cursor: not-allowed;
 }
+
+    .table tbody tr td, .table thead tr th {
+        padding-top: 0.4rem !important;
+        padding-bottom: 0.4rem !important;
+    }

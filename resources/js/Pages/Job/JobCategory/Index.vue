@@ -17,8 +17,9 @@
                             <thead>
                                 <tr class="dark:bg-sidebar-dark2">
                                     <th>No</th>
-                                    <th>Parent Id</th>
+                                    
                                     <th>Name</th>
+                                    <th>Parent</th>
                                     <th>Status</th>
                                      <th>Action</th>
                                 </tr>
@@ -26,13 +27,14 @@
                             <tbody>
                                 <tr v-for="(jobCategory, index) in jobCategories" :key="jobCategory.id">
                                     <td class="min-w-[1.25rem]">{{ index + 1 }}</td>
-                                    <td class="min-w-[8.125rem]">{{ jobCategory.parent_id }}</td>
+                                    
                                     <td class="min-w-[11.125rem]">{{ jobCategory.name }}</td>
+                                    <td class="min-w-[8.125rem]">{{ jobCategory.parent_detail?.name }}</td>
                                     <td class="min-w-[11.125rem]">{{ jobCategory.status }}</td>
                                     <td>
+                                          <a :href="route('jobCategory.edit', jobCategory.id)" lass="hover:-translate-y-1 hover:transition-all hover:ease-in-out" style="margin:10px"><i class="mdi mdi-pencil"></i></a>
+                                        <button @click="deletejobCategory(jobCategory.id)" class="hover:-translate-y-1 hover:transition-all hover:ease-in-out"><i class="mdi mdi-delete" style="color:red"></i></button>
 
-                                        <a :href="route('jobCategory.edit', jobCategory.id)" class="text-white btn btn-warning hover:-translate-y-1 hover:transition-all hover:ease-in-out" style="margin:10px">Edit</a>
-                                        <button @click="deletejobCategory(jobCategory.id)" class="text-white btn btn-danger hover:-translate-y-1 hover:transition-all hover:ease-in-out">Delete</button>
                                     </td>
                                 </tr>
                             </tbody>

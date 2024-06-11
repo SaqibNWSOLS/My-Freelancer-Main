@@ -14,8 +14,14 @@
   <div class="flex flex-col gap-3 form-group">
 
     <div class="flex flex-col gap-1"> 
-        <label for="parent_id" class="text-xs font-medium text-primary">Parent Id</label>
-        <input v-model="form.parent_id" id="parent_id" type="text" class="p-[11px] dark:border-border-dark dark:bg-sidebar-dark2 w-full border border-border-light rounded-5 text-xs text-content"/>
+       <label for="parent_id" class="text-xs font-medium text-primary">Country:</label>
+      <div class="flex flex-col gap-3 form-group">
+      <select v-model="form.parent_id" id="parent_id" class="dark:bg-sidebar-dark2 dark:border-border-dark  p-[11px] bg-white text-title border border-border-light rounded-5 w-full text-xs"> 
+            <option value="0">select below</option> 
+           <option v-for="country in jobCategories" :key="country.id" :value="country.id">   {{ country.name }}</option> 
+         
+      </select> 
+  </div>
     </div> 
       <div class="flex flex-col gap-1"> 
           <label for="name" class="text-xs font-medium text-primary">Category Name</label>
@@ -53,6 +59,9 @@ export default {
      components: {
         AdminLayout,
     },
+     props: {
+    jobCategories: Array,
+  },
     setup() {
         const form = useForm({
             parent_id: '',

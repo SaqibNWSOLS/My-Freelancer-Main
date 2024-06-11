@@ -11,4 +11,10 @@ class JobCategory extends Model
     protected $table = 'job_categories';
 
     protected $fillable = ['parent_id','name','status'];
+
+
+    public function parentDetail(){
+
+        return $this->belongsTo(JobCategory::class,'parent_id','id');
+    }
 }
