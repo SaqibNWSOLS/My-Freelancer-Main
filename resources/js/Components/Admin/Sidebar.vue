@@ -23,9 +23,7 @@
                       </svg>
                       <span class="sidebar-name">Dashboards</span>
                     </span>
-                    <svg>
-                      <use href="@/admin_assets/svg/sprite.svg#Arrow-Right-2"></use>
-                    </svg>
+                   
                   </a>
                 
                 </li>
@@ -164,9 +162,7 @@
                       </svg>
                       <span class="sidebar-name">Employer</span>
                     </span>
-                    <svg>
-                      <use href="@/admin_assets/svg/sprite.svg#Arrow-Right-2"></use>
-                    </svg>
+                  
                   </a>
                   
                 </li>
@@ -179,9 +175,7 @@
                       </svg>
                       <span class="sidebar-name">Freelancer</span>
                     </span>
-                    <svg>
-                      <use href="@/admin_assets/svg/sprite.svg#Arrow-Right-2"></use>
-                    </svg>
+                   
                   </a>
                   
                 </li>
@@ -194,9 +188,7 @@
                       </svg>
                       <span class="sidebar-name">Verification</span>
                     </span>
-                    <svg>
-                      <use href="@/admin_assets/svg/sprite.svg#Arrow-Right-2"></use>
-                    </svg>
+                   
                   </a>
                   
                 </li>
