@@ -57,6 +57,9 @@
            <div key="email-preference" v-show="selectedTab === 'email-preference'">
           <EmailPreference />
         </div>
+           <div key="myfreelancer-store" v-show="selectedTab === 'myfreelancer-store'">
+          <MyFreelancerStore />
+        </div>
         <div key="id-verification" v-show="selectedTab === 'id-verification'">
           <IdVerification  :verfication="verfication" :userDetail="userDetail" :countries="countries" />
            </div>
@@ -78,6 +81,7 @@ import ProfileFrontPage from '@/Components/Profile/Tabs/ProfileFrontPage.vue';
 import ScreenIdentity from '@/Components/Profile/Tabs/ScreenIdentity.vue';
 import EmailPreference from '@/Components/Profile/Tabs/EmailPreference.vue';
 import IdVerification from '@/Components/Profile/Tabs/IdVerification.vue';
+import MyFreelancerStore from '@/Components/Profile/Tabs/MyFreelancerStore.vue';
 import Password from '@/Components/Profile/Tabs/Password.vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 import { Head } from '@inertiajs/vue3';

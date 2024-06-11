@@ -14,6 +14,7 @@ use Inertia\Inertia;
 use Inertia\Response;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\VerificationCodeMail;
+use App\Mail\WelcomeMail;
 
 
 class RegisteredUserController extends Controller
@@ -130,21 +131,18 @@ public function storeStep3(Request $request): RedirectResponse
 {
     // Validate the request to ensure codeInputs is an array and is present
     $validated = $request->validate([
-        'codeInputs' => 'required|array',
+        'codeInputs' => 'required',
     ]);
 
-    $codes = $validated['codeInputs'];
-    $finalCode = '';
-    foreach ($codes as $code) {
-        $finalCode .= $code;
-    }
+    $finalCode = $validated['codeInputs'];
+    
 /*Auth::user()->verification_code;
 */    if (Auth::user()->verification_code == $finalCode) {
 
         Auth::user()->markEmailAsVerified();
          return redirect(route('profile.index', absolute: false));
     }
-
+Mail::to($user->email)->send(new WelcomeMail($user->name));
     // Return an Inertia response with validation errors
   return redirect(route('verification.notice', absolute: false));
 }

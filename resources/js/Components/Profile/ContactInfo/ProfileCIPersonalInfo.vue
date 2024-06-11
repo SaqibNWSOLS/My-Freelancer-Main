@@ -8,19 +8,17 @@
         <div class="mt-10">Phone Number</div>
       </div>
       <div class="col-span-8 ml-3">
-        <div v-if="!showField" class="flex flex-content w-3/4">
-          <div class="flex justify-start items-center w-2/3">
-            <div class="bg-gray-100 p-3 min-widht-input">
+        <div v-if="!showField" class="flex flex-content w-4/4">
+            <div class="bg-gray-100 w-80 p-3 min-widht-input">
               {{ fullName }}
             </div>
-            <button
+           <!--  <button
               class="text-gray-500 ml-2"
               @click="toggleField"
             >
               <i class="mdi mdi-pencil-outline"></i> Edit
-            </button>
+            </button> -->
           </div>
-        </div>
         <div v-if="showField" class="flex flex-content w-2/3">
           <input
             v-model="fullName"
@@ -34,7 +32,7 @@
             <i class="mdi mdi-plus-circle-outline"></i> Save
           </button>
         </div>
-        <div class="flex justify-center items-center mt-4 w-3/4">
+        <div class="flex  items-center mt-4 w-4/4">
           <div class="bg-gray-100 w-80 p-3 min-widht-input">
             {{ email }}
           </div>
@@ -43,9 +41,9 @@
             Verify Different Email
           </button>
         </div>
-        <div class="flex flex-col w-3/4 mt-4">
+        <div class="flex flex-col w-4/4 mt-4">
           <div class="flex justify-start items-center">
-            <i class="mdi mdi-whatsapp text-green-500 text-xl"></i>
+            <i class="mdi mdi-phone text-green-500 text-xl"></i>
             <div class="bg-gray-100 ml-2 p-3 min-widht-input">
               {{ phone }}
             </div>
@@ -100,13 +98,12 @@
             </div>
           </div>
           <div class="flex items-center gap-2 mt-4">
-            <div>Allow Employers to connect with me on Whatsapp via Quotes and my Public</div>
-            <input type="checkbox" class="toggle-checkbox" />
+            <!-- <div>Allow Employers to connect with me on Whatsapp via Quotes and my Public</div>
+            <input type="checkbox" class="toggle-checkbox" /> -->
           </div>
         </div>
       </div>
     </div>
-    <hr class="border-t mt-4" />
   </div>
 </template>
 

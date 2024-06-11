@@ -3,10 +3,10 @@
 <template>
   <div>
     <div class="w-full mb-6 text-right">
-      <button @click="$emit('addNewBillboard')" class="text-white bg-blue-800 px-4 py-2 rounded-md flex items-center">
+    <!--   <button @click="$emit('addNewBillboard')" class="text-white bg-blue-800 px-4 py-2 rounded-md flex items-center">
         <i class="mdi mdi-plus mr-2"></i>
         Add New Billboard
-      </button>
+      </button> -->
     </div>
 
     <table class="w-full text-sm border-collapse border">

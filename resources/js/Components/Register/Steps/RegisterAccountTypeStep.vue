@@ -49,6 +49,9 @@
         :class="{'border-red-500':  form.errors.password }" 
         class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
       />
+      <p v-for="error of v.$errors" :key="error.$uid">
+      {{ error.$message }}
+    </p>
       <span class="text-red-500 text-sm">{{ form.errors.password}}</span>
     </div>
     <div>
@@ -82,7 +85,7 @@
         <i class="mdi mdi-step-backward mr-2"></i>Back
       </button>
       <button 
-      
+       :disabled="!isFormValid"
         type="submit" 
        class="btn btn-primary text-lg bg-primary text-white py-2 px-4 pr-10 pl-10 rounded"
       >
@@ -103,6 +106,9 @@
 <script setup>
 
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import useVuelidate from '@vuelidate/core'
+import { required, email } from '@vuelidate/validators'
+import { computed } from 'vue';
 
 const props = defineProps({
   step: Number,
@@ -120,6 +126,18 @@ const form = useForm({
     agreeToTerms: false,
     agreeToEmail: false,
 });
+
+const rules = {
+  password: { required },
+  roleType: { required },
+};
+
+const v$ = useVuelidate(rules, form);
+
+const isFormValid = computed(() => {
+  return v$.value.$invalid === false;
+});
+
 const submit = () => {
     form.post(route('step2'), {
         onFinish: () => console.log(2)

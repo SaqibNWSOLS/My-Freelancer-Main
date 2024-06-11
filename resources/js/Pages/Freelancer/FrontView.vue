@@ -1,15 +1,15 @@
 <template>
     <App>
 <div class="flexflex-col items-center w-full pb-10">
-    <div class="h-56 bg-cover-img w-full"></div>
+    <div class="h-[300px] bg-cover-img w-full" :style="{ backgroundImage: `url(${headerPhoto})` }" ></div>
     <div class="flex justify-center bg-yellow-400 max-w-screen-lg mx-auto">
         <div class="w-3/12 bg-white border border-black p-5 mt-10">
             <div class="flex items-center justify-center h-44 w-44 bg-gray-200 rounded-sm mx-auto -mt-28">
-                <img width="70" src="@/assets/new/user-tie-solid.svg" alt="User Avatar"/>
+                <img width="70" :src="profilePhoto" alt="User Avatar"/>
             </div>
             <div class="mt-6 space-y-1">
-                <div class="flex"><span class="font-extrabold text-lg">Mark Webb</span> <span class="ml-auto">@markwebb</span></div>
-                <div class="flex items-center space-x-2"><img width="26" src="@/assets/new/usa-flag.svg" alt="Flag"><span>Orlando, FL, USA</span> <span class="ml-auto">7:44 PM</span></div>
+                <div class="flex"><span class="font-extrabold text-lg">{{ props.profileFront?.full_name }}</span> <span class="ml-auto">{{ props.profileFront?.screen_name }}</span></div>
+                <div class="flex items-center space-x-2"><img width="26" src="@/assets/new/usa-flag.svg" alt="Flag"><span>{{ props.profileFront?.home_town }}</span> <span class="ml-auto">7:44 PM</span></div>
             </div>
             <div class="flex gap-x-3 justify-center mt-6">
                 <img width="20" src="@/assets/shield-halved-solid.svg" alt="Shield Icon">
@@ -18,10 +18,10 @@
                 <img width="20" src="@/assets/new/chart-solid.svg" alt="Chart Icon">
             </div>
             <div class="mt-6 space-y-1 text-blue-950">
-                <div class="flex"><span>Hourly Rate</span> <span class="ml-auto font-extrabold">$20</span></div>
+                <div class="flex"><span>Hourly Rate</span> <span class="ml-auto font-extrabold">${{ props.profileFront?.hourly_rate }}</span></div>
                 <div class="flex"><span>All-Time Earnings</span> <span class="ml-auto font-extrabold">$25.500</span></div>
-                <div class="flex"><span>Member since</span> <span class="ml-auto font-extrabold">May 2024</span></div>
-                <div class="flex"><span>Completed Transactions</span> <span class="ml-auto font-extrabold">100</span></div>
+                <div class="flex"><span>Member since</span> <span class="ml-auto font-extrabold">Jun 2024</span></div>
+                <div class="flex"><span>Completed Transactions</span> <span class="ml-auto font-extrabold">{{ props.profileFront?.completed_tran }}</span></div>
                 <div class="flex"><span>Job Success Rates</span> <span class="ml-auto font-extrabold">100%</span></div>
             </div>
             <p class="text-center mt-6 font-bold">Verifications</p>
@@ -34,7 +34,7 @@
                 <div class="flex items-center"><span class="flex gap-x-2"><img width="16" src="@/assets/new/square-facebook.svg" alt="Facebook Icon"/>Facebook connected</span> <img width="12" src="@/assets/new/check-solid.svg" class="ml-auto" alt="Check Icon"/></div>
             </div>
             <div class="text-center space-y-3 mt-6">
-                <p><strong>Website:</strong><br/>dvsales.com</p>
+                <p><strong>Website:</strong><br/>{{ props.profileFront?.website }}</p>
                 <p><strong>Languages:</strong><br/>English, Spanish, Chinese, Italian</p>
                 <p><strong>Education:</strong><br/>university of</p>
             </div>
@@ -111,14 +111,22 @@
     <script setup>
 import App from '@/Layouts/App.vue'
 import { ref } from 'vue'
+const  baseUrl=window.Laravel.baseUrl
 
+const props = defineProps({
+    profileFront: {
+        type: Object,
+    },
+});
+const headerPhoto=props.profileFront?.header_image? baseUrl+props.profileFront?.header_image : ref('https://w7.pngwing.com/pngs/846/897/png-transparent-user-male-avatar-account-profile-web-ui-color-icon.png');
+const profilePhoto=props.profileFront?.header_photo? baseUrl+props.profileFront?.header_photo : ref('https://w7.pngwing.com/pngs/846/897/png-transparent-user-male-avatar-account-profile-web-ui-color-icon.png');
 const switchStatus = ref(null);
 const selectedTab = ref('one');
 </script>
 
 <style scoped>
 .bg-cover-img{
-    background-image: url(@/assets/new/cover-bg-1.jpg);
+    background-image: url(+profilePhoto+);
     background-repeat: no-repeat, no-repeat;
     background-size: cover;
 }
