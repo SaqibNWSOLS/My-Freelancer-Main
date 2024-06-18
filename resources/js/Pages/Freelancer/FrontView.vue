@@ -129,5 +129,7 @@ const selectedTab = ref('one');
     background-image: url(+profilePhoto+);
     background-repeat: no-repeat, no-repeat;
     background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
 }
 </style>

@@ -12,7 +12,7 @@
           </div>
           <div class="w-px bg-gray-200"></div>
           <div class="flex-1">
-            <div :class="{'text-primary': step >= 1}"  class="cursor-pointer p-4">Pricing & Description</div>
+            <div :class="{'text-primary': step >= 1}"  class="cursor-pointer p-4"> Description</div>
           </div>
           <div class="w-px bg-gray-200"></div>
           <div class="flex-1">
@@ -26,7 +26,7 @@
         <div v-show="step === 2"><UploadStep  :previousStep="previousStep" :nextStep="nextStep" :billBoardDraft="billBoardDraft" /></div>
       </div>
       <div class="col-span-1 row-reverse text-right gap-3 mt-4">
-        <!-- <button @click="listView"  class="bg-gray-200 text-gray-700 px-4 py-2 rounded">Back to List</button> -->
+       <button @click="listView"  class="bg-gray-200 text-gray-700 px-4 py-2 rounded">Back to List</button> 
         <button @click="step--" class="ml-2 bg-gray-200 text-gray-700 px-4 py-2 rounded" v-if="step > 0">Previous</button>
          <button @click="finish" class="ml-2 bg-blue-800 text-white px-4 py-2 rounded" v-if="step > 1">Finish</button>
       </div>
@@ -51,7 +51,7 @@ const props = defineProps({
 
  });
 const step = ref(0)
-const list = ref(false)
+const list = ref(true)
 
 const nextStep = () => ++step.value;
 const previousStep = () => --step.value;

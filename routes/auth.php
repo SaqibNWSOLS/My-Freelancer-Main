@@ -38,6 +38,7 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
 
+
       Route::get('step2', [RegisteredUserController::class, 'step2'])
                 ->name('step2');
 
@@ -46,6 +47,10 @@ Route::middleware('auth')->group(function () {
 
    Route::post('verify-mobile', [VerifyMobileController::class, 'verifyMobile'])
                 ->name('verify-mobile');
+
+
+    Route::post('change-email',[RegisteredUserController::class,'changeEmail'])->name('change-email');
+    Route::post('resend-email-otp',[RegisteredUserController::class,'resendEmailOtp'])->name('resend-email-otp');
 
   Route::post('send-code', [VerifyMobileController::class, 'sencCode'])
                 ->name('send-code');

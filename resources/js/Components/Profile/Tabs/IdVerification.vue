@@ -4,13 +4,17 @@
         <div class="border-b bg-card-header ">
             <h2 class="text-xl p-4">Upload Documents</h2>
         </div>
-        <div class="flex flex-wrap lg:flex-nowrap gap-4 p-4">
+        <div class="flex flex-wrap lg:flex-nowrap gap-4 mt-6 p-4">
             <div class="border border-blue-600 pt-4 w-56 grid text-center space-y-2"
                 :class="VerificationStatus.contactInfo === 0 ? 'border-gray-600' : ''">
-                <div class="text-center justify-center flex" style="margin-top:-40px"> <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <div class="text-center justify-center flex" style="margin-top:-40px"> 
+                    <svg v-if="props.verfication?.accountType" width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="10" cy="14" r="7" fill="green" fill-opacity="0.24"/>
                     <path d="M6 13L10 16L17 7" stroke="#222222" stroke-width="1.2"/>
-                </svg></div>
+                </svg>
+
+                <h2  v-if="!props.verfication?.accountType"><b style="color:red; border:2px solid red; padding:0px 2px">Pending</b></h2>
+            </div>
                 <div class="text-center justify-center flex  mt-6"><img class="inline" width="24" src="@/assets/new/address-card.svg" /></div>
                 <h3 class="font-bold space-x-2 text-sm">
                 
@@ -21,18 +25,27 @@
                     <li>Legal name</li>
                     <li>Residential Address</li>
                 </ul>
-                <button @click="showVerificationSection = 'contact-information';tab= 'id-contact-information'"
+                <button v-if="!props.verfication?.accountType" @click="showVerificationSection = 'contact-information';tab= 'id-contact-information'"
                 :class="VerificationStatus.contactInfo === 0 ? 'border-gray-400 text-gray-400 pointer-events-none' : ''"
                 class="border-t self-end border-solid border-blue-600 w-full py-2 font-semibold text-blue-600 hover:bg-blue-50">
                 Start
                 </button>
+                 <button v-if="props.verfication?.accountType" @click="showVerificationSection = 'contact-information';tab= 'id-contact-information'"
+                :class="VerificationStatus.contactInfo === 0 ? 'border-gray-400 text-gray-400 pointer-events-none' : ''"
+                class="border-t self-end border-solid border-blue-600 w-full py-2 font-semibold text-blue-600 hover:bg-blue-50">
+                Edit
+                </button>
             </div>
             <div class="border border-blue-600 grid pt-4 w-56 text-center space-y-2"
                 :class="VerificationStatus.currentPhoto === 0 ? 'border-gray-600' : ''">
-                <div class="text-center justify-center flex" style="margin-top:-40px"> <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <div class="text-center justify-center flex" style="margin-top:-40px">
+                  <svg v-if="props.verfication?.current_photo" width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="10" cy="14" r="7" fill="green" fill-opacity="0.24"/>
                     <path d="M6 13L10 16L17 7" stroke="#222222" stroke-width="1.2"/>
-                </svg></div>
+                </svg>
+
+                <h2  v-if="!props.verfication?.current_photo"><b style="color:red; border:2px solid red; padding:0px 2px">Pending</b></h2>
+            </div>
                 <div class="text-center justify-center flex mt-6">  <img class="inline" width="24" src="@/assets/new/address-card.svg" /></div>
                 <h3 class="font-bold space-x-2 text-sm">
                 
@@ -43,16 +56,26 @@
                     <li>Taken within 60 days</li>
                     <li>Show your entire face</li>
                 </ul>
-                <button @click="showVerificationSection = 'contact-information';tab= 'id-current-photo'"
+                <button  v-if="!props.verfication?.current_photo" @click="showVerificationSection = 'contact-information';tab= 'id-current-photo'; selectedTab='id-current-photo'"
                 :class="VerificationStatus.currentPhoto === 0 ? 'border-gray-400 text-gray-400 pointer-events-none' : ''"
                 class="self-end border-t border-solid border-blue-600 w-full py-2 font-semibold text-blue-600 hover:bg-blue-50">
                 Start
+                </button>
+                <button  v-if="props.verfication?.current_photo" @click="showVerificationSection = 'contact-information';tab= 'id-current-photo';selectedTab='id-current-photo'"
+                :class="VerificationStatus.currentPhoto === 0 ? 'border-gray-400 text-gray-400 pointer-events-none' : ''"
+                class="self-end border-t border-solid border-blue-600 w-full py-2 font-semibold text-blue-600 hover:bg-blue-50">
+                Edit
                 </button>
             </div>
             <div class="border border-blue-600 grid pt-4 w-56 text-center space-y-2"
                 :class="VerificationStatus.govId === 0 ? 'border-gray-600' : ''">
                 <div class="text-center justify-center flex" style="margin-top:-38px">
-                    <h2 ><b style="color:red; border:2px solid red; padding:0px 2px">Pending</b></h2>
+                     <svg v-if="props.verfication?.govIdType" width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10" cy="14" r="7" fill="green" fill-opacity="0.24"/>
+                    <path d="M6 13L10 16L17 7" stroke="#222222" stroke-width="1.2"/>
+                </svg>
+
+                <h2  v-if="!props.verfication?.govIdType"><b style="color:red; border:2px solid red; padding:0px 2px">Pending</b></h2>
                 </div>
                 <h3 class="font-bold space-x-2 text-sm  mt-6">
                 <img class="inline" width="24" src="@/assets/new/address-card.svg" />
@@ -63,16 +86,26 @@
                     <li>Show all four edges</li>
                     <li>Front & Back</li>
                 </ul>
-                <button
-                :class="VerificationStatus.govId === 0 ? 'border-gray-400 text-gray-400 pointer-events-none' : ''"
+                               <button  v-if="!props.verfication?.govIdType" @click="showVerificationSection = 'contact-information';tab= 'id-government-id'; selectedTab='id-government-id'"
+                :class="VerificationStatus.currentPhoto === 0 ? 'border-gray-400 text-gray-400 pointer-events-none' : ''"
                 class="self-end border-t border-solid border-blue-600 w-full py-2 font-semibold text-blue-600 hover:bg-blue-50">
                 Start
                 </button>
+                <button  v-if="props.verfication?.govIdType" @click="showVerificationSection = 'contact-information';tab= 'id-government-id';selectedTab='id-government-id'"
+                :class="VerificationStatus.currentPhoto === 0 ? 'border-gray-400 text-gray-400 pointer-events-none' : ''"
+                class="self-end border-t border-solid border-blue-600 w-full py-2 font-semibold text-blue-600 hover:bg-blue-50">
+                Edit
+                </button>
             </div>
-            <div class="border border-blue-600 pt-4 mt-4 w-56 text-center grid space-y-2"
+            <div class="border border-blue-600 pt-4  w-56 text-center grid space-y-2"
                 :class="VerificationStatus.proofOfAddress === 0 ? 'border-gray-600' : ''">
                 <div class="text-center justify-center flex" style="margin-top:-38px">
-                    <h2 ><b style="color:red; border:2px solid red; padding:0px 2px">Pending</b></h2>
+                     <svg v-if="props.verfication?.addressProofType" width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10" cy="14" r="7" fill="green" fill-opacity="0.24"/>
+                    <path d="M6 13L10 16L17 7" stroke="#222222" stroke-width="1.2"/>
+                </svg>
+
+                <h2  v-if="!props.verfication?.addressProofType"><b style="color:red; border:2px solid red; padding:0px 2px">Pending</b></h2>
                 </div>
                 <h3 class="font-bold space-x-2 text-sm  mt-6">
                 <img class="inline" width="24" src="@/assets/new/address-card.svg" />
@@ -82,10 +115,15 @@
                     <li>Dated within 60 days</li>
                     <li>Confirm your name & address on account</li>
                 </ul>
-                <button
-                :class="VerificationStatus.proofOfAddress === 0 ? 'border-gray-400 text-gray-400 pointer-events-none' : ''"
+<button  v-if="!props.verfication?.addressProofType" @click="showVerificationSection = 'contact-information';tab= 'id-address-proof'; selectedTab='id-address-proof'"
+                :class="VerificationStatus.currentPhoto === 0 ? 'border-gray-400 text-gray-400 pointer-events-none' : ''"
                 class="self-end border-t border-solid border-blue-600 w-full py-2 font-semibold text-blue-600 hover:bg-blue-50">
                 Start
+                </button>
+                <button  v-if="props.verfication?.addressProofType" @click="showVerificationSection = 'contact-information';tab= 'id-address-proof';selectedTab='id-address-proof'"
+                :class="VerificationStatus.currentPhoto === 0 ? 'border-gray-400 text-gray-400 pointer-events-none' : ''"
+                class="self-end border-t border-solid border-blue-600 w-full py-2 font-semibold text-blue-600 hover:bg-blue-50">
+                Edit
                 </button>
             </div>
         </div>
@@ -181,7 +219,7 @@
                                             </div>
                                             <div class="space-y-2">
                                                 <label class="block">Country</label>
-                                                <select class="border p-2 w-[420px] appearance-auto" v-model="form.countries_id" name="COUNTRIES"
+                                                <select class="border p-2 w-[420px] " @change="fetchStates" v-model="form.countries_id" name="COUNTRIES"
                                                     id="COUNTRIES">
                                                     <option v-for="(country, index) in countries" :value="country.id" :key="index">
                                                         {{ country.name }}
@@ -201,8 +239,10 @@
                                                  <p class="text-danger">{{ form.errors.city_state_zip }}</p>
                                             </div>
                                             <div class="space-x-2">
-                                                <select class="inline-block border p-2 w-[270px] appearance-auto" name="STATES">
-                                                    <option>Florida</option>
+                                                <select class="inline-block border p-2 w-[270px] " name="STATES">
+                                                   <option v-for="(state, index) in states" :value="state.id" :key="index">
+                                                        {{ state.name }}
+                                                    </option>
                                                 </select>
                                                 <input type="text" class="inline-block w-24 border p-2 rounded-sm" />
                                             </div>
@@ -377,7 +417,7 @@
                                         </div>
                                         <div class="space-y-2">
                                             <p>What type of Government Issued ID?</p>
-                                            <select class="border p-2 w-[200px] appearance-auto" v-model="form.govIdType" name="gov-id">
+                                            <select class="border p-2 w-[200px] " v-model="form.govIdType" name="gov-id">
                                                 <option>Driver's License</option>
                                                 <option>Card ID</option>
                                                 <option>Passport</option>
@@ -419,7 +459,7 @@
                                         </div>
                                         <div class="space-y-2">
                                             <p>What type of Proof of Address?</p>
-                                            <select class="border p-2 w-[200px] appearance-auto" v-model="form.addressProofType" name="gov-id">
+                                            <select class="border p-2 w-[200px] " v-model="form.addressProofType" name="gov-id">
                                                 <option>Utility Bill</option>
                                                 <option>lease Agreement</option>
                                                 <option>Insurance Card</option>
@@ -489,6 +529,19 @@ const form = useForm({
     addressProofType: ref('Utility Bill'),
     time_zone: ref(null),
 });
+
+const states = ref([]);
+
+const fetchStates = async () => {
+  try {
+    const response = await axios.get(route('state-list',form.countries_id));
+    states.value = response.data;
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+  }
+};
+
+onMounted(fetchStates);
 
 
  const errors = ref({});

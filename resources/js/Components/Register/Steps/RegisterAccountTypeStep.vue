@@ -1,4 +1,3 @@
-
 <template>
   <form @submit.prevent="submit" class="flex flex-col space-y-7" v-if="step == 1" novalidate>
     <div class="flex items-center">
@@ -30,10 +29,9 @@
           <p class="text-sm text-center ">(I am looking for Work)</p>
         </div>
       </div>
-
     </div>
     <div class="text-center">
-       <p v-show="form.errors.roleType" class="px-10 text-red-500">{{ form.errors.roleType }}</p>
+       <p v-show="v$.roleType.$error" class="px-10 text-red-500">{{ v$?.roleType?.$error ? 'Please select above if you are a employer looking to hire or a freelancer looking for work.' : '' }}</p>
     </div>
     <div class="flex items-center">
       <hr class="flex-1" />
@@ -46,11 +44,11 @@
         id="password"
         type="password" 
         v-model="form.password" 
-        :class="{'border-red-500':  form.errors.password }" 
+        :class="{'border-red-500': v$.password.$error }" 
         class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" 
       />
     
-      <span class="text-red-500 text-sm">{{ form.errors.password}}</span>
+      <span class="text-red-500 text-sm">{{ v$.password.$error ? 'Your password must be between 8 and 16 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.' : '' }}</span>
     </div>
     <div>
       <label class="inline-flex items-center">
@@ -61,7 +59,7 @@
         />
         <span class="ml-2 text-gray-700">I agree to the Privacy Policy, Terms of Service and IP Policy.</span>
       </label>
-      <span class="text-red-500 text-sm">{{  form.errors.agreeToTerms }}</span>
+      <p class="text-red-500 text-sm">{{ form.agreeToTerms==false ? 'You must agree to the terms' : '' }}</p>
     </div>
     <div>
       <label class="inline-flex items-center">
@@ -100,13 +98,11 @@
 }
 </style>
 
-
 <script setup>
-
-import { Head, Link, useForm } from '@inertiajs/vue3';
-import useVuelidate from '@vuelidate/core'
-import { required, email } from '@vuelidate/validators'
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
+import useVuelidate from '@vuelidate/core';
+import { required, helpers } from '@vuelidate/validators';
+import { useForm } from '@inertiajs/vue3';
 
 const props = defineProps({
   step: Number,
@@ -114,31 +110,34 @@ const props = defineProps({
   nextStep: Function,
 });
 
-
-const { handleSubmit, isFieldValid, setErrors, setFieldValue } = useForm({
- 
-});
 const form = useForm({
-    password: '',
-    roleType: '',
-    agreeToTerms: false,
-    agreeToEmail: false,
+  password: '',
+  roleType: '',
+  agreeToTerms: false,
+  agreeToEmail: false,
 });
+
+const strongPassword = helpers.regex( /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/);
 
 const rules = {
-  password: { required },
+  password: { required, strongPassword },
   roleType: { required },
+  agreeToTerms: { required },
+  agreeToEmail: {},
 };
 
 const v$ = useVuelidate(rules, form);
 
 const isFormValid = computed(() => {
-  return v$.value.$invalid === false;
+  return !v$.$invalid;
 });
 
 const submit = () => {
+  v$.value.$touch();
+  if (!v$.value.$invalid) {
     form.post(route('step2'), {
-        onFinish: () => console.log(2)
-    })
+      onFinish: () => console.log('Form submitted successfully')
+    });
   }
+};
 </script>

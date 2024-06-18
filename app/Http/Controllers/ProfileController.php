@@ -18,6 +18,8 @@ use Hash;
 use App\Models\Profile;
 use App\Models\BillBoard;
 use Session;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 class ProfileController extends Controller
 {
     /**
@@ -68,12 +70,14 @@ class ProfileController extends Controller
         public function profileImages(Request $request){
         
         
- $base64_pattern = '/^data:image\/(png|jpeg|jpg|gif);base64,/i';
- if ($request->has('headerImage') &&  preg_match($base64_pattern, $request->input('headerImage')) === 1) {
+$base64_pattern = '/^data:image\/(\w+);base64,/';
+if ($request->has('headerImage')) {
     $imageData = $request->input('headerImage');
 
-    if (!empty($imageData)) {
-        list($type, $imageData) = explode(';', $imageData);
+    if (preg_match($base64_pattern, $imageData) === 1) {
+        // Handle base64 image
+        if (!empty($imageData)) {
+               list($type, $imageData) = explode(';', $imageData);
         list(, $imageData) = explode(',', $imageData);
 
   $decodedImage = base64_decode($imageData);
@@ -89,11 +93,40 @@ class ProfileController extends Controller
     if(empty($profile)){
     $profile= new Profile();
 }
+            $profile->header_image = $imagePath;
+            $profile->users_id=Auth::id();
+            $profile->save();
+            return redirect(route('profile.index', [], false));
+        }
+    } else {
+        // Handle image URL
+        $imageUrl = $imageData;
+
+        // Get the image content
+        $imageContent = Http::get($imageUrl)->body();
+        $extension = pathinfo($imageUrl, PATHINFO_EXTENSION);
+
+        if (!$extension) {
+            $extension = 'png'; // Default to png if extension is not found
+        }
+
+        $filename = 'image_' . time() . '.' . $extension;
+        $path = public_path('uploads/' . $filename);
+
+        // Save the image
+        file_put_contents($path, $imageContent);
+        $imagePath = 'uploads/' . $filename;
+
+        $profile = Profile::where('users_id', Auth::id())->first();
+        if (empty($profile)) {
+            $profile = new Profile();
+        }
         $profile->header_image = $imagePath;
+        $profile->users_id=Auth::id();
         $profile->save();
         return redirect(route('profile.index', [], false));
     }
-    }
+}
 
      if ($request->has('headerPhoto') &&  preg_match($base64_pattern, $request->input('headerPhoto')) === 1) {
     $imageData = $request->input('headerPhoto');
@@ -116,6 +149,7 @@ class ProfileController extends Controller
     $profile= new Profile();
 }
         $profile->header_photo = $imagePath;
+        $profile->users_id=Auth::id();
         $profile->save();
         return redirect(route('profile.index', [], false));
     }

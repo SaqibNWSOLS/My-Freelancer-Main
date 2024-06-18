@@ -7,7 +7,46 @@
         <h2 class="p-4 text-lg ">Profile Front Page</h2></div>
                 <div class="space-y-3 p-5">
                     <div class="grid grid-cols-3 gap-2">
-                        <span >Header Image</span>
+                        <div class="col-span-1">
+                            <span >Header Image</span>
+                        </div>
+                        <div class="col-span-2 text-right">
+                                                                <div class="text-sm gap-x-3 font-bold  "> Image size 300 x 1200 pixeles<label class="cursor-pointer inline-flex items-center mb-4">
+                            <i class="mdi mdi-cloud-upload ml-4"></i>
+                              <input type="file" @change="onHeaderChange" accept="image/*" class="hidden" />
+                            </label></div>
+                        </div>
+                        <div class="col-span-3">
+                             <div class="flex gap-x-2">
+      <div v-for="(image, index) in defaultImages" :key="index" @click="selectImage(image)">
+        <img :src="image" class="w-[110px] h-[96px]  object-fill cursor-pointer" :class="{'border-2 border-blue-500': croppedHeaderUrl === image}">
+      </div>
+    
+                            <div class="flex  gap-x-2">
+                            <div class="w-64 h-24 bg-gray-100" :class="{ 'hidden': croppedHeaderUrl !== null }"></div>
+                            <img class="w-[256px] h-[96px] object-fill" :src="croppedHeaderUrl"
+                                :class="{ 'hidden': croppedHeaderUrl === null }">
+                        </div>
+                        </div>
+                        </div>
+                        
+                        <div class="col-span-1 mt-3">
+                              <span class="mt-5">Header Photo</span>
+                        </div>
+                        <div class="col-span-1 mt-3">
+                               <div class="text-sm gap-x-3 font-bold flex ">Image size 250 x 250 pixeles   <label class="cursor-pointer inline-flex items-center mb-4">
+                             <i class="mdi mdi-cloud-upload"></i>
+                              <input type="file" @change="onPhotoChange" accept="image/*" class="hidden" />
+                            </label></div>
+                        </div>
+                        <div class="col-span-1 mt-3">
+                              
+                        <div class="flex  gap-x-2">
+                            <div class="w-20 h-20 bg-gray-100" :class="{ 'hidden': croppedPhotoUrl !== null }"></div>
+                            <img class="w-[80px] h-[80px] object-fill" :src="croppedPhotoUrl"
+                                :class="{ 'hidden': croppedPhotoUrl === null }">
+                        </div>
+                        </div>
 
                             <ImageEditorModal
                               :show="showModalHeader"
@@ -22,29 +61,17 @@
                               @image-cropped="handleCroppedPhoto"
                               ref="imageEditorPhoto"
                             />
-                                    <div class="text-sm gap-x-3 font-bold flex "> Image size 300 x 1200 pixeles<label class="cursor-pointer inline-flex items-center mb-4">
-                            <i class="mdi mdi-cloud-upload"></i>
-                              <input type="file" @change="onHeaderChange" accept="image/*" class="hidden" />
-                            </label></div>
+
+                        
+                            
 
 
-                        <div class="flex  gap-x-2">
-                            <div class="w-64 h-24 bg-gray-100" :class="{ 'hidden': croppedHeaderUrl !== null }"></div>
-                            <img class="w-[256px] h-[96px] object-fill" :src="croppedHeaderUrl"
-                                :class="{ 'hidden': croppedHeaderUrl === null }">
-                        </div>
 
 
-                        <span>Header Photo</span>
-                        <div class="text-sm gap-x-3 font-bold flex ">Image size 250 x 250 pixeles   <label class="cursor-pointer inline-flex items-center mb-4">
-                             <i class="mdi mdi-cloud-upload"></i>
-                              <input type="file" @change="onPhotoChange" accept="image/*" class="hidden" />
-                            </label></div>
-                        <div class="flex  gap-x-2">
-                            <div class="w-20 h-20 bg-gray-100" :class="{ 'hidden': croppedPhotoUrl !== null }"></div>
-                            <img class="w-[80px] h-[80px] object-fill" :src="croppedPhotoUrl"
-                                :class="{ 'hidden': croppedPhotoUrl === null }">
-                        </div>
+
+
+                      
+                   
 
                     </div>
 
@@ -59,7 +86,7 @@
 
     <span>Home Town, Country</span>
     <input class="py-1 px-4 border rounded-md" type="text" v-model="form.home_town" @change="submitForm" />
-     <select class="border p-2  appearance-auto" v-model="form.countries_id" name="COUNTRIES"
+     <select class="border p-2  " v-model="form.countries_id" name="COUNTRIES"
                                                     id="COUNTRIES">
                                                     <option v-for="(country, index) in countries" :value="country.id" :key="index">
                                                         {{ country.name }}
@@ -181,6 +208,15 @@ input:checked + span:before {
     transform: translateX(240%); /* Move the knob to the right when checked */
     background-color: white; /* White knob */
 }
+.cursor-pointer {
+  cursor: pointer;
+}
+.border-2 {
+  border-width: 2px;
+}
+.border-blue-500 {
+  border-color: #3b82f6;
+}
 
 
 /* Adjust the position of the knob */
@@ -204,6 +240,14 @@ import { Head, Link, useForm } from '@inertiajs/vue3';
 import { router } from '@inertiajs/vue3'
 const  baseUrl=window.Laravel.baseUrl
 
+const defaultImages = [
+  'https://static.vecteezy.com/system/resources/thumbnails/005/715/816/small/banner-abstract-background-board-for-text-and-message-design-modern-free-vector.jpg',
+  'https://i.pinimg.com/736x/48/bb/02/48bb02993d5753f90c64ee1822ac2aab.jpg',
+  'https://zeevector.com/wp-content/uploads/Blue-Banner-Background-HD.png',
+  'https://i3.wp.com/wallpapers.com/images/hd/aesthetic-youtube-banner-background-2560-x-1440-vy78ltvvnm467oic.jpg'
+];
+
+
 const props = defineProps({
     countries: {
         type: Array,
@@ -213,15 +257,24 @@ const props = defineProps({
     },
      profileFront: {
         type: Object,
+    },
+    userDetail:{
+        type:Object
     }
 });
 
 
 const showModalHeader = ref(false);
 const showModalPhoto = ref(false);
-const croppedHeaderUrl =props.profileFront?.header_image? baseUrl+props.profileFront?.header_image:ref(null);
+const croppedHeaderUrl =props.profileFront?.header_image? ref(baseUrl+props.profileFront?.header_image):ref(null);
 const croppedPhotoUrl = props.profileFront?.header_photo? baseUrl+props.profileFront?.header_photo:ref(null);
 
+const selectImage = (image) => {
+  croppedHeaderUrl.value = image;
+  router.post('profile-images', {
+        headerImage:  image,
+      },{ preserveState: true, preserveScroll: true })
+};
 const onHeaderChange = (event) => {
   const files = event.target.files[0];
   console.log(files);
@@ -270,8 +323,8 @@ const handleCroppedPhoto = (url) => {
 
 
 const form = useForm({
-    full_name: ref(props.profileFront?.full_name),
-    screen_name:ref(props.profileFront?.screen_name),
+    full_name: props.profileFront?.full_name?ref(props.profileFront?.full_name):ref(props.userDetail?.name),
+    screen_name: props.profileFront?.screen_name?ref(props.profileFront?.screen_name):ref(props.userDetail?.name),
     home_town:ref(props.profileFront?.home_town),
     countries_id:ref(props.profileFront?.countries_id),
     hourly_rate:ref(props.profileFront?.hourly_rate),
@@ -280,7 +333,7 @@ const form = useForm({
     whatsapp_status:ref(props.profileFront?.whatsapp_status),
     facebook_id:ref(props.profileFront?.facebook_id),
     facebook_status:ref(props.profileFront?.facebook_status),
-    skype_id:ref(props.profileFront?.skype_id),
+    skype_id: props.profileFront?.skype_id?ref(props.profileFront?.skype_id):ref(props.userDetail?.skype_id),
     skype_status:ref(props.profileFront?.skype_status),
     zoom_id:ref(props.profileFront?.zoom_id),
     zoom_status:ref(props.profileFront?.zoom_status),

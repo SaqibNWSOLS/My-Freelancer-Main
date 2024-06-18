@@ -8,7 +8,7 @@
         <div class=" pr-4">
           <div class="flex flex-col justify-center items-center my-6">
     <label for="profile-upload" class="cursor-pointer">
-      <img :src="image" class="rounded-full  w-24 h-24" alt="Profile Image">
+      <img :src="image" class="  w-24 h-24" alt="Profile Image">
      
     </label>
     <p class="font-medium mt-4">{{ userDetail.name }}</p>
@@ -112,7 +112,7 @@ const    tab="contact-information";
 
 import { ref, reactive } from "vue";
 
-const image =props.userDetail?.image ? `${baseUrl}${props.userDetail.image}` : ref('https://w7.pngwing.com/pngs/846/897/png-transparent-user-male-avatar-account-profile-web-ui-color-icon.png');
+const image =props.userDetail?.image ? `${baseUrl}${props.userDetail.image}` : ref('https://cdn-icons-png.freepik.com/512/6322/6322558.png');
 const name = ref("");
 const selectedTab = ref('contact-information'); // Make selectedTab reactive
 const selectTab = (index) => {
@@ -164,7 +164,7 @@ const tabs = reactive([
     icon: "mdi-billboard",
   },
   {
-    title: "My Freelancer store",
+    title: "My Freelancer Store",
     value: "myfreelancer-store",
     icon: "mdi-store",
   },
@@ -185,7 +185,7 @@ const employerTabs = reactive([
   {
     title: "Screen Identity",
     value: "screen-identity",
-    icon: "mdi-fit-to-screen",
+    icon: "mdi-camera-metering-center",
   },
   {
     title: "Email Preference",

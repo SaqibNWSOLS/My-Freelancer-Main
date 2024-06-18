@@ -20,6 +20,13 @@ class StateController extends Controller
         return Inertia::render('Setting/States/Index', ['states' => $states]);
     }
 
+    public function stateListByCountry($id){
+      
+       $states = State::with('country')->where('countries_id',$id)->get();
+
+       return json_encode($states);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

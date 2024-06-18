@@ -8,11 +8,14 @@
       </div>
       <div class="p-4">
         <div class="flex flex-col gap-4">
-          <ProfileCIPersonalInfo :userDetail="props.userDetail" :selectTab="selectTab" />
+         <div v-if="!changeEmailAddress">
+            <ProfileCIPersonalInfo :userDetail="props.userDetail" :changeEmailAddress="changeEmailAddress" :selectTab="selectTab" :ChangeEmail="ChangeEmail" :showEmailChange="showEmailChange" />
           <hr class="border-t" />
           <ProfileCIAddressInfo :userDetail="props.userDetail" :countries="countries"  />
           <hr class="border-t" />
           <ProfileCIInstantMessages  :userDetail="props.userDetail" />
+         </div>
+          <ChangeEmail  :userDetail="props.userDetail" :changeEmailAddress="changeEmailAddress" :showProfileChange="showProfileChange" />
         </div>
       </div>
     </div>
@@ -28,6 +31,7 @@ import { ref } from 'vue'
 import ProfileCIPersonalInfo from '@/Components/Profile/ContactInfo/ProfileCIPersonalInfo.vue'
 import ProfileCIAddressInfo from '@/Components/Profile/ContactInfo/ProfileCIAddressInfo.vue'
 import ProfileCIInstantMessages from '@/Components/Profile/ContactInfo/ProfileCIInstantMessages.vue'
+import ChangeEmail from '@/Components/Profile/ContactInfo/ChangeEmail.vue'
 
 
 const props = defineProps({
@@ -39,6 +43,15 @@ const props = defineProps({
     },
     selectTab:Function
 });
+
+const showEmailChange =()=>{
+  changeEmailAddress.value=(true)
+}
+
+const showProfileChange =()=>{
+  changeEmailAddress.value=(false)
+}
+const changeEmailAddress=ref(false)
 console.log(props.userDetail)
 
 </script>

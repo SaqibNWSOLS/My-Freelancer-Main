@@ -63,7 +63,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::get('/proxy', [ProxyController::class, 'proxy']);
 
-
+Route::get('state-list/{id}',[StateController::class,'stateListByCountry'])->name('state-list');
 Route::resource('countries', CountryController::class);
 Route::resource('states', StateController::class);
 Route::resource('cities', CitiesController::class);

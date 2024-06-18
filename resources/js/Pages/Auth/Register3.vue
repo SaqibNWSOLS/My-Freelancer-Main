@@ -12,9 +12,7 @@
         <RegisterBasicStep :step="step" :nextStep="nextStep" />
         <RegisterAccountTypeStep :step="step" :previousStep="previousStep" :nextStep="nextStep" />
         <RegisterVerifyEmailStep :step="step" :flash="flash" />
-        <p class="text-center mb-10">
-          Already have a account? <a href="/login" class="text-primary">Log In</a>
-        </p>
+        
       </div>
     </div>
   </div>

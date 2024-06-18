@@ -11,7 +11,6 @@
         <h4 class="text-2xl text-center text-primary">Sign Up</h4>
         <RegisterBasicStep :step="step" :nextStep="nextStep" />
         <RegisterAccountTypeStep :step="step" :previousStep="previousStep" :nextStep="nextStep" />
-        <RegisterVerifyEmailStep :step="step" />
         <p class="text-center mb-10">
           Already have a account? <a href="/login" class="text-primary">Log In</a>
         </p>

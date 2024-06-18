@@ -32,6 +32,14 @@
             margin-top: 20px;
             color: #888;
         }
+         .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-width: 200px;
+            height: auto;
+        }
     </style>
 </head>
 <body>
@@ -39,7 +47,11 @@
         <div class="header">
             <h1>Email Verification</h1>
         </div>
+
         <div class="content">
+             <div class="logo">
+                <img src="{{ asset('images/logo.png') }}" alt="Logo">
+            </div>
             <p>Hello,</p>
             <p>Thank you for registering. Your verification code is:</p>
             <p class="verification-code">{{ $verificationCode }}</p>

@@ -5,7 +5,7 @@
       <div v-if="imageUrl">
         <img ref="image" :src="imageUrl" alt="Image" class="cropper mt-4" />
         <div class="mt-4 flex justify-end space-x-2">
-          <button @click="cropImage" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Crop Image</button>
+          <button @click="cropImage" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Save Image</button>
           <button @click="resetImage" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Reset Image</button>
         </div>
       </div>

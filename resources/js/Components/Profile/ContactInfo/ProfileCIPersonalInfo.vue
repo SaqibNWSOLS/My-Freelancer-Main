@@ -9,7 +9,10 @@
       </div>
       <div class="col-span-8 ml-3">
         <div v-if="!showField" class="flex flex-content w-4/4">
-            <div class="bg-gray-100 w-80 p-3 min-widht-input">
+          <div class="w-1/10">
+            <i class="mdi mdi-account text-green-500 text-xl"></i>
+          </div>
+            <div class="bg-gray-100  w-80 p-3 w-9/10" style="margin-left:-7px">
               {{ fullName }}
             </div>
            <!--  <button
@@ -33,18 +36,23 @@
           </button>
         </div>
         <div class="flex  items-center mt-4 w-4/4">
-          <div class="bg-gray-100 w-80 p-3 min-widht-input">
+          <div class="w-1/10">
+          <i class="mdi mdi-email text-green-500 text-xl"></i>
+        </div>
+          <div class="bg-gray-100 ml-2 w-80 p-3  w-9/10">
             {{ email }}
           </div>
           <i class="mdi mdi-check-decagram text-blue-700 ml-2"></i>
-          <button @click="selectTab('email-preference')" class="text-gray-500 ml-2">
+          <button @click="props.showEmailChange" class="text-gray-500 ml-2">
             Verify Different Email
           </button>
         </div>
         <div class="flex flex-col w-4/4 mt-4">
           <div class="flex justify-start items-center">
+            <div class="w-1/10">
             <i class="mdi mdi-phone text-green-500 text-xl"></i>
-            <div class="bg-gray-100 ml-2 p-3 min-widht-input">
+          </div>
+            <div class="bg-gray-100 ml-2 w-80 p-3  w-9/10">
               {{ phone }}
             </div>
             <div class="ml-4">
@@ -154,8 +162,12 @@ const props = defineProps({
     }, countries: {
         type: Array,
     },
-    selectTab:Function
+    selectTab:Function,
+    showEmailChange:Function,
+    changeEmailAddress:Boolean
 });
+
+
 console.log(props.userDetail);
 const dialog = ref(false)
 const phonen = ref({value:''})

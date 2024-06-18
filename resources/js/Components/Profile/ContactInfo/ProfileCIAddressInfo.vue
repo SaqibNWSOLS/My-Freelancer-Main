@@ -4,7 +4,7 @@
     <div>
       <form novalidate @submit.prevent="handleAddressUpdate" class="flex-wrap">
         <div class="grid grid-cols-10 gap-1 justify-evenly">
-          <div class="col-span-5 mb-3">
+          <div class="col-span-5 mb-1">
             <div class="w-2/3">
               <p>Country</p>
               <select
@@ -13,14 +13,14 @@
                 @change="handleAddressUpdate"
                 class="w-full border-bottom   py-2 focus:outline-none focus:border-bottom"
               >
-                <option v-for="item in countries" :key="item" :value="item.name">{{ item.name }}</option>
+                <option v-for="item in countries" :key="item" :value="item.id">{{ item.name }}</option>
               </select>
               <p class="text-red-500 text-sm">{{ form.errors.country }}</p>
             </div>
           </div>
-          <div class="col-span-5 mb-3">
+          <div class="col-span-5 mb-1">
             <div class="w-2/3">
-                <p>Street</p>
+                <p v-if="form.country!='Canada'">Street</p>
               <input
                 type="text"
                 placeholder="Street"
@@ -32,21 +32,21 @@
               <p class="text-red-500 text-sm">{{ form.errors.street }}</p>
             </div>
           </div>
-          <div class="col-span-5 mb-3">
+          <div class="col-span-5 mb-1">
             <div class="w-2/3">
-               <p>State</p>
+               <p v-if="form.country!='6'">State</p> <p v-else>Province</p>
               <select
                 v-model="form.state"
                 :disabled="isSubmitting"
                 @change="handleAddressUpdate"
                 class="w-full  border-bottom   py-2 focus:outline-none focus:border-blue-500"
               >
-                <option v-for="item in ['Punjab', 'Sindh', 'Balochistan', 'KPK']" :key="item" :value="item">{{ item }}</option>
+                <option v-for="item in states" :key="item" :value="item.id">{{ item.name }}</option>
               </select>
               <p class="text-red-500 text-sm">{{ form.errors.state }}</p>
             </div>
           </div>
-          <div class="col-span-5 mb-3">
+          <div class="col-span-5 mb-1">
             <div class="w-2/3">
                <p>City</p>
               <input
@@ -60,9 +60,9 @@
               <p class="text-red-500 text-sm">{{ form.errors.city}}</p>
             </div>
           </div>
-          <div class="col-span-5 mb-3">
+          <div class="col-span-5 mb-1">
             <div class="w-2/3">
-              <p>Zip Code</p>
+                             <p v-if="form.country!='6'">Zip Code</p> <p v-else>Postal Code</p>
               <input
                 type="text"
                 :placeholder="selectedCountry.postal_code_label ? selectedCountry.postal_code_label : 'Zip'"
@@ -74,7 +74,7 @@
               <p class="text-red-500 text-sm">{{  form.errors.zip }}</p>
             </div>
           </div>
-          <div class="col-span-5 mb-3">
+          <div class="col-span-5 mb-1">
             <div class="w-2/3">
               <p>Time Zone</p>
               <select
@@ -136,9 +136,22 @@ const selectedCountry = ref(COUNTRIESWITHSTATE[0])
 
 const handleAddressUpdate = () => {
     form.post(route('update-address'), {
-        onFinish: () => nextStep(),
+        onFinish: () => fetchStates(),
     });
 };
+
+const states = ref([]);
+
+const fetchStates = async () => {
+  try {
+    const response = await axios.get(route('state-list',form.country));
+    states.value = response.data;
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+  }
+};
+
+onMounted(fetchStates);
 const checkCountry = () => {
   if (country?.value?.value) {
     selectedCountry.value = COUNTRIESWITHSTATE.find((count) => count.country == country);

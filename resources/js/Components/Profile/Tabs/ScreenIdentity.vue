@@ -43,7 +43,7 @@ export default {
 
    return {
       showModal: false,
-      croppedUrl: this.userDetail?.image ? baseUrl+this.userDetail?.image : 'https://w7.pngwing.com/pngs/846/897/png-transparent-user-male-avatar-account-profile-web-ui-color-icon.png',
+      croppedUrl: this.userDetail?.image ? baseUrl+this.userDetail?.image : 'https://cdn-icons-png.freepik.com/512/6322/6322558.png',
       screenName: this.userDetail?.name, // Add a data property for screen name
     };
   },

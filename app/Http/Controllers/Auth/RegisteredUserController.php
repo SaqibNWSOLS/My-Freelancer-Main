@@ -84,6 +84,34 @@ public function VerfiyEmailCode(Request $request)
     
 }
 
+public function changeEmail(Request $request){
+     $request->validate([
+            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+        ]);
+
+     $verificationCode = random_int(100000, 999999);
+
+        $user = User::where('id',Auth::id())->update([
+            'email' => $request->email,
+            'verification_code' => $verificationCode,
+        ]);
+
+
+ Mail::to(Auth::user()->email)->send(new VerificationCodeMail($verificationCode));
+
+}
+
+public function resendEmailOtp(Request $request){
+
+    $verificationCode = random_int(100000, 999999);
+       $user = User::where('id',Auth::id())->update([
+            'verification_code' => $verificationCode,
+        ]);
+
+
+ Mail::to(Auth::user()->email)->send(new VerificationCodeMail($verificationCode));
+
+}
 
     /**
      * Handle an incoming registration request.
