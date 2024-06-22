@@ -35,12 +35,17 @@ class ProfileController extends Controller
          $billBoardDraft=BillBoard::where('id',session('billBoardId'))->first();
         return Inertia::render('Profile/Index', ['userDetail'=>Auth::user(),'countries' => $countries,'verfication'=>$verfication,'profileFront'=> $profileFront,'billBoards'=>$billBoards,'billBoardDraft'=>$billBoardDraft,
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
-            'status' => session('status'),
+            'status' => session('status'),'flash' => session('flash'),
         ]);
     }
 
     public function updatePassword(Request $request)
     {
+        if (empty($request->codeInputs)) {
+             return back()->with('flash',['otp_sent'=>true]);
+        }
+
+   
       $request->validate([
             'password' => 'required|string',
             'password_confirmation'=>'required|string|same:password|min:6'
@@ -51,7 +56,7 @@ class ProfileController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
-        return back()->with('success', 'Password has been updated!');
+        return back()->with('flash',['success'=>true,'title'=>'Password Changed','message'=> 'Password has been updated!']);
     }
 
     public function update(Request $request){
@@ -211,14 +216,14 @@ if ($request->has('headerImage')) {
         $user->save();
 
         // Redirect to profile index
-        return redirect(route('profile.index', [], false));
+        return back()->with('flash',['success'=>true,'title'=>'Profile Changed','message'=> 'Profile details has been updated!']);
     }
     
 }else {
          $user = Auth::user();
         $user->name=$request->screenName;
         $user->save();
-          return redirect(route('profile.index', [], false));
+        return back()->with('flash',['success'=>true,'title'=>'Profile Changed','message'=> 'Profile details has been updated!']);
     }
 
     }

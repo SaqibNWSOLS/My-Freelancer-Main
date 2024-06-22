@@ -55,6 +55,9 @@ export default {
     components: {
         AdminLayout,
     },
+      mounted() {
+    $(this.$refs.dataTable).DataTable();
+  },
     methods: {
         editCountry(id) {
             Inertia.get(route('countries.edit', id));

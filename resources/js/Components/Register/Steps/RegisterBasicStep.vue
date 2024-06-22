@@ -47,6 +47,7 @@
           @input="checkEmail"
           v-model="form.email"
         />
+        <p v-show="v$.email.$error" class=" text-red-500">{{ v$?.email?.$error ? 'We don’t recognize this email address.' : '' }}</p>
         <p class=" text-danger"> {{ form.errors.email }}</p>
       </div>
     </div>
@@ -102,9 +103,16 @@ const isFormValid = computed(() => {
   return v$.value.$invalid === false;
 });
 
+const checkEmail=()=>{
+   v$.value.$touch();
+}
+
 const submit = () => {
+    v$.value.$touch();
+  if (!v$.value.$invalid) {
     form.post(route('register'), {
         onFinish: () => console.log(3),
     });
+  }
 };
 </script>

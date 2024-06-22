@@ -17,9 +17,7 @@
             --tw-bg-opacity: 1;
             background-color: #1e355e !important;
             }
-            .text-primary {
-    color: rgb(var(--v-theme-primary)) !important;
-}
+            
 
 .form-input, .form-textarea, .form-select, .form-multiselect {
     -webkit-appearance: none;
@@ -169,3 +167,7 @@ button:disabled {
         padding-top: 0.4rem !important;
         padding-bottom: 0.4rem !important;
     }
+
+.multiselect__tags input:focus{
+    border:none !important;
+}

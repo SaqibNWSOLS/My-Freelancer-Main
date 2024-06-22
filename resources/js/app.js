@@ -6,6 +6,12 @@ import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 import 'material-icons/iconfont/material-icons.css';
+import 'datatables.net';
+import 'datatables.net-dt/css/dataTables.dataTables.css';
+
+import $ from 'jquery';
+window.jQuery = $;
+window.$ = $;
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 

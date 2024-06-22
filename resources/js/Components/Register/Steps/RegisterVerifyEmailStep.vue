@@ -31,9 +31,12 @@
       </div>
     </form>
      <div class="flex justify-end mt-5">
-      <div class="md:w-2/3 text-right">
-        <p><a href="#" @click="resendEmailOtp">Having an issue? Click to resend OTP</a></p>
-        <p><a href="#" @click="emailScreen">Click to verify a different email?</a></p>
+      <div class="md:w-3/3 text-right">
+        <p>Having an issue? Click to <a href="#" class="text-primary" @click="resendEmailOtp">resend OTP</a></p>
+        <p>Click to verify a different email?<a href="#"  class="text-primary" @click="emailScreen"> Change email</a></p>
+        <p class="text-center mb-10">
+         Click here if you want to cancel the registration process? <a :href="route('logout')" class="text-primary">Abort</a>
+        </p>
       </div>
     </div>
   </div>
@@ -66,8 +69,11 @@
     </div>
   </form>
     <div class="flex justify-end mt-5">
-      <div class="md:w-2/3 text-right">
-        <p><a href="#" @click="otpScreenShow">Continue using the previous email?</a></p>
+      <div class="md:w-3/3 text-right">
+        <p>Continue using the? <a href="#"  class="text-primary" @click="otpScreenShow">previous email</a></p>
+        <p class="text-center mb-10">
+         Click here if you want to cancel the registration process? <a :href="route('logout')" class="text-primary">Abort</a>
+        </p>
       </div>
     </div>
    </div>

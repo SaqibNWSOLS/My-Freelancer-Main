@@ -52,7 +52,7 @@
           <BillboardView :billBoards="billBoards" :billBoardDraft="billBoardDraft" />
            </div>
            <div key="screen-identity" v-show="selectedTab === 'screen-identity'">
-          <ScreenIdentity :userDetail="userDetail"  />
+          <ScreenIdentity :userDetail="userDetail" :flash="flash"  />
         </div>
            <div key="email-preference" v-show="selectedTab === 'email-preference'">
           <EmailPreference />
@@ -64,7 +64,7 @@
           <IdVerification  :verfication="verfication" :userDetail="userDetail" :countries="countries" />
            </div>
            <div key="password" v-show="selectedTab === 'password'">
-          <Password />
+          <Password :flash="flash" />
           </div>
           </div>
         </div>
@@ -102,6 +102,9 @@ const props = defineProps({
       type:Array,
     },
     billBoardDraft:{
+      type:Object,
+    },
+     flash:{
       type:Object,
     }
 });

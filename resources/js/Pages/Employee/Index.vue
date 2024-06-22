@@ -10,7 +10,7 @@
                  
                 <div class="card-body">
                     <div class="overflow-auto custom-scroll">
-                        <table class="table equal-space head-table">
+                        <table  ref="dataTable"  class="table equal-space head-table">
                             <thead>
                                 <tr class="dark:bg-sidebar-dark2">
                                     <th>No</th>
@@ -55,5 +55,8 @@ export default {
   components: {
         AdminLayout,
     },
+     mounted() {
+    $(this.$refs.dataTable).DataTable();
+  },
 };
 </script>

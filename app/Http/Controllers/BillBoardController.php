@@ -29,6 +29,10 @@ class BillBoardController extends Controller
 
         $input = $request->all();
 $input['users_id']=Auth::id();
+if($request->has('tags')){
+    $input['tags']=json_encode($request->tags);
+
+}
     // Update the user's address
     $billBoard->fill($input)->save();
    

@@ -63,13 +63,18 @@
                 Enter search terms you feel your buyers will use when looking for your service.
               </p>
               <div>
-                <input
-                  type="text"
-                  class="w-full border p-2 rounded-sm"
-                  placeholder="Add tags"
-                  v-model="form.tags"
-                  @keyup.enter="addTag"
-                />
+                 <multiselect 
+      v-model="form.tags"
+      :options="options"
+      :multiple="true"
+      :max="5"
+      :taggable="true"
+      @tag="addTag"
+      @input="onInput"
+      label="name"
+      track-by="name"
+      ref="multiselect"></multiselect>
+
                 <div class="flex flex-wrap mt-2">
                   <!-- <span
                     v-for="(tag, index) in form.tags"
@@ -107,7 +112,33 @@ import { ref, onMounted } from 'vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import axios from 'axios';
 import { router } from '@inertiajs/vue3';
+import Multiselect from 'vue-multiselect'
+import 'vue-multiselect/dist/vue-multiselect.css'
 
+
+const options = ref([
+        {name: 'Vue.js', code: 'vu'},
+        {name: 'Javascript', code: 'js'},
+        {name: 'Open Source', code: 'os'}
+      ]) // Initial options can be empty or predefined
+const selectedOptions = ref([])
+
+const addTag = (newTag) => {
+  options.value.push({ name: newTag })
+}
+
+const onInput = (newValue, id) => {
+  // Check if the last character is a comma
+  if (newValue && newValue.slice(-1) === ',') {
+    const tag = newValue.slice(0, -1).trim()
+    if (tag) {
+      addTag(tag)
+      selectedOptions.value.push({ name: tag })
+    }
+    // Clear the input
+    multiselect.value.clearSearch()
+  }
+}
 const props = defineProps({
   step: Number,
   setBasicInfo: Function,
@@ -121,7 +152,7 @@ const form = useForm({
     title: props.billBoardDraft?.title?props.billBoardDraft?.title:ref(null),
     sub_job_categories_id: props.billBoardDraft?.sub_job_categories_id?props.billBoardDraft?.sub_job_categories_id:ref(null),
     job_categories_id: props.billBoardDraft?.job_categories_id?props.billBoardDraft?.job_categories_id:ref(null),
-    tags: props.billBoardDraft?.tags?props.billBoardDraft?.tags:ref(null),
+    tags: props.billBoardDraft?.tags?ref(JSON.parse(props.billBoardDraft?.tags)):ref([]),
 });
 
 const categories = ref([]);
@@ -162,6 +193,7 @@ onMounted(fetchCategories);
     };
 
 const submitForm = () => {
+  console.log(form.tags)
     if (validateForm()) {
     form.post(route('bill-board.store'), {
         onSuccess: () => props.nextStep(),

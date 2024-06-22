@@ -32,6 +32,20 @@
               <p class="text-red-500 text-sm">{{ form.errors.street }}</p>
             </div>
           </div>
+                    <div class="col-span-5 mb-1">
+            <div class="w-2/3">
+               <p>City</p>
+              <input
+                type="text"
+                placeholder="City"
+                v-model="form.city"
+                :disabled="isSubmitting"
+                @change="handleAddressUpdate"
+                class="w-full  border-bottom   py-2 focus:outline-none focus:border-blue-500"
+              />
+              <p class="text-red-500 text-sm">{{ form.errors.city}}</p>
+            </div>
+          </div>
           <div class="col-span-5 mb-1">
             <div class="w-2/3">
                <p v-if="form.country!='6'">State</p> <p v-else>Province</p>
@@ -46,20 +60,7 @@
               <p class="text-red-500 text-sm">{{ form.errors.state }}</p>
             </div>
           </div>
-          <div class="col-span-5 mb-1">
-            <div class="w-2/3">
-               <p>City</p>
-              <input
-                type="text"
-                placeholder="City"
-                v-model="form.city"
-                :disabled="isSubmitting"
-                @change="handleAddressUpdate"
-                class="w-full  border-bottom   py-2 focus:outline-none focus:border-blue-500"
-              />
-              <p class="text-red-500 text-sm">{{ form.errors.city}}</p>
-            </div>
-          </div>
+
           <div class="col-span-5 mb-1">
             <div class="w-2/3">
                              <p v-if="form.country!='6'">Zip Code</p> <p v-else>Postal Code</p>

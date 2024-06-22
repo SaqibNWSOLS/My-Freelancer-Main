@@ -1,4 +1,10 @@
 <template>
+   <SweetAlert v-if="flash?.success"
+                type="success"
+                :title="flash?.title"
+                :text="flash?.message"
+                confirmButtonText="OK"
+                @closed="closeAlert" />
   <div class="w-full">
     <div class="border flex flex-col gap-5 shadow-sm">
       <div class="border-b bg-card-header">
@@ -38,6 +44,7 @@ export default {
   },
    props: {
         userDetail: Object, 
+        flash: Object, 
     },
   data() {
 
