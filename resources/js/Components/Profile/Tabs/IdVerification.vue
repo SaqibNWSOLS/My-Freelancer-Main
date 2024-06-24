@@ -70,12 +70,12 @@
             <div class="border border-blue-600 grid pt-4 w-56 text-center space-y-2"
                 :class="VerificationStatus.govId === 0 ? 'border-gray-600' : ''">
                 <div class="text-center justify-center flex" style="margin-top:-38px">
-                     <svg v-if="props.verfication?.govIdType" width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <svg v-if="props.verfication?.gov_id_type" width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="10" cy="14" r="7" fill="green" fill-opacity="0.24"/>
                     <path d="M6 13L10 16L17 7" stroke="#222222" stroke-width="1.2"/>
                 </svg>
 
-                <h2  v-if="!props.verfication?.govIdType"><b style="color:red; border:2px solid red; padding:0px 2px">Pending</b></h2>
+                <h2  v-if="!props.verfication?.gov_id_type"><b style="color:red; border:2px solid red; padding:0px 2px">Pending</b></h2>
                 </div>
                 <h3 class="font-bold space-x-2 text-sm  mt-6">
                 <img class="inline" width="24" src="@/assets/new/address-card.svg" />
@@ -86,12 +86,12 @@
                     <li>Show all four edges</li>
                     <li>Front & Back</li>
                 </ul>
-                               <button  v-if="!props.verfication?.govIdType" @click="showVerificationSection = 'contact-information';tab= 'id-government-id'; selectedTab='id-government-id'"
+                               <button  v-if="!props.verfication?.gov_id_type" @click="showVerificationSection = 'contact-information';tab= 'id-government-id'; selectedTab='id-government-id'"
                 :class="VerificationStatus.currentPhoto === 0 ? 'border-gray-400 text-gray-400 pointer-events-none' : ''"
                 class="self-end border-t border-solid border-blue-600 w-full py-2 font-semibold text-blue-600 hover:bg-blue-50">
                 Start
                 </button>
-                <button  v-if="props.verfication?.govIdType" @click="showVerificationSection = 'contact-information';tab= 'id-government-id';selectedTab='id-government-id'"
+                <button  v-if="props.verfication?.gov_id_type" @click="showVerificationSection = 'contact-information';tab= 'id-government-id';selectedTab='id-government-id'"
                 :class="VerificationStatus.currentPhoto === 0 ? 'border-gray-400 text-gray-400 pointer-events-none' : ''"
                 class="self-end border-t border-solid border-blue-600 w-full py-2 font-semibold text-blue-600 hover:bg-blue-50">
                 Edit
@@ -100,12 +100,12 @@
             <div class="border border-blue-600 pt-4  w-56 text-center grid space-y-2"
                 :class="VerificationStatus.proofOfAddress === 0 ? 'border-gray-600' : ''">
                 <div class="text-center justify-center flex" style="margin-top:-38px">
-                     <svg v-if="props.verfication?.addressProofType" width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <svg v-if="props.verfication?.adreess_proof_type" width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="10" cy="14" r="7" fill="green" fill-opacity="0.24"/>
                     <path d="M6 13L10 16L17 7" stroke="#222222" stroke-width="1.2"/>
                 </svg>
 
-                <h2  v-if="!props.verfication?.addressProofType"><b style="color:red; border:2px solid red; padding:0px 2px">Pending</b></h2>
+                <h2  v-if="!props.verfication?.adreess_proof_type"><b style="color:red; border:2px solid red; padding:0px 2px">Pending</b></h2>
                 </div>
                 <h3 class="font-bold space-x-2 text-sm  mt-6">
                 <img class="inline" width="24" src="@/assets/new/address-card.svg" />
@@ -115,12 +115,12 @@
                     <li>Dated within 60 days</li>
                     <li>Confirm your name & address on account</li>
                 </ul>
-<button  v-if="!props.verfication?.addressProofType" @click="showVerificationSection = 'contact-information';tab= 'id-address-proof'; selectedTab='id-address-proof'"
+<button  v-if="!props.verfication?.adreess_proof_type" @click="showVerificationSection = 'contact-information';tab= 'id-address-proof'; selectedTab='id-address-proof'"
                 :class="VerificationStatus.currentPhoto === 0 ? 'border-gray-400 text-gray-400 pointer-events-none' : ''"
                 class="self-end border-t border-solid border-blue-600 w-full py-2 font-semibold text-blue-600 hover:bg-blue-50">
                 Start
                 </button>
-                <button  v-if="props.verfication?.addressProofType" @click="showVerificationSection = 'contact-information';tab= 'id-address-proof';selectedTab='id-address-proof'"
+                <button  v-if="props.verfication?.adreess_proof_type" @click="showVerificationSection = 'contact-information';tab= 'id-address-proof';selectedTab='id-address-proof'"
                 :class="VerificationStatus.currentPhoto === 0 ? 'border-gray-400 text-gray-400 pointer-events-none' : ''"
                 class="self-end border-t border-solid border-blue-600 w-full py-2 font-semibold text-blue-600 hover:bg-blue-50">
                 Edit

@@ -11,9 +11,7 @@
         <h4 class="text-2xl text-center text-primary">Sign Up</h4>
         <RegisterBasicStep :step="step" :nextStep="nextStep" />
         <RegisterAccountTypeStep :step="step" :previousStep="previousStep" :nextStep="nextStep" />
-        <p class="text-center mt-5">
-          Already have a account? <a href="/login" class="text-primary">Log In</a>
-        </p>
+     
          <p class="text-center mb-10">
          Click here if you want to cancel the registration process? <a :href="route('logout')" class="text-primary">Abort</a>
         </p>

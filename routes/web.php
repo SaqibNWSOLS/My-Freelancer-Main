@@ -9,13 +9,13 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\CitiesController;
-use App\Http\Controllers\VerficationController;
+use App\Http\Controllers\UserVerficationController;
 use App\Http\Controllers\BillBoardController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\JobCategoryController;
 use App\Http\Controllers\FreelancerController;
 use App\Http\Controllers\EmployeeController;
-
+use App\Http\Controllers\Admin\VerificationController;
 
 use App\Http\Controllers\ProxyController;
 
@@ -33,7 +33,6 @@ Route::get('/front-view', [FreelancerController::class, 'FrontView'])->name('fro
 Route::get('/freelancers', [FreelancerController::class, 'index'])->name('freelancers.index');
 Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index');
 
-Route::get('/verifications', [VerficationController::class, 'index'])->name('verifications.index');
 
 Route::get('admin-login',[AuthenticatedSessionController::class,'adminLogin'])->name('admin-dashboard');
 
@@ -52,9 +51,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/category-list', [BillBoardController::class, 'categoryList'])->name('category-list');
     Route::post('/update-profile-pic', [ProfileController::class, 'profilePicUpload'])->name('update-profile-pic');
     Route::post('/update-address', [ProfileController::class, 'updateAddress'])->name('update-address');
-     Route::post('/verfication', [VerficationController::class, 'store'])->name('verfication');
-      Route::post('/current-photo', [VerficationController::class, 'currentPhoto'])->name('current-photo');
-  Route::post('/govt-id', [VerficationController::class, 'govId'])->name('govt-id');
+     Route::post('/verfication', [UserVerficationController::class, 'store'])->name('verfication');
+      Route::post('/current-photo', [UserVerficationController::class, 'currentPhoto'])->name('current-photo');
+  Route::post('/govt-id', [UserVerficationController::class, 'govId'])->name('govt-id');
    Route::resource('/bill-board', BillBoardController::class);
 
    Route::post('billboard-attach',[BillBoardController::class,'billBoardAttchs'])->name('billboard-attach');
@@ -63,13 +62,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::get('/proxy', [ProxyController::class, 'proxy']);
 
-Route::get('state-list/{id}',[StateController::class,'stateListByCountry'])->name('state-list');
-Route::resource('countries', CountryController::class);
-Route::resource('states', StateController::class);
-Route::resource('cities', CitiesController::class);
 
-Route::resource('jobCategory', JobCategoryController::class);
 
 
 
 require __DIR__.'/auth.php';
+require __DIR__.'/admin.php';

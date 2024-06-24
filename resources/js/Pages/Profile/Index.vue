@@ -127,6 +127,11 @@ const selectTab = (index) => {
 
 const tabs = reactive([
   {
+    title: "Contact Information",
+    value: "contact-information",
+    icon: "mdi-account-box",
+  },
+  {
     title: "Dashboard",
     value: "#d",
     icon: "mdi-home",
@@ -136,11 +141,7 @@ const tabs = reactive([
     value: "#g",
     icon: "mdi-laptop",
   },
-  {
-    title: "Contact Information",
-    value: "contact-information",
-    icon: "mdi-account-box",
-  },
+  
   {
     title: "Screen Identity",
     value: "screen-identity",

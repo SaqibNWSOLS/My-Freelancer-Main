@@ -71,15 +71,8 @@
         <span class="ml-2 text-gray-700">Send me useful emails to help me get the most out of myfreelancer.com</span>
       </label>
     </div>
-    <div class="flex flex-col md:flex-row space-y-5 md:space-y-0 md:space-x-5 justify-between">
-      <button 
-        type="button" 
-        @click="previousStep" 
-        :disabled="isSubmitting"
-        class="bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400 transition-colors duration-200"
-      >
-        <i class="mdi mdi-step-backward mr-2"></i>Back
-      </button>
+    <div class=" flex-col md:flex-row space-y-5 md:space-y-0 md:space-x-5 justify-right text-right">
+
       <button 
        :disabled="!isFormValid"
         type="submit" 

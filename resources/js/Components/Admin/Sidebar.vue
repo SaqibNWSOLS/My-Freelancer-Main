@@ -14,65 +14,26 @@
         
             <nav class="sidebar-main">
               <ul class="sidebar-links custom-scroll">
-                <li class="title">Dashboard</li>
                 <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title" :href="route('admin-dashboard')">
                     <span>
-                      <svg>
-                         <use href="@/admin_assets/svg/sprite.svg#Home"></use>
-                      </svg>
-                      <span class="sidebar-name">Dashboards</span>
+                     <i class="mdi mdi-view-dashboard"></i>
+                      <span class="sidebar-name">Dashboards </span>
                     </span>
                    
                   </a>
                 
                 </li>
-                
-                
-             <!--    <li class="title">Jobs</li>
-                <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title" href="javascript:void(0)">
-                    <span>
-                      <svg>
-                        <use href="@/admin_assets/svg/sprite.svg#Folder"></use>
-                      </svg>
-                      <span class="sidebar-name">Jobs</span>
-                    </span>
-                    <svg>
-                      <use href="@/admin_assets/svg/sprite.svg#Arrow-Right-2"></use>
-                    </svg>
-                  </a>
-                 
-                </li>
                
-                <li class="title">Bill Boards</li>
-                <li class="sidebar-list">
+                <li class="sidebar-list"  :class="{ active:  route().current('countries.*') }">
                   <a class="sidebar-link sidebar-title" href="javascript:void(0)">
                     <span>
-                      <svg>
-                        <use href="@/admin_assets/svg/sprite.svg#Chat"></use>
-                      </svg>
-                      <span class="sidebar-name">Bill Board</span>
-                    </span>
-                    <svg>
-                      <use href="@/admin_assets/svg/sprite.svg#Arrow-Right-2"></use>
-                    </svg>
-                  </a>
+                    <span class="mdi mdi-map-marker-path"></span>
 
-                </li> -->
-               
-                <li class="title">Settings</li>
-                <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title" href="javascript:void(0)">
-                    <span>
-                      <svg>
-                        <use href="@/admin_assets/svg/sprite.svg#Paper"></use>
-                      </svg>
                       <span class="sidebar-name">Country</span>
                     </span>
-                    <svg>
-                      <use href="@/admin_assets/svg/sprite.svg#Arrow-Right-2"></use>
-                    </svg>
+                    <span class="mdi mdi-arrow-down-right"></span>
+
                   </a>
                   <ul class="sidebar-submenu">
                     <li>
@@ -85,17 +46,14 @@
                   </ul>
                 </li>
 
-                   <li class="sidebar-list">
+                   <li class="sidebar-list"  :class="{ active:  route().current('states.*') }">
                   <a class="sidebar-link sidebar-title" href="javascript:void(1)">
                     <span>
-                      <svg>
-                        <use href="@/admin_assets/svg/sprite.svg#Paper"></use>
-                      </svg>
+                    <span class="mdi mdi-selection-marker"></span>
+
                       <span class="sidebar-name">State</span>
                     </span>
-                    <svg>
-                      <use href="@/admin_assets/svg/sprite.svg#Arrow-Right-2"></use>
-                    </svg>
+                    <span class="mdi mdi-arrow-down-right"></span>
                   </a>
                   <ul class="sidebar-submenu">
                     <li>
@@ -108,17 +66,14 @@
                   </ul>
                 </li>
 
-                 <li class="sidebar-list">
+                 <li class="sidebar-list"  :class="{ active:  route().current('cities.*') }">
                   <a class="sidebar-link sidebar-title" href="javascript:void(2)">
                     <span>
-                      <svg>
-                        <use href="@/admin_assets/svg/sprite.svg#Paper"></use>
-                      </svg>
+                    <span class="mdi mdi-select-multiple-marker"></span>
+
                       <span class="sidebar-name">City</span>
                     </span>
-                    <svg>
-                      <use href="@/admin_assets/svg/sprite.svg#Arrow-Right-2"></use>
-                    </svg>
+                  <span class="mdi mdi-arrow-down-right"></span>
                   </a>
                   <ul class="sidebar-submenu">
                     <li>
@@ -130,17 +85,14 @@
                     </li>
                   </ul>
                 </li>
-                <li class="sidebar-list">
+                <li class="sidebar-list"  :class="{ active:  route().current('jobCategory.*') }">
                   <a class="sidebar-link sidebar-title" href="javascript:void(3)">
                     <span>
-                      <svg>
-                        <use href="@/admin_assets/svg/sprite.svg#Paper"></use>
-                      </svg>
+                     <span class="mdi mdi-shape-plus"></span>
+
                       <span class="sidebar-name">Job Category</span>
                     </span>
-                    <svg>
-                      <use href="@/admin_assets/svg/sprite.svg#Arrow-Right-2"></use>
-                    </svg>
+                    <span class="mdi mdi-arrow-down-right"></span>
                   </a>
                   <ul class="sidebar-submenu">
                     <li>
@@ -153,13 +105,11 @@
                   </ul>
                 </li>
 
-                   <li class="title">Users</li>
                 <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title" :href="route('employees.index')">
                     <span>
-                      <svg>
-                        <use href="@/admin_assets/svg/sprite.svg#Paper"></use>
-                      </svg>
+                    <span class="mdi mdi-account-group-outline"></span>
+
                       <span class="sidebar-name">Employer</span>
                     </span>
                   
@@ -170,57 +120,57 @@
                 <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title" :href="route('freelancers.index')">
                     <span>
-                      <svg>
-                        <use href="@/admin_assets/svg/sprite.svg#Paper"></use>
-                      </svg>
+                   <span class="mdi mdi-account-multiple-outline"></span>
+
                       <span class="sidebar-name">Freelancer</span>
                     </span>
                    
                   </a>
                   
                 </li>
-                <li class="title">Verifications</li>
-                <li class="sidebar-list">
+                <li class="sidebar-list" :class="{ active:  route().current('verifications.*') }">
                   <a class="sidebar-link sidebar-title" :href="route('verifications.index')">
                     <span>
-                      <svg>
-                        <use href="@/admin_assets/svg/sprite.svg#Paper"></use>
-                      </svg>
+                     <span class="mdi mdi-check-decagram-outline"></span>
+
                       <span class="sidebar-name">Verification</span>
                     </span>
                    
                   </a>
                   
                 </li>
+
+                <li class="sidebar-list"  :class="{ active:  route().current('general-setting.*') }">
+                  <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                    <span>
+                   <span class="mdi mdi-cog-transfer"></span>
+
+
+                      <span class="sidebar-name">Settings</span>
+                    </span>
+                    <span class="mdi mdi-arrow-down-right"></span>
+
+                  </a>
+                  <ul class="sidebar-submenu">
+                    <li>
+                      <a :href="route('general-setting.index')">Gerneral Setting</a>
+                    
+                    </li>
+                   
+                  </ul>
+                </li>
                 <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title" :href="route('logout')">
                     <span>
-                      <svg>
-                        <use href="@/admin_assets/svg/sprite.svg#Paper"></use>
-                      </svg>
+                     <span class="mdi mdi-logout"></span>
+
                       <span class="sidebar-name">Logout</span>
                     </span>
                    
                   </a>
                   
                 </li>
-<!-- 
-                  <li class="title">Job Category</li>
-                <li class="sidebar-list">
-                  <a class="sidebar-link sidebar-title" :href="route('jobCategory.index')">
-                    <span>
-                      <svg>
-                        <use href="@/admin_assets/svg/sprite.svg#Paper"></use>
-                      </svg>
-                      <span class="sidebar-name">Job Category</span>
-                    </span>
-                    <svg>
-                      <use href="@/admin_assets/svg/sprite.svg#Arrow-Right-2"></use>
-                    </svg>
-                  </a>
-                  
-                </li>
- -->
+
                
 
 

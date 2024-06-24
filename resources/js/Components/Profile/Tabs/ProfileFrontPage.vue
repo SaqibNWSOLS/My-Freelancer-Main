@@ -3,8 +3,14 @@
 
     <div class="w-full">
     <div class="border flex flex-col gap-5 shadow-sm">
-      <div class="border-b bg-card-header">
-        <h2 class="p-4 text-lg ">Profile Front Page</h2></div>
+      <div class="border-b grid grid-cols-2 bg-card-header">
+        <div class="col-span-1">
+            <h2 class="p-4 text-lg ">Profile Front Page</h2>
+        </div>
+        <div class="col-span-1 flex justify-right pr-5" style="justify-content:right; align-items:center">
+            <a href="#" class="bg-[green] text-white p-2 rounded" @click="openModal">Front View</a>
+        </div>
+    </div>
                 <div class="space-y-3 p-5">
                     <div class="grid grid-cols-3 gap-2">
                         <div class="col-span-1">
@@ -190,8 +196,9 @@
 
                </div>
                 </div>
-
-           
+                  <ScrollModal title="Profile Page View" :show="showModal"  @close="showModal = false">
+<FrontPopup />
+            </ScrollModal>
 </template>
 
 <style scoped>
@@ -235,9 +242,12 @@ input + span:before {
 
 <script setup>
 import { ref, nextTick } from 'vue'
+import FrontPopup from '@/Components/Profile/Tabs/FrontPopup.vue';
 import ImageEditorModal from '@/Components/Profile/ContactInfo/ImageEditorModal.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import { router } from '@inertiajs/vue3'
+import ScrollModal from '@/Components/ScrollModal.vue';
+
 const  baseUrl=window.Laravel.baseUrl
 
 const defaultImages = [
@@ -268,6 +278,13 @@ const showModalHeader = ref(false);
 const showModalPhoto = ref(false);
 const croppedHeaderUrl =props.profileFront?.header_image? ref(baseUrl+props.profileFront?.header_image):ref(null);
 const croppedPhotoUrl = props.profileFront?.header_photo? baseUrl+props.profileFront?.header_photo:ref(null);
+let showModal = ref(false);
+
+const openModal=()=>{
+    showModal.value=ref(true)
+}
+
+
 
 const selectImage = (image) => {
   croppedHeaderUrl.value = image;

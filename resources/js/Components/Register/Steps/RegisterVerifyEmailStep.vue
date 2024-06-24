@@ -13,7 +13,7 @@
         <div class="flex justify-center space-x-2 mt-4">
           <v-otp-input v-model:value="cform.codeInputs" :num-inputs="6" class="otp-input"></v-otp-input>
         </div>
-        <div v-if="otpResend" class="w-full text-center mt-4" style="color:green">A new OTP has been sent kindly verify.</div>
+        <div v-if="otpResend" class="w-full text-center mt-4" style="color:green">A new OTP has been sent, kindly verify</div>
         <div class="w-full text-center mt-4">
           <div v-if="flash" class="text-danger">{{ flash }}</div>
         </div>

@@ -164,8 +164,8 @@ button:disabled {
 }
 
     .table tbody tr td, .table thead tr th {
-        padding-top: 0.4rem !important;
-        padding-bottom: 0.4rem !important;
+        padding-top: 0.6rem !important;
+        padding-bottom: 0.6rem !important;
     }
 
 .multiselect__tags input:focus{

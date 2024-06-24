@@ -1,0 +1,77 @@
+.page-sidebar.sidebar-dark.unique-sidebar {
+    --tw-bg-opacity: 1;
+    background-color: rgb(16 62 105)  !important;
+}
+
+@media (max-width: 1599px) {
+    .page-sidebar.unique-sidebar {
+        width: 15.375rem  !important;
+    }
+}
+
+.page-sidebar.unique-sidebar .sidebar .sidebar-main .sidebar-links {
+    height: calc(100vh - 9.625rem);
+    overflow: auto;
+    padding-left: 0rem !important;
+        font-weight: 500 !important;
+    padding-right: 0rem !important;
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+}
+.page-sidebar.unique-sidebar .sidebar .sidebar-main .sidebar-links .sidebar-list .sidebar-submenu {
+    margin-left: 1.4rem !important;
+}
+.page-body-wrapper .page-body{
+    padding-left: calc(1.9375rem +(1.875 - 0.9375)*((100vw - 20rem) /(120 - 20))) !important;
+}
+.page-sidebar.unique-sidebar .sidebar .sidebar-main .sidebar-links .sidebar-list span{
+    font-size: 16px !important;
+}
+.page-sidebar.unique-sidebar .sidebar .sidebar-main .sidebar-links .sidebar-list {
+     padding: 0px !important;
+   
+}
+.page-sidebar.unique-sidebar .sidebar .sidebar-main .sidebar-links .sidebar-list .sidebar-title{
+ padding-top: .8rem !important;
+    padding-bottom: .8rem !important;
+    padding-left: 20px;
+    font-weight: 500 !important;
+    padding-right: 20px;
+}
+.page-sidebar.sidebar-dark.unique-sidebar .sidebar-main .sidebar-links .sidebar-list span {
+    color: white !important;
+}
+.page-sidebar.unique-sidebar .sidebar .sidebar-main {
+     padding: 0rem !important; 
+}
+
+.sidebar-list.active .sidebar-title{
+    background-color: red;
+}
+@media (max-width: 1599px) {
+    .page-sidebar.unique-sidebar .sidebar .logo-wrapper img {
+        width: 100% !important;
+    }
+}
+div.dt-container select.dt-input {
+    padding: 6px;
+    width: 60px;
+}
+
+
+.table tbody tr td{
+    font-weight: 400 !important;
+}
+.dataTable thead tr{
+    background-color: #f1f1f1 !important;
+}
+.card {
+    border-radius: 0px !important;
+}
+
+.table.equal-space.head-table thead tr th{
+    color: #1f2f3e !important;
+}
+.font-medium {
+    font-weight: 400 !important;
+}

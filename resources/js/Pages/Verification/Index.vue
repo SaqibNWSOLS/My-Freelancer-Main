@@ -1,6 +1,18 @@
 <template>
     <AdminLayout>
-        <div class="col-span-6 lg:col-span-12">
+         <template v-slot:header-content>
+            <ul class="flex items-center lg:hidden 2md:shadow-lg 2md:border 2md:border-border-light 2md:z-[5] 2md:p-4 2md:absolute 2md:top-[38px] 2md:rounded-5 2md:left-0 2md:items-start 2md:bg-white 2md:flex-col gap-[calc(8px_+_(31_-_8)_*_((30vw_-_320px)_/_(1920_-_320)))]">
+                 <li class="dropdown on-hover-show cursor-pointer pb-[6px] transition-all relative group before:bg-primary before:absolute before:-translate-x-1/2 before:bottom-0 before:left-1/2 before:w-full before:h-[2px]">
+                    <span class="text-xs  transition-all"><a :href="route('admin-dashboard')">Dashboard</a></span>
+                </li>
+                <li>/</li>
+                <li class="dropdown on-hover-show cursor-pointer pb-[6px] transition-all relative group before:bg-primary before:absolute before:-translate-x-1/2 before:bottom-0 before:left-1/2 before:w-full before:h-[2px]">
+                    <span class="text-xs transition-all text-primary"><a :href="route('verifications.index')">Verfication</a></span>
+                </li>
+            </ul>
+           
+        </template>
+        <div class="col-span-12 lg:col-span-12">
             <div class="card">
                 <div class="card-header border-b-0">
                     <div class="flex flex-col">
@@ -12,7 +24,7 @@
                     <div class="overflow-auto custom-scroll">
                         <table ref="dataTable" class="table equal-space head-table">
                             <thead>
-                                <tr class="dark:bg-sidebar-dark2">
+                                <tr class="">
                                     <th>No</th>
                                     <th> User Id</th>
                                     <th>Account Type</th>
@@ -20,60 +32,22 @@
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th> Address</th>
-                                    <th>Countries</th>
-                                    <th>Street</th>
-                                    <th> City/State Zip</th>
-                                    <th>Current photo</th>
-                                    <th>Govt Id Front</th>
-                                    <th>Govt Id Back</th>
-                                    <th>Govt Id Type</th>
-                                    <th> Address Proof</th>
-                                    <th> Address Proof Type</th>
+                                   <th> Status</th>
+                                    <th>Action</th>
                                     
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="(verification, index) in verifications" :key="verification.id">
                                     <td >{{ index + 1 }}</td>
-                                      <td > {{ verification.users_id }}</td>
+                                      <td > {{ verification?.user?.name }}</td>
                                      <td> {{ verification.accountType }}</td>
                                      <td> {{ verification.accountInfo }}</td>
                                    <td> {{ verification.first_name }}</td>
                                     <td>{{ verification.last_name }}</td>
                                     <td> {{ verification.address }}</td>
-                                    <td>{{ verification.countries_id }}</td>
-                                     <td> {{ verification.street }}</td>
-                                    <td>{{ verification.city_state_zip }}</td>
-
-                                    <td>
-                                        <span v-if="verification.current_photo">
-                                            {{ getImagePath(verification.current_photo) }}
-                                        </span>
-                                        <span v-else>
-                                            No Photo
-                                        </span>
-                                    </td>
-                                    <td >  
-                                        <span v-if="verification.gov_id_front">{{ getImagePath(verification.gov_id_front ) }}  </span>
-                                        <span v-else>
-                                            No Photo
-                                        </span>
-                                    </td >
-                                    <td > 
-                                        <span v-if="verification.gov_id_back">{{ getImagePath(verification.gov_id_back) }}  
-                                        </span>
-                                        <span v-else>
-                                            No Photo
-                                        </span>
-                                    </td >
-                                    <td > {{ verification.gov_id_type }}</td >
-                                    <td >  <span v-if="verification.address_proof">{{ getImagePath(verification.address_proof ) }}  
-                                        </span>
-                                        <span v-else>
-                                            No Photo
-                                        </span>
-                                    </td >
-                                    <td > {{ verification.adreess_proof_type }}</td >
+                                    <td> {{ verification.status }}</td>
+                                    <td ><a :href="route('verifications.show',verification.id)"><span class="mdi mdi-view-agenda-outline text-lg text-[green]"></span></a></td >
                                    
                                 </tr>
                             </tbody>
