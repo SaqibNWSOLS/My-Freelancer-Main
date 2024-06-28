@@ -1,0 +1,1 @@
+import{o as r,f as o,h as e,m as s,F as t}from"./app-D_66GPw0.js";import{_}from"./Header.vue_vue_type_script_setup_true_lang-CEOirU8l.js";import{_ as m}from"./Footer-B4U2hr9k.js";const i={__name:"App",setup(n){return(a,c)=>(r(),o(t,null,[e(_),s(a.$slots,"default"),e(m)],64))}};export{i as _};

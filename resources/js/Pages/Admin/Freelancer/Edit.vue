@@ -80,7 +80,7 @@ const props=defineProps({
 const form = useForm(props.user);
 
 const submit = () => {
-    form.put(route('freelancers.update', { employee: props.user }),{
+    form.put(route('freelancers.update', { freelancer: props.user }),{
         onSuccess: () => {
             console.log(1);
         }
