@@ -28,8 +28,12 @@ class RegisteredUserController extends Controller
         return Inertia::render('Auth/Register');
     }
 
-      public function step2(): Response
+      public function step2()
     {
+        $user=Auth::user();
+          if (!$user->roles->isEmpty()) {
+            return redirect('profile');
+          }
         return Inertia::render('Auth/Register2');
     }
 
@@ -153,7 +157,7 @@ $verificationCode = random_int(100000, 999999);
         $user= Auth::user()->assignRole($request->roleType);
  
   Mail::to(Auth::user()->email)->send(new VerificationCodeMail($verificationCode));
-        return redirect(route('verification.notice', absolute: false));
+        return redirect(route('profile.index', absolute: false));
     }
 
 public function storeStep3(Request $request): RedirectResponse

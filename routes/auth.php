@@ -35,18 +35,25 @@ Route::middleware('guest')->group(function () {
     Route::post('reset-password', [NewPasswordController::class, 'store'])
                 ->name('password.store');
 });
-
-Route::middleware('auth')->group(function () {
-
-
-      Route::get('step2', [RegisteredUserController::class, 'step2'])
+Route::middleware(['auth'])->group(function () {
+  Route::get('step2', [RegisteredUserController::class, 'step2'])
                 ->name('step2');
 
-  Route::get('verify-mobile', [VerifyMobileController::class, 'create'])
+                  Route::post('step2', [RegisteredUserController::class, 'storeStep2']);
+
+    });
+
+
+Route::middleware(['auth','RoleVerify'])->group(function () {
+
+
+                      Route::get('verify-mobile', [VerifyMobileController::class, 'create'])
                 ->name('verify-mobile');
 
    Route::post('verify-mobile', [VerifyMobileController::class, 'verifyMobile'])
                 ->name('verify-mobile');
+
+
 
 
     Route::post('change-email',[RegisteredUserController::class,'changeEmail'])->name('change-email');
@@ -61,7 +68,6 @@ Route::middleware('auth')->group(function () {
                 ->name('email-code');
 Route::get('verify-email', [RegisteredUserController::class, 'step3'])
                 ->name('verification.notice');
-  Route::post('step2', [RegisteredUserController::class, 'storeStep2']);
 
     Route::post('step3', [RegisteredUserController::class, 'storeStep3'])->name('step3');
 

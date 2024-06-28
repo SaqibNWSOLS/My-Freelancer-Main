@@ -24,86 +24,7 @@
                   </a>
                 
                 </li>
-               
-                <li class="sidebar-list"  :class="{ active:  route().current('countries.*') }">
-                  <a class="sidebar-link sidebar-title" href="javascript:void(0)">
-                    <span>
-                    <span class="mdi mdi-map-marker-path"></span>
-
-                      <span class="sidebar-name">Country</span>
-                    </span>
-                    <span class="mdi mdi-arrow-down-right"></span>
-
-                  </a>
-                  <ul class="sidebar-submenu">
-                    <li>
-                      <a :href="route('countries.index')">List</a>
-                    
-                    </li>
-                    <li>
-                      <a :href="route('countries.create')">Create</a>
-                    </li>
-                  </ul>
-                </li>
-
-                   <li class="sidebar-list"  :class="{ active:  route().current('states.*') }">
-                  <a class="sidebar-link sidebar-title" href="javascript:void(1)">
-                    <span>
-                    <span class="mdi mdi-selection-marker"></span>
-
-                      <span class="sidebar-name">State</span>
-                    </span>
-                    <span class="mdi mdi-arrow-down-right"></span>
-                  </a>
-                  <ul class="sidebar-submenu">
-                    <li>
-                      <a :href="route('states.index')">List</a>
-                    
-                    </li>
-                    <li>
-                      <a :href="route('states.create')">Create</a>
-                    </li>
-                  </ul>
-                </li>
-
-                 <li class="sidebar-list"  :class="{ active:  route().current('cities.*') }">
-                  <a class="sidebar-link sidebar-title" href="javascript:void(2)">
-                    <span>
-                    <span class="mdi mdi-select-multiple-marker"></span>
-
-                      <span class="sidebar-name">City</span>
-                    </span>
-                  <span class="mdi mdi-arrow-down-right"></span>
-                  </a>
-                  <ul class="sidebar-submenu">
-                    <li>
-                      <a :href="route('cities.index')">List</a>
-                    
-                    </li>
-                    <li>
-                      <a :href="route('cities.create')">Create</a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="sidebar-list"  :class="{ active:  route().current('jobCategory.*') }">
-                  <a class="sidebar-link sidebar-title" href="javascript:void(3)">
-                    <span>
-                     <span class="mdi mdi-shape-plus"></span>
-
-                      <span class="sidebar-name">Job Category</span>
-                    </span>
-                    <span class="mdi mdi-arrow-down-right"></span>
-                  </a>
-                  <ul class="sidebar-submenu">
-                    <li>
-                      <a :href="route('jobCategory.index')">List</a>
-                    
-                    </li>
-                    <li>
-                      <a :href="route('jobCategory.create')">Create</a>
-                    </li>
-                  </ul>
-                </li>
+           
 
                 <li class="sidebar-list">
                   <a class="sidebar-link sidebar-title" :href="route('employees.index')">
@@ -140,7 +61,7 @@
                   
                 </li>
 
-                <li class="sidebar-list"  :class="{ active:  route().current('general-setting.*') }">
+                <li class="sidebar-list"  :class="{ active:  route().current('general-setting.*') ||  route().current('countries.*') || route().current('states.*') ||  route().current('cities.*') ||  route().current('jobCategory.*') }">
                   <a class="sidebar-link sidebar-title" href="javascript:void(0)">
                     <span>
                    <span class="mdi mdi-cog-transfer"></span>
@@ -154,6 +75,22 @@
                   <ul class="sidebar-submenu">
                     <li>
                       <a :href="route('general-setting.index')">Gerneral Setting</a>
+                    
+                    </li>
+                     <li>
+                      <a :href="route('countries.index')">Countries</a>
+                    
+                    </li>
+                      <li>
+                      <a :href="route('states.index')">States</a>
+                    
+                    </li>
+                      <li>
+                      <a :href="route('cities.index')">Cities</a>
+                    
+                    </li>
+                      <li>
+                      <a :href="route('jobCategory.index')">Job Category</a>
                     
                     </li>
                    

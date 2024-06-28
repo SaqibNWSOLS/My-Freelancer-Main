@@ -12,13 +12,75 @@
             </ul>
         </template>
 
-       <div class="col-span-12">
-            <h1>In Porgress</h1>
-       </div>
+      <div class="col-span-12 lg:col-span-6 lg:col-start-4 flex justify-center ">
+            <div class="card lg:w-[100%]">
+                <div class="card-header border-b-0">
+                    <div class="flex flex-col">
+                        <h3 class="text-lg font-medium">General Setting</h3>
+                    </div>
+                </div>         
+    <div class="checkout-detail">
+       <form  @submit.prevent="submit" novalidate> 
+  <div class="grid grid-cols-4 gap-3 form-group">
+      <div class="col-span-1 gap-1"> 
+          <label for="name" class="text-xs font-medium text-primary">Email Verification</label>
+    
+            <select v-model="form[0].value" id="status" class="dark:bg-sidebar-dark2 dark:border-border-dark  p-[11px] bg-white text-title border border-border-light rounded-5 w-full text-xs"> 
+           <option value="Active">Active</option> 
+          <option value="In-Active">Inactive</option>
+      </select> 
+      </div> 
+      <div class="col-span-1 gap-1"> 
+          <label for="name" class="text-xs font-medium text-primary">Phone Verification</label>
+    
+            <select v-model="form[1].value" id="status" class="dark:bg-sidebar-dark2 dark:border-border-dark  p-[11px] bg-white text-title border border-border-light rounded-5 w-full text-xs"> 
+           <option value="Active">Active</option> 
+          <option value="In-Active">Inactive</option>
+      </select> 
+      </div> 
+        <div class="col-span-1 gap-1"> 
+          <label for="name" class="text-xs font-medium text-primary">Screen Verfication</label>
+    
+            <select  v-model="form[2].value" id="status" class="dark:bg-sidebar-dark2 dark:border-border-dark  p-[11px] bg-white text-title border border-border-light rounded-5 w-full text-xs"> 
+           <option value="Active">Active</option> 
+          <option value="In-Active">Inactive</option>
+      </select> 
+      </div> 
+
+      <div class="col-span-4 text-right gap-1"> 
+          <button type="submit" class="text-white btn btn-primary" style="text-align:right">Submit</button>
+      </div> 
+  </div> 
+
+ 
+</form> 
+
+        </div>
+     </div> 
+ </div>
       </AdminLayout>
       </template>
 
       <script setup>
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 import { Head } from '@inertiajs/vue3';
+import { useForm } from '@inertiajs/vue3';
+
+
+const props=defineProps({
+    settings: {
+        type: Object,
+    }
+});
+
+const form = useForm(props.settings);
+
+const submit=()=>{
+    form.post(route('general-setting.store'),{
+          onSuccess: () => {
+            console.log(1);
+        }
+    });
+}
+
 </script>

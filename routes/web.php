@@ -13,7 +13,7 @@ use App\Http\Controllers\UserVerficationController;
 use App\Http\Controllers\BillBoardController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\JobCategoryController;
-use App\Http\Controllers\FreelancerController;
+use App\Http\Controllers\WebFreelancerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\Admin\VerificationController;
 
@@ -27,18 +27,16 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 })->name('/');
-Route::get('/categories', [FreelancerController::class, 'Categories'])->name('categories');
+Route::get('/categories', [WebFreelancerController::class, 'Categories'])->name('categories');
 
-Route::get('/front-view', [FreelancerController::class, 'FrontView'])->name('front-view');
-Route::get('/freelancers', [FreelancerController::class, 'index'])->name('freelancers.index');
-Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index');
+Route::get('/front-view', [WebFreelancerController::class, 'FrontView'])->name('front-view');
 
 
 Route::get('admin-login',[AuthenticatedSessionController::class,'adminLogin'])->name('admin-dashboard');
 
 Route::get('admin-dashboard',[DashboardController::class,'index'])->name('admin-dashboard');
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verifiedUser'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

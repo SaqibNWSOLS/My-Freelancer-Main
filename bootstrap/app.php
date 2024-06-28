@@ -5,6 +5,7 @@ use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use App\Http\Middleware\HandleInertiaRequests;
 use App\Http\Middleware\MobileVerify;
+use App\Http\Middleware\RoleVerify;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -13,8 +14,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->appendToGroup('verified', [
+        $middleware->appendToGroup('verifiedUser', [
         MobileVerify::class,
+    ]);
+           $middleware->appendToGroup('RoleVerify', [
+        RoleVerify::class,
     ]);
         $middleware->web(append: [
             \App\Http\Middleware\HandleInertiaRequests::class,
