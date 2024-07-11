@@ -87,7 +87,7 @@
                     <img width="39" src="@/assets/new/video-img.png" alt="Video Image"/>
                 </div>
             </div> -->
-            <div class="">
+            <div class="" style="min-width:700px">
                 <div class="border flex gap-x-5">
                     <button @click="selectedTab = 'one'" :class="{ 'text-blue-600 font-bold': selectedTab === 'one', 'text-gray-600': selectedTab !== 'one' }">Overview</button>
                    <!--  <button @click="selectedTab = 'two'" :class="{ 'text-blue-600 font-bold': selectedTab === 'two', 'text-gray-600': selectedTab !== 'two' }">Portfolio</button>
