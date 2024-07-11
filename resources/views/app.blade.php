@@ -43,10 +43,16 @@
             @inertiaHead
           </head>
           <body class="font-sans antialiased">
+              <gmpx-api-loader
+      key="AIzaSyDXGsx1M8NgD6v08sSROn2Wud8j-XKjK0U"
+      solution-channel="GMP_QB_addressselection_v3_cABCX"
+    ></gmpx-api-loader>
             @inertia
           </body>
           
         </html>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXGsx1M8NgD6v08sSROn2Wud8j-XKjK0U&libraries=places"></script>
+
 <script>
     window.Laravel = <?php echo json_encode([
          'csrf_token' => csrf_token(),

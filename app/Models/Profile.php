@@ -27,6 +27,8 @@ class Profile extends Model
         'zoom_status',
         'website',
         'header_image',
-        'header_photo'
+        'headline',
+        'language',
+        'overview'
     ];
 }

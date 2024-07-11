@@ -35,6 +35,7 @@
         "sweetalert2": "^11.12.0",
         "vee-validate": "^4.12.8",
         "vue-cropperjs": "^5.0.0",
+        "vue-google-autocomplete": "^1.1.4",
         "vue-multiselect": "^3.0.0",
         "vue-otp-input": "^1.0.0",
         "vue-router": "^4.4.0",

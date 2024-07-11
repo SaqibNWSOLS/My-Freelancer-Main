@@ -32,7 +32,7 @@ import ProfileCIPersonalInfo from '@/Components/Profile/ContactInfo/ProfileCIPer
 import ProfileCIAddressInfo from '@/Components/Profile/ContactInfo/ProfileCIAddressInfo.vue'
 import ProfileCIInstantMessages from '@/Components/Profile/ContactInfo/ProfileCIInstantMessages.vue'
 import ChangeEmail from '@/Components/Profile/ContactInfo/ChangeEmail.vue'
-
+import Address from '@/Components/Address.vue'
 
 const props = defineProps({
     userDetail: {

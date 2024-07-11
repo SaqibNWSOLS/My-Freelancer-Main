@@ -20,25 +20,26 @@
             </div>
             <div class="mt-6 space-y-1 text-blue-950">
                 <div class="flex"><span>Hourly Rate</span> <span class="ml-auto font-extrabold">${{ props.profileFront?.hourly_rate }}</span></div>
-                <div class="flex"><span>All-Time Earnings</span> <span class="ml-auto font-extrabold">$25.500</span></div>
+                <!-- <div class="flex"><span>All-Time Earnings</span> <span class="ml-auto font-extrabold">$25.500</span></div> -->
                 <div class="flex"><span>Member since</span> <span class="ml-auto font-extrabold">Jun 2024</span></div>
                 <div class="flex"><span>Completed Transactions</span> <span class="ml-auto font-extrabold">{{ props.profileFront?.completed_tran }}</span></div>
-                <div class="flex"><span>Job Success Rates</span> <span class="ml-auto font-extrabold">100%</span></div>
+                <!-- <div class="flex"><span>Job Success Rates</span> <span class="ml-auto font-extrabold">100%</span></div> -->
             </div>
             <p class="text-center mt-6 font-bold">Verifications</p>
             <div class="mt-6">
-                <div class="flex items-center"><span class="flex gap-x-2"><img width="16" src="@/assets/new/user-check-solid.svg" alt="User Check Icon"/>Preferred Freelancer</span> <img width="12" src="@/assets/new/check-solid.svg" class="ml-auto" alt="Check Icon"/></div>
-                <div class="flex items-center"><span class="flex gap-x-2"><img width="16" src="@/assets/new/user-solid.svg" alt="User Icon"/>Identity Verified</span> <img width="12" src="@/assets/new/minus-solid.svg" class="ml-auto" alt="Minus Icon"/></div>
-                <div class="flex items-center"><span class="flex gap-x-2"><img width="16" src="@/assets/new/money-check-dollar-solid.svg" alt="Money Check Icon"/>Payment Verified</span> <img width="12" src="@/assets/new/check-solid.svg" class="ml-auto" alt="Check Icon"/></div>
-                <div class="flex items-center"><span class="flex gap-x-2"><img width="16" src="@/assets/new/phone-solid.svg" alt="Phone Icon"/>Phone Verified</span> <img width="12" src="@/assets/new/check-solid.svg" class="ml-auto" alt="Check Icon"/></div>
-                <div class="flex items-center"><span class="flex gap-x-2"><img width="16" src="@/assets/new/envelope-solid.svg" alt="Envelope Icon"/>Email Verified</span> <img width="12" src="@/assets/new/minus-solid.svg" class="ml-auto" alt="Minus Icon"/></div>
-                <div class="flex items-center"><span class="flex gap-x-2"><img width="16" src="@/assets/new/square-facebook.svg" alt="Facebook Icon"/>Facebook connected</span> <img width="12" src="@/assets/new/check-solid.svg" class="ml-auto" alt="Check Icon"/></div>
+             <!--    <div class="flex items-center"><span class="flex gap-x-2"><img width="16" src="@/assets/new/user-check-solid.svg" alt="User Check Icon"/>Preferred Freelancer</span> <img width="12" src="@/assets/new/check-solid.svg" class="ml-auto" alt="Check Icon"/></div> -->
+               
+                
+                <div class="flex items-center" v-if="props.profileFront?.facebook_status"><span class="flex gap-x-2"><img width="16" src="@/assets/new/square-facebook.svg" alt="Facebook Icon"/>Facebook connected</span> <img width="12" src="@/assets/new/check-solid.svg" class="ml-auto" alt="Check Icon"/></div>
+                 <div class="flex items-center" v-if="props.profileFront?.whatsapp_status"><span class="flex gap-x-2"><span class="mdi mdi-skype  text-2xl text-[green]"></span> Skype connected</span> <img width="12" src="@/assets/new/check-solid.svg" class="ml-auto" alt="Check Icon"/></div>
+                <div class="flex items-center" v-if="props.profileFront?.whatsapp_status"><span class="flex gap-x-2"><span class="mdi mdi-whatsapp  text-lg text-[green]"></span>Whatsapp connected</span> <img width="12" src="@/assets/new/check-solid.svg" class="ml-auto" alt="Check Icon"/></div>
+                 <div class="flex items-center" v-if="props.profileFront?.whatsapp_status"><span class="flex gap-x-2"><span class="mdi mdi-laptop-account text-lg text-[green]"></span> Zoom connected</span> <img width="12" src="@/assets/new/check-solid.svg" class="ml-auto" alt="Check Icon"/></div>
             </div>
             <div class="text-center space-y-3 mt-6">
                 <p><strong>Website:</strong><br/>{{ props.profileFront?.website }}</p>
-                <p><strong>Languages:</strong><br/>English, Spanish, Chinese, Italian</p>
-                <p><strong>Education:</strong><br/>university of</p>
-            </div>
+                <p><strong>Languages:</strong><br/> {{ props.profileFront?.language }}</p>
+<!--                 <p><strong>Education:</strong><br/>university of</p>
+ -->            </div>
             <div class="flex justify-between pt-24 mt-6">
                 <button class="flex gap-x-2 items-center"><img width="14" src="@/assets/new/share-nodes-solid.svg" alt="Share Icon"/>Share</button>
                 <div class="w-[2px] h-6 bg-zinc-400"></div>
@@ -47,10 +48,10 @@
         </div>
         <div class="w-9/12 bg-white px-10 py-8 space-y-6">
             <div class="flex justify-between">
-                <span class="text-2xl font-bold">Laravel Project Manager</span>
+                <span class="text-2xl font-bold">{{ props.profileFront?.headline }}</span>
                 <!-- InputSwitch component -->
             </div>
-            <div class="flex items-center space-x-6">
+          <!--   <div class="flex items-center space-x-6">
                 <div class="flex gap-x-2">
                     <img width="24" src="@/assets/new/star-solid.svg" alt="Star Icon"/>
                     <img width="24" src="@/assets/new/star-solid.svg" alt="Star Icon"/>
@@ -61,7 +62,6 @@
                 </div>
                 <div class="flex items-center space-x-2">
                     <img width="26" src="@/assets/new/dollar-solid.svg" alt="Dollar Icon"/>
-                    <!-- Insert rating stars here -->
                     <span class="text-gray-800 font-semibold">7.7</span>
                 </div>
                 <div class="flex items-center space-x-2">
@@ -75,8 +75,8 @@
                 Invite to bid
                 </button>
                 <img width="26" src="@/assets/new/share-nodes-solid.svg" alt="Share Icon"/>
-            </div>
-            <div class="flex gap-x-5">
+            </div> -->
+           <!--  <div class="flex gap-x-5">
                 <div>
                     <input placeholder="Hi, I would like to talk to you about a project" class="w-96 py-[10px] px-2 border-2 border-black border-solid rounded-sm" type="text"/>
                     <button class="px-2 py-3 bg-[#2E75B6] hover:bg-blue-500 font-bold text-white rounded-md -ml-1">Send</button>
@@ -86,15 +86,15 @@
                     <img width="39" src="@/assets/new/skype-img.png" alt="Skype Image"/>
                     <img width="39" src="@/assets/new/video-img.png" alt="Video Image"/>
                 </div>
-            </div>
-            <div class="border">
-                <div class="flex gap-x-5">
+            </div> -->
+            <div class="">
+                <div class="border flex gap-x-5">
                     <button @click="selectedTab = 'one'" :class="{ 'text-blue-600 font-bold': selectedTab === 'one', 'text-gray-600': selectedTab !== 'one' }">Overview</button>
-                    <button @click="selectedTab = 'two'" :class="{ 'text-blue-600 font-bold': selectedTab === 'two', 'text-gray-600': selectedTab !== 'two' }">Portfolio</button>
-                    <button @click="selectedTab = 'three'" :class="{ 'text-blue-600 font-bold': selectedTab === 'three', 'text-gray-600': selectedTab !== 'three' }">Feedback</button>
+                   <!--  <button @click="selectedTab = 'two'" :class="{ 'text-blue-600 font-bold': selectedTab === 'two', 'text-gray-600': selectedTab !== 'two' }">Portfolio</button>
+                    <button @click="selectedTab = 'three'" :class="{ 'text-blue-600 font-bold': selectedTab === 'three', 'text-gray-600': selectedTab !== 'three' }">Feedback</button> -->
                 </div>
                 <div v-show="selectedTab === 'one'">
-                    <!-- Content for Overview tab -->
+                    {{ props.profileFront?.overview }}
                 </div>
                 <div v-show="selectedTab === 'two'">
                     <!-- Content for Portfolio tab -->
