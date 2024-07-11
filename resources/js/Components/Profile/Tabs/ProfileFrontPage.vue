@@ -80,7 +80,32 @@
                    
 
                     </div>
-
+                    <div class="grid grid-cols-4 gap-2">
+   <div class="col-span-1">
+        <span>Profile Headline</span>
+   </div>
+   <div class="col-span-2">
+        <input class="py-1 px-4 w-full border rounded-md" v-model="form.headline" @change="submitForm" type="text"  />
+   </div>
+    </div>
+    <div class="grid grid-cols-4 gap-2">
+   <div class="col-span-1">
+        <span>Languages</span>
+   </div>
+   <div class="col-span-2">
+          <input class="py-1 px-4 border rounded-md w-full" v-model="form.language" @change="submitForm" type="text"  />
+   </div>
+    </div>
+     <div class="grid grid-cols-4 gap-2">
+   <div class="col-span-1">
+        <span>Overview</span>
+   </div>
+   <div class="col-span-2">
+           <textarea v-model="form.overview" class="w-full" @change="submitForm" ></textarea>
+   </div>
+    </div>
+       
+     
                    <div class="grid grid-cols-4 gap-2">
     <span>Full Name</span>
     <input class="py-1 px-4 border rounded-md" v-model="form.full_name" @change="submitForm" type="text"  />
@@ -100,7 +125,7 @@
                                                 </select>
     <div></div>
 
-    <span>Available Badges</span>
+    <!-- <span>Available Badges</span>
     <input class="py-1 px-4 border rounded-md" type="text" value="Verified by staff" />
     <input class="py-1 px-4 border rounded-md" type="text" value="Preferred Plus" />
     <div></div>
@@ -108,21 +133,21 @@
     <span></span>
     <input class="py-1 px-4 border rounded-md" type="text" value="Preferred" />
     <input class="py-1 px-4 border rounded-md" type="text" value="Corporate Account" />
-    <div></div>
+    <div></div> -->
 
     <span>Hourly Rate</span>
     <input class="py-1 px-4 border rounded-md" type="text" @change="submitForm" v-model="form.hourly_rate" />
     <div class="col-span-2"></div>
 
-    <span>All-Time Earnings</span>
+   <!--  <span>All-Time Earnings</span>
     <input class="py-1 px-4 border rounded-md" type="text" value="25,500$" />
-    <div class="col-span-2"></div>
+    <div class="col-span-2"></div> -->
 
     <span>Completed Transactions</span>
     <input class="py-1 px-4 border rounded-md" type="text" @change="submitForm" v-model="form.completed_tran" />
     <div class="col-span-2"></div>
 
-    <span>Preferred Freelancer</span>
+    <!-- <span>Preferred Freelancer</span>
     <label class="relative inline-block w-12 h-6">
         <input type="checkbox" class="opacity-0 w-0 h-0" />
         <span class="absolute cursor-pointer top-0 left-0 right-0 bottom-0 bg-gray-300 rounded-full"></span>
@@ -151,7 +176,7 @@
         <input type="checkbox" class="opacity-0 w-0 h-0" />
         <span class="absolute cursor-pointer top-0 left-0 right-0 bottom-0 bg-gray-300 rounded-full"></span>
     </label>
-    <div class="col-span-2"></div>
+    <div class="col-span-2"></div> -->
 
     <span>WhatsApp connected</span>
     <label class="relative inline-block w-12 h-6">
@@ -197,7 +222,7 @@
                </div>
                 </div>
                   <ScrollModal title="Profile Page View" :show="showModal"  @close="showModal = false">
-<FrontPopup />
+<FrontPopup :profileFront="profileFront" />
             </ScrollModal>
 </template>
 
@@ -355,6 +380,9 @@ const form = useForm({
     zoom_id:ref(props.profileFront?.zoom_id),
     zoom_status:ref(props.profileFront?.zoom_status),
     website:ref(props.profileFront?.website),
+    headline:ref(props.profileFront?.headline),
+    language:ref(props.profileFront?.language),
+    overview:ref(props.profileFront?.overview),
 });
 
 const submitForm = () => {

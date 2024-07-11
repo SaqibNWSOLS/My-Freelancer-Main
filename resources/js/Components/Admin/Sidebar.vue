@@ -26,7 +26,7 @@
                 </li>
            
 
-                <li class="sidebar-list">
+                <li class="sidebar-list" :class="{ active:  route().current('employees.*') }">
                   <a class="sidebar-link sidebar-title" :href="route('employees.index')">
                     <span>
                     <span class="mdi mdi-account-group-outline"></span>
@@ -38,7 +38,7 @@
                   
                 </li>
 
-                <li class="sidebar-list">
+                <li class="sidebar-list" :class="{ active:  route().current('freelancers.*') }">
                   <a class="sidebar-link sidebar-title" :href="route('freelancers.index')">
                     <span>
                    <span class="mdi mdi-account-multiple-outline"></span>

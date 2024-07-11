@@ -183,13 +183,7 @@
                 icon="mdi-file-document-edit-outline"></v-icon>
               <span>Create agreements mutually</span>
             </li>
-            <li class="flex items-center gap-x-3"><v-icon size="large" color="gray" icon="mdi-progress-clock"></v-icon>
-              <span>Track progress in the WorkRoom</span>
-            </li>
-            <li class="flex items-center gap-x-3"><v-icon size="large" color="gray"
-                icon="mdi-shield-sun-outline"></v-icon>
-              <span>Protect payments with SafePay</span>
-            </li>
+           
           </ul>
           <div class="font-semibold py-4 border-b border-solid px-5">
             Have a large number of Freelancer orjobs to manage?<br />
