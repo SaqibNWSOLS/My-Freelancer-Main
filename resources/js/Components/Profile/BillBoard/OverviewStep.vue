@@ -33,7 +33,7 @@
             </p>
           </div>
           <div class="col-span-1">
-            <select class="w-full border p-2 rounded-sm" v-model="form.job_categories_id">
+            <select class="w-full border p-2 rounded-sm" @change="fetchSubCategories" v-model="form.job_categories_id">
              <option v-for="(category, index) in categories" :value="category.id" :key="index">
                                                         {{ category.name }}
                                                     </option>
@@ -43,13 +43,25 @@
           <div class="col-span-1">
             <select class="w-full border p-2 rounded-sm" v-model="form.sub_job_categories_id">
               <option value="" disabled>Select a subcategory</option>
-              <option v-for="(category, index) in categories" :value="category.id" :key="index">
-                                                        {{ category.name }}
-                                                    </option>
+
+               <optgroup  v-for="category in sub_categories" :key="category.id" :label="category.name" >
+                        <option  v-for="sub_cat in category.child_categories" :key="sub_cat.id" :value="sub_cat.id">{{ sub_cat.name }}</option>
+                  </optgroup>
+             
             </select>
              <p class="text-danger">{{ form.errors.sub_job_categories_id }}</p>
           </div>
+          <div class="space-y-2">
+            <h3 class="font-bold">Price</h3>
+            <p class="text-sm">
+            kindly enter a sutibale price that fits your services.
+            </p>
+          </div>
 
+<div class="col-span-2">
+          <label class="flex"> <span class="text-xl p-3 text-white bg-[#4f86c4] rounded-sm">$</span> <input v-model="form.price" type="number" class="w-full" step="0.01" name=""></label>
+            <p class="text-danger">{{ form.errors.job_categories_id }}</p>
+          </div>
           <div class="space-y-2">
             <h3 class="font-bold">Search Tags</h3>
             <p class="text-sm">
@@ -127,6 +139,7 @@ const addTag = (newTag) => {
   options.value.push({ name: newTag })
 }
 
+
 const onInput = (newValue, id) => {
   // Check if the last character is a comma
   if (newValue && newValue.slice(-1) === ',') {
@@ -149,6 +162,7 @@ const props = defineProps({
 });
 
 const form = useForm({
+   price: props.billBoardDraft?.price?props.billBoardDraft?.price:ref(0.00),
     title: props.billBoardDraft?.title?props.billBoardDraft?.title:ref(null),
     sub_job_categories_id: props.billBoardDraft?.sub_job_categories_id?props.billBoardDraft?.sub_job_categories_id:ref(null),
     job_categories_id: props.billBoardDraft?.job_categories_id?props.billBoardDraft?.job_categories_id:ref(null),
@@ -157,6 +171,7 @@ const form = useForm({
 
 const categories = ref([]);
 const errors = ref({});
+const sub_categories= ref([]);
 
 const fetchCategories = async () => {
   try {
@@ -167,8 +182,20 @@ const fetchCategories = async () => {
   }
 };
 
-onMounted(fetchCategories);
+const fetchSubCategories = async () => {
+    try {
+        const response = await axios.get(route('sub-category-list', form.job_categories_id));
+        sub_categories.value = response.data;
+    } catch (error) {
+        console.error('Error fetching states:', error);
+    }
+};
 
+
+onMounted(() => {
+  fetchCategories();
+  fetchSubCategories();
+});
     const validateForm = () => {
       errors.value = {}; // Reset errors
       let isValid = true;
@@ -210,5 +237,8 @@ const submitForm = () => {
 }
 .card-item {
   padding: 1rem;
+}
+.multiselect{
+  margin-bottom:20px;
 }
 </style>

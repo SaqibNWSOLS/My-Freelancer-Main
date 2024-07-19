@@ -16,8 +16,9 @@ use App\Http\Controllers\JobCategoryController;
 use App\Http\Controllers\WebFreelancerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\Admin\VerificationController;
-
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProxyController;
+
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -27,10 +28,12 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 })->name('/');
-Route::get('/categories', [WebFreelancerController::class, 'Categories'])->name('categories');
+Route::get('/categories', [CategoriesController::class, 'Categories'])->name('categories');
+Route::get('/category/{slug}', [CategoriesController::class, 'SubCategories'])->name('category');
 
 Route::get('/front-view', [WebFreelancerController::class, 'FrontView'])->name('front-view');
 
+Route::get('/banners/{slug}', [WebFreelancerController::class, 'banners'])->name('banners');
 
 Route::get('admin-login',[AuthenticatedSessionController::class,'adminLogin'])->name('admin-dashboard');
 
@@ -47,6 +50,7 @@ Route::middleware(['auth', 'verifiedUser'])->group(function () {
     Route::resource('job',JobController::class);
 
     Route::get('/category-list', [BillBoardController::class, 'categoryList'])->name('category-list');
+    Route::get('/sub-category-list/{id}', [BillBoardController::class, 'subCategories'])->name('sub-category-list');
     Route::post('/update-profile-pic', [ProfileController::class, 'profilePicUpload'])->name('update-profile-pic');
     Route::post('/update-address', [ProfileController::class, 'updateAddress'])->name('update-address');
      Route::post('/verfication', [UserVerficationController::class, 'store'])->name('verfication');

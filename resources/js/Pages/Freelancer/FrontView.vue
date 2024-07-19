@@ -3,7 +3,7 @@
 <div class="flex flex-col items-center w-full pb-10">
     <div class="h-[300px] bg-cover-img w-full" :style="{ backgroundImage: `url(${headerPhoto})` }" ></div>
     <div class="flex justify-center bg-yellow-400 max-w-screen-lg mx-auto">
-        <div class="w-3/12 bg-white border border-black p-5 mt-10">
+        <div class="w-3/12 bg-white border border-black p-5 mt-10 min-w-[300px]">
             <div class="flex items-center justify-center h-44 w-44 bg-gray-200 rounded-sm mx-auto -mt-28">
                 <img width="70" :src="profilePhoto" alt="User Avatar"/>
             </div>
@@ -45,7 +45,7 @@
                 <button class="flex gap-x-2 items-center"><img width="14" src="@/assets/new/flag-solid.svg" alt="Flag Icon"/>Share</button>
             </div>
         </div>
-        <div class="w-9/12 bg-white px-10 py-8 space-y-6">
+        <div class="w-9/12 bg-white px-10 py-8 space-y-6 min-w-[900px]">
             <div class="flex justify-between">
                 <span class="text-2xl font-bold">{{ props.profileFront?.headline }}</span>
                 <!-- InputSwitch component -->

@@ -51,7 +51,13 @@ if($request->has('tags')){
     }
 
     public function categoryList(){
-        $categories=JobCategory::get();
+        $categories=JobCategory::where('status','Active')->where('parent_id',null)->get();
+
+        return json_encode($categories);
+    }
+
+    public function subCategories($id){
+       $categories=JobCategory::with('child_categories')->where('status','Active')->where('parent_id',$id)->get();
 
         return json_encode($categories);
     }

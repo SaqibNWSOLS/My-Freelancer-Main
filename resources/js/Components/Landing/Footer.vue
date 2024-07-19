@@ -3,6 +3,12 @@ import Github from '@/assets/github.svg'
 import Twitter from '@/assets/twitter.svg'
 import Youtube from '@/assets/youtube.svg'
 import LinkedIn from '@/assets/linkedin.svg'
+ const props = defineProps({
+    categories: {
+        type: Array,
+    },
+
+ });
 </script>
 <template>
   <!-- <div
@@ -34,7 +40,7 @@ import LinkedIn from '@/assets/linkedin.svg'
   <div class="grid gap-6 grid-cols- md:grid-cols-2 lg:grid-cols-5 bg-white px-12 py-12 justify-center">
     <div>
       <h4 class="font-bold pb-2">Category</h4>
-      <ul class="text-gray-700">
+      <ul class="text-gray-700" v-if="categories.length<1">
         <li class="py-1"><a class="cursor-pointer hover:underline">Graphics & Design</a></li>
         <li class="py-1"><a class="cursor-pointer hover:underline">Digital Marketing</a></li>
         <li class="py-1"><a class="cursor-pointer hover:underline">Writing & Translation</a></li>
@@ -48,6 +54,10 @@ import LinkedIn from '@/assets/linkedin.svg'
         <li class="py-1"><a class="cursor-pointer hover:underline">Photography</a></li>
         <li class="py-1"><a class="cursor-pointer hover:underline">End-to-End Projects</a></li>
         <li class="py-1"><a class="cursor-pointer hover:underline">Sitemap</a></li>
+      </ul>
+       <ul class="text-gray-700" v-if="categories.length>0">
+        <li v-for="(category, index) in props.categories" :key="index"  class="py-1"><a :href="route('category',category.slug)" class="cursor-pointer hover:underline">{{ category.name }}</a></li>
+       
       </ul>
     </div>
 

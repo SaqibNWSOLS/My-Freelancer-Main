@@ -18,7 +18,8 @@ use App\Http\Controllers\Admin\VerificationController;
 use App\Http\Controllers\Admin\GeneralSettingController;
 use App\Http\Controllers\Admin\EmployerController;
 use App\Http\Controllers\Admin\FreelancerController;
-
+use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Admin\FaqController;
 
 
 
@@ -35,3 +36,6 @@ Route::resource('jobCategory', JobCategoryController::class);
 Route::resource('general-setting', GeneralSettingController::class);
 Route::resource('freelancers', FreelancerController::class);
 Route::resource('employees', EmployerController::class);
+
+Route::resource('faq', FaqController::class);
+Route::resource('tag', TagController::class);

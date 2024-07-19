@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('users_id')->nullable();
             $table->string('title', 512)->nullable();
+             $table->string('price', 512)->nullable();
             $table->bigInteger('job_categories_id')->nullable();
             $table->bigInteger('sub_job_categories_id')->nullable();
             $table->text('tags')->charset('utf8mb4')->collation('utf8mb4_bin')->nullable();
