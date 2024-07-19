@@ -16,4 +16,9 @@ class JobController extends Controller
 
      return Inertia::render('Job/Create');
    }
+
+   public function store(Request $request){
+    
+     return redirect(route('profile.index', [], false));
+   }
 }

@@ -5,18 +5,18 @@
     </div>
     <BillboardList @add-new-billboard="addNewBillboard" :billBoards="billBoards" v-if="list" />
     <div v-else>
-      <div class="border-b  p-5 bg-card-header border-gray-200">
+      <div class="border-b  p-2 bg-card-header border-gray-200">
         <div class="flex items-center">
           <div class="flex-1">
-            <div :class="{'text-primary': step >= 0}"  class="cursor-pointer p-4">Overview</div>
+            <div :class="{'text-primary': step >= 0}"  class="cursor-pointer font-bold p-4">Overview</div>
           </div>
           <div class="w-px bg-gray-200"></div>
           <div class="flex-1">
-            <div :class="{'text-primary': step >= 1}"  class="cursor-pointer p-4"> Description</div>
+            <div :class="{'text-primary': step >= 1}"  class="cursor-pointer font-bold p-4"> Description</div>
           </div>
           <div class="w-px bg-gray-200"></div>
           <div class="flex-1">
-            <div :class="{'text-primary': step >= 2}"  class="cursor-pointer p-4">Gallery</div>
+            <div :class="{'text-primary': step >= 2}"  class="cursor-pointer font-bold p-4">Gallery</div>
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@ const addNewBillboard = () => {
 
 const finish=()=>{
 router.post(route('bill-board.store'),{finish:true}, {
-        onSuccess: () => list.value = true, 
+        onSuccess: () => list.value = true , 
     });
 }
 </script>
