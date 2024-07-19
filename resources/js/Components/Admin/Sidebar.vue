@@ -61,7 +61,7 @@
                   
                 </li>
 
-                <li class="sidebar-list"  :class="{ active:  route().current('general-setting.*') ||  route().current('countries.*') || route().current('states.*') ||  route().current('cities.*') ||  route().current('jobCategory.*') }">
+                <li class="sidebar-list"  :class="{ active:  route().current('general-setting.*') ||  route().current('tag.*') || route().current('faq.*') ||  route().current('cities.*') ||  route().current('jobCategory.*') }">
                   <a class="sidebar-link sidebar-title" href="javascript:void(0)">
                     <span>
                    <span class="mdi mdi-cog-transfer"></span>
@@ -77,20 +77,18 @@
                       <a :href="route('general-setting.index')">Gerneral Setting</a>
                     
                     </li>
-                     <li>
-                      <a :href="route('countries.index')">Countries</a>
                     
-                    </li>
-                      <li>
-                      <a :href="route('states.index')">States</a>
-                    
-                    </li>
-                      <li>
-                      <a :href="route('cities.index')">Cities</a>
-                    
-                    </li>
+                     
                       <li>
                       <a :href="route('jobCategory.index')">Job Category</a>
+                    
+                    </li>
+                     <li>
+                      <a :href="route('faq.index')">Faq's</a>
+                    
+                    </li>
+                      <li>
+                      <a :href="route('tag.index')">Tags</a>
                     
                     </li>
                    

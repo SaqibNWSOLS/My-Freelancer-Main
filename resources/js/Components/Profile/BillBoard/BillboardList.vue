@@ -68,14 +68,18 @@
           </div>
         </div>
       </div>
-      <button @click="prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 text-white px-4 py-2 rounded">
+      <button @click="prev" v-if="billBoards.lenght>0" class="absolute left-0 top-1/2 transform -translate-y-1/2 text-white px-4 py-2 rounded">
         <i class="mdi mdi-arrow-left-drop-circle-outline text-2xl" style="color:grey"></i>
       </button>
-      <button @click="next" class="absolute right-0 top-1/2 transform -translate-y-1/2 text-white px-4 py-2 rounded">
+      <button @click="next" v-if="billBoards.lenght>0" class="absolute right-0 top-1/2 transform -translate-y-1/2 text-white px-4 py-2 rounded">
         <i class="mdi mdi-arrow-right-drop-circle-outline text-2xl" style="color:grey"></i>
       </button>
+     
     </div>
   </div>
+   <div class="text-center min-h-[400px] items-center grid w-full">
+        <h2 class="text-md">No data found kindly click to add new button to start your new journey</h2>
+      </div>
 </template>
 
 <style scoped>

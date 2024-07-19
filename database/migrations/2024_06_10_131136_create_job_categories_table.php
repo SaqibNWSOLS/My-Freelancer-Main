@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('parent_id')->default(0);
             $table->string('name', 512)->nullable();
+            $table->string('icon', 512)->nullable();
+            $table->string('slug', 512)->nullable();
             $table->string('status', 256)->nullable();
             $table->timestamps(0);
         });

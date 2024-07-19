@@ -15,6 +15,7 @@ class BillBoard extends Model
         'sub_job_categories_id',
         'tags',
         'users_id',
+        'price',
         'pricing_description',
         'img1',
         'img2',

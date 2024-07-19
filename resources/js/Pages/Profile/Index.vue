@@ -36,6 +36,11 @@
     
   </ul>
 
+  <!-- {
+    title: "Hire Us",
+    value: "#g",
+    icon: "mdi-laptop",
+  }, -->
         </div>
       </div>
 
@@ -136,11 +141,7 @@ const tabs = reactive([
     value: "#d",
     icon: "mdi-home",
   },
-  {
-    title: "Hire Us",
-    value: "#g",
-    icon: "mdi-laptop",
-  },
+
   
   {
     title: "Screen Identity",

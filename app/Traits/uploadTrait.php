@@ -40,22 +40,37 @@ trait uploadTrait
         }
     }
 
-    public function uploadEmpiratesFile($request)
+    public function uploadIcon($request)
     {
-
-        if ($request->has('emirates_id_file')) {
-
-            $uploadDocument = $request->file('emirates_id_file');
+        if ($request->has('icon') && !empty($request->icon)) {
+            $uploadDocument = $request->file('icon');
             $fileInfo = $uploadDocument->getClientOriginalName();
             $filename = pathinfo($fileInfo, PATHINFO_FILENAME);
             $extension = pathinfo($fileInfo, PATHINFO_EXTENSION);
             $file_name = $filename . '-' . time() . '.' . $extension;
-            $uploadDocument->move(public_path('uploads'), $file_name);
+            $uploadDocument->move(public_path('uploads/icons'), $file_name);
 
-            return 'uploads/' . $file_name;
+            return 'uploads/icons/' . $file_name;
         }
+
+        return null;
     }
 
+     public function uploadBanner($request)
+    {
+        if ($request->has('banner') && !empty($request->banner)) {
+            $uploadDocument = $request->file('banner');
+            $fileInfo = $uploadDocument->getClientOriginalName();
+            $filename = pathinfo($fileInfo, PATHINFO_FILENAME);
+            $extension = pathinfo($fileInfo, PATHINFO_EXTENSION);
+            $file_name = time() . '.' . $extension;
+            $uploadDocument->move(public_path('uploads/banners'), $file_name);
+
+            return 'uploads/banners/' . $file_name;
+        }
+
+        return null;
+    }
     public function uploadPassportFile($request)
     {
 
