@@ -4,7 +4,7 @@
 <div class="max-w-6xl mx-auto">
   <h1 class="font-bold text-xl py-2">Post a Job</h1>
   <hr class="border-info mb-4">
-  <form class="grid gap-1 grid-cols-7 border-t border-solid py-5">
+  <form @submit.prevent="submitForm" class="grid gap-1 grid-cols-7 border-t border-solid py-5">
     <div class="col-span-5 space-y-8">
       <div class="space-y-3">
         <div class="font-semibold flex items-center gap-x-1">
@@ -14,6 +14,7 @@
           <span>Give your job a title</span>
         </div>
         <input type="text" v-model="form.title" placeholder="Develop Android Application" class="w-full border p-3">
+        <p class="text-danger">{{ form.errors.title }}</p>
       <!--   <span class="text-xs text-blue-800 font-semibold">
          Example
         </span> -->
@@ -36,10 +37,11 @@
         </div>
         <div v-if="!newCategory" class="grid gap-3 grid-cols-3">
           <label v-for="(category, index) in categories" :value="category.id" :key="index"  class="cursor-pointer text-sm font-bold border p-2 has-[:checked]:bg-blue-600 has-[:checked]:text-white">
-            <input type="radio" class="hidden" name="job-category" :value="category.id" v-model="job_categories_id">
+            <input type="radio" class="hidden" name="job-category" :value="category.id" v-model="form.job_categories_id">
             {{ category.name }}
           </label>
         </div>
+          <p class="text-danger">{{ form.errors.job_categories_id }}</p>
         <span v-if="!newCategory" @click="newCategory = true" class="text-xs text-blue-800 font-semibold cursor-pointer">My category is not listed</span>
         <div v-if="newCategory">
           <div class="border p-3">
@@ -53,7 +55,7 @@
             </div>
             <div class="mt-3">
               <span class="font-bold">Skills</span>
-              <input type="text" class="w-full p-2 border mt-1">
+              <input type="text" v-model="form.skills" class="w-full p-2 border mt-1">
             </div>
           </div>
         </div>
@@ -95,39 +97,43 @@
             <div class="grid grid-cols-2 px-2">
               <div class="space-y-2">
                 <label class="font-semibold block space-x-2">
-                  <input type="radio" name="price-range" value="under-250"><span>Under $250</span>
+                  <input type="radio" name="price-range" v-model="form.price" value="under-250"><span>Under $250</span>
                 </label>
                 <label class="font-semibold block space-x-2">
-                  <input type="radio" name="price-range" value="250-500"><span>$250 to $500</span>
+                  <input type="radio" name="price-range" v-model="form.price" value="250-500"><span>$250 to $500</span>
                 </label>
                 <label class="font-semibold block space-x-2">
-                  <input type="radio" name="price-range" value="500-1000"><span>$500 to $1,000</span>
+                  <input type="radio" name="price-range" v-model="form.price" value="500-1000"><span>$500 to $1,000</span>
                 </label>
                 <label class="font-semibold block space-x-2">
-                  <input type="radio" name="price-range" value="1000-2500"><span>$1,000 to $2,500</span>
+                  <input type="radio" name="price-range" v-model="form.price" value="1000-2500"><span>$1,000 to $2,500</span>
                 </label>
                 <label class="font-semibold block space-x-2">
-                  <input type="radio" name="price-range" value="2500-5000"><span>$2,500 to $5,000</span>
+                  <input type="radio" name="price-range" v-model="form.price" value="2500-5000"><span>$2,500 to $5,000</span>
                 </label>
               </div>
               <div class="space-y-2">
                 <label class="font-semibold block space-x-2">
-                  <input type="radio" name="price-range" value="5000-10000"><span>$5,000 to $10,000</span>
+                  <input type="radio" name="price-range" v-model="form.price" value="5000-10000"><span>$5,000 to $10,000</span>
                 </label>
                 <label class="font-semibold block space-x-2">
-                  <input type="radio" name="price-range" value="10000-25000"><span>$10,000 to $25,000</span>
+                  <input type="radio" name="price-range" v-model="form.price" value="10000-25000"><span>$10,000 to $25,000</span>
                 </label>
                 <label class="font-semibold block space-x-2">
-                  <input type="radio" name="price-range" value="over-25000"><span>Over $25,000</span>
+                  <input type="radio" name="price-range" v-model="form.price" value="over-25000"><span>Over $25,000</span>
                 </label>
                 <label class="font-semibold block space-x-2">
-                  <input type="radio" name="price-range" value="confidential"><span>Not sure/Confidential</span>
+                  <input type="radio" name="price-range" v-model="form.price" value="confidential"><span>Not sure/Confidential</span>
                 </label>
               </div>
             </div>
+
           </div>
+
         </div>
       </div>
+        <p class="text-danger">{{ form.errors.price }}</p>
+
       <div class="space-y-3">
         <div class="font-semibold flex items-center gap-x-1">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -138,8 +144,8 @@
         <div class="grid grid-cols-3 gap-x-3">
           <label>
             <span>Visible to:</span>
-            <select class="h-10 border-b-2 border-gray-300 bg-white w-full">
-              <option>SELECT</option>
+            <select  v-model="form.visible" class="h-10 border-b-2 border-gray-300 bg-white w-full">
+              <option value="">SELECT</option>
               <option>Everyone</option>
               <option>MyFreelancer Freelancers</option>
               <option>Invite Only (on MyFreelancer)</option>
@@ -147,8 +153,8 @@
           </label>
           <label>
             <span>Location:</span>
-            <select class="h-10 border-b-2 border-gray-300 bg-white w-full">
-              <option>SELECT</option>
+            <select  v-model="form.location" class="h-10 border-b-2 border-gray-300 bg-white w-full">
+              <option value="">SELECT</option>
               <option>Anywhere</option>
               <option>Specific Location</option>
               <option>Specific Timezone</option>
@@ -228,7 +234,9 @@ const form = useForm({
     job_categories_id:ref(null),
     description: ref('dss'),
     price: ref(null),
-    tags: ref(null),
+    skills: ref(null),
+    location: ref(null),
+    visible: ref(null),
 });
 
 
@@ -245,8 +253,8 @@ const form = useForm({
         isValid = false;
       }
 
-      if (!form.sub_job_categories_id) {
-        form.errors.sub_job_categories_id = 'Sub Category is required';
+      if (!form.price) {
+        form.errors.price = 'Price is required';
         isValid = false;
       }
 
@@ -257,8 +265,8 @@ const form = useForm({
 
 const submitForm = () => {
     if (validateForm()) {
-    form.post(route('bill-board'), {
-        onSuccess: () => props.nextStep(),
+    form.post(route('job.store'), {
+        onSuccess: () => console.log(1),
     });
 }
 };
