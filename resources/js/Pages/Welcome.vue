@@ -1,5 +1,5 @@
 <template>
-    <App>
+    <App :categories="categories">
   <main>
     <div>
       <div
@@ -187,7 +187,12 @@ const animate = ref(0)
 const updateAnimtedCard = () => {
   animate.value = animate.value === 3 ? 0 : animate.value + (1 % 4)
 }
+ const props = defineProps({
+    categories: {
+        type: Array,
+    },
 
+ });
 const screenWidth = ref(0)
 
 onMounted(() => {

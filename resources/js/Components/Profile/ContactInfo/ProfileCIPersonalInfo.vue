@@ -8,11 +8,11 @@
         <div class="mt-10">Phone Number</div>
       </div>
       <div class="col-span-8 ml-3">
-        <div v-if="!showField" class="flex flex-content w-4/4">
-          <div class="w-1/10">
-            <i class="mdi mdi-account text-green-500 text-xl"></i>
+        <div v-if="!showField" class="flex  w-4/4">
+          <div class="w-1/10 justify-center flex items-center">
+            <i class="mdi mdi-account text-white bg-[#34415e] p-2 text-2xl"></i>
           </div>
-            <div class="bg-gray-100  w-80 p-3 w-9/10" style="margin-left:-7px">
+            <div class="bg-gray-100  w-80 p-3 w-9/10" style="margin-left:0px">
               {{ fullName }}
             </div>
            <!--  <button
@@ -37,9 +37,9 @@
         </div>
         <div class="flex  items-center mt-4 w-4/4">
           <div class="w-1/10">
-          <i class="mdi mdi-email text-green-500 text-xl"></i>
+          <i class="mdi mdi-email  text-white bg-[#34415e] p-2 text-2xl"></i>
         </div>
-          <div class="bg-gray-100 ml-2 w-80 p-3  w-9/10">
+          <div class="bg-gray-100  w-80 p-3  w-9/10">
             {{ email }}
           </div>
           <i class="mdi mdi-check-decagram text-blue-700 ml-2"></i>
@@ -50,9 +50,9 @@
         <div class="flex flex-col w-4/4 mt-4">
           <div class="flex justify-start items-center">
             <div class="w-1/10">
-            <i class="mdi mdi-phone text-green-500 text-xl"></i>
+            <i class="mdi mdi-phone  text-white bg-[#34415e] p-2 text-2xl"></i>
           </div>
-            <div class="bg-gray-100 ml-2 w-80 p-3  w-9/10">
+            <div class="bg-gray-100  w-80 p-3  w-9/10">
               {{ phone }}
             </div>
             <div class="ml-4">
