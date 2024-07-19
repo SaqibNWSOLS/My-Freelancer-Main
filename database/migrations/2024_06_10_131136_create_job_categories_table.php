@@ -18,7 +18,7 @@ class CreateJobCategoriesTable extends Migration
             $table->id();
             $table->string('icon', 256)->nullable();
             $table->string('banner', 256)->nullable();
-            $table->bigInteger('parent_id')->default(0);
+            $table->bigInteger('parent_id')->nullable();
             $table->string('name', 512)->nullable();
             $table->string('slug', 256)->nullable();
             $table->string('status', 256)->nullable();
