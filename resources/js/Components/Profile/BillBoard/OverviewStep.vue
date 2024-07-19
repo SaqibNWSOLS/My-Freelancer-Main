@@ -59,7 +59,7 @@
           </div>
 
 <div class="col-span-2">
-          <label class="flex"> <span class="text-xl p-3 text-white bg-[#4f86c4] rounded-sm">$</span> <input v-model="form.price" type="number" class="w-full" step="0.01" name=""></label>
+          <label class="flex"> <span class="text-md p-2 text-white bg-[#4f86c4] ">$</span> <input v-model="form.price" type="number" class="w-full h-[40px]" step="0.01" name=""></label>
             <p class="text-danger">{{ form.errors.job_categories_id }}</p>
           </div>
           <div class="space-y-2">

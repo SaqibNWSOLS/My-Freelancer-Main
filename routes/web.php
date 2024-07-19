@@ -26,6 +26,7 @@ Route::get('/', function () {
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+        'categories'=>[]
     ]);
 })->name('/');
 Route::get('/categories', [CategoriesController::class, 'Categories'])->name('categories');

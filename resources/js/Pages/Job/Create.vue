@@ -14,11 +14,9 @@
           <span>Give your job a title</span>
         </div>
         <input type="text" v-model="form.title" placeholder="Develop Android Application" class="w-full border p-3">
-        <span class="text-xs text-blue-800 font-semibold">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
-          </svg> Example
-        </span>
+      <!--   <span class="text-xs text-blue-800 font-semibold">
+         Example
+        </span> -->
       </div>
       <div class="space-y-3">
         <div class="font-semibold flex items-center gap-x-1">
@@ -269,13 +267,14 @@ onMounted(() => {
   editor.value = new Quill('#editor', {
     modules: {
       toolbar: [
-        [{ header: [1, 2, false] }],
+        [{ header: [1, 2, true] }],
         ['bold', 'italic', 'underline'],
         ['link', 'blockquote', 'code-block', 'image'],
         [{ list: 'ordered' }, { list: 'bullet' }],
       ],
     },
     placeholder: 'Type Something',
+    height:'30pc',
     theme: 'snow', // or 'bubble'
   })
 
@@ -291,3 +290,8 @@ watch(() => form.description, (newVal) => {
 })
 
 </script>
+<style>
+.ql-editor, .ql-blank {
+  height: 200px; /* Set your desired height here */
+}
+</style>
