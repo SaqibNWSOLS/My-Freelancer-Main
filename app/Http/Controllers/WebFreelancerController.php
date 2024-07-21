@@ -29,6 +29,26 @@ class WebFreelancerController extends Controller
            $tags=Tag::where('job_categories_id',$catDetail->id)->get();
        return Inertia::render('Banner/Banners',['categories'=>$categories,'catDetail'=>$catDetail,'billBoards'=>$billBoards,'faqs'=>$faqs,'tags'=>$tags]);
     }
+
+    public function allBanners(Request $request){
+         $categories=JobCategory::with('child_categories')->where('status','Active')->where('parent_id',null)->get();
+        $query=BillBoard::OrderBy('id','DESC');
+
+        if ($request->has('search')) {
+            $query->where('title','LIKE','%'.$request->search.'%');
+        }
+
+        $billBoards=$query->paginate(10);
+      
+       return Inertia::render('Banner/AllBanners',['categories'=>$categories,'billBoards'=>$billBoards]);
+    }
+
+    public function billBoardDetail($id){
+           $categories=JobCategory::with('child_categories')->where('status','Active')->where('parent_id',null)->get();
+        $billBoardDetail=BillBoard::with('user_detail')->where('id',$id)->first();
+      
+       return Inertia::render('Banner/BillboardDetail',['categories'=>$categories,'billBoardDetail'=>$billBoardDetail]);
+    }
     
 
     public function frontView(){

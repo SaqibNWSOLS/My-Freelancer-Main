@@ -28,7 +28,7 @@
                 : 'hover:text-blue-950 hover:bg-white'
             "
           >
-            Find Talent
+           <a :href="route('all-banners')"> Find Talent</a>
            <!--  <svg
               width="8"
               class="inline-block pb-1 fill-white group-hover:fill-black"

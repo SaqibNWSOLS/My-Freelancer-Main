@@ -5,8 +5,8 @@
     <div class=" mt-5 ">
         <div class="">
             <div class=" graphics-design h-[250px] w-full rounded-md flex flex-col justify-center gap-10 items-center"
-                :style="{ backgroundImage: `url(${bannerImage})` }">
-                <h1 class="  text-5xl md:text-6xl  font-bold text-white ">{{ catDetail.name }}</h1>
+               style="background-color:#1f3a63" >
+                <h1 class="  text-3xl md:text-2xl  font-bold text-white ">Browse best talent around the globe</h1>
                 <div class="flex items-center px-2 font-bold border border-white">
                     <figure>
                         <img src='@/assets/images/image052.png' class="h-[40px] w-[40px]" height={40} width={40} alt='' />
@@ -24,10 +24,6 @@
         </div> -->
     </div>
 
-    <div class="flex justify-between py-4 px-0">
-        <h2 class="text-2xl font-bold">Most popular in {{ catDetail.name }}</h2>
-       
-    </div>
  <div class="flex gap-10  p-7 md:p-4  flex-wrap md:flex-nowrap ">
         <div v-for="(tag, index) in tags" :key="index" class="flex items-center gap-2 border-2 rounded-md border-gray-300 px-5 py-1 ">
             <figure>
@@ -39,14 +35,14 @@
         
     </div>
     <div class="flex items-center gap-2 ">
-        <h2 class="text-2xl font-bold ">Explore {{ catDetail.name }} </h2>
-        <span>({{  new Set(billBoards).size }})</span>
+        <h2 class="text-2xl font-bold ">Explore {{  }} </h2>
+        <span>({{   }})</span>
     </div>
    <div class=" md:px-2 md:py-4">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
       <div 
         class="bg-white rounded-lg shadow-md overflow-hidden mb-6"
-        v-for="(billBoard, index) in billBoards"
+        v-for="(billBoard, index) in billBoards?.data"
         :key="index"
       >
         <!-- Gig Images Slider -->
@@ -84,7 +80,39 @@
     </div>
   </div>
 </main>
-<div   v-if="tags.length>0" class=" flex-wrap justify-center  md:flex-nowrap  grid  p-7 gap-4 md:gap-2" style="background-color: whitesmoke;">
+ <nav>
+      <ul class="flex justify-center mt-4 space-x-2">
+        <li v-if="billBoards.prev_page_url">
+          <a 
+            :href="billBoards.prev_page_url" 
+            class="px-3 py-1 border rounded-lg hover:bg-gray-200"
+          >
+            Previous
+          </a>
+        </li>
+
+        <li v-for="page in pages" :key="page" :class="{ 'font-bold': page === billBoards.current_page }">
+          <a 
+            v-if="page !== '...'" 
+            :href="pageUrl(page)" 
+            class="px-3 py-1 border rounded-lg hover:bg-gray-200"
+          >
+            {{ page }}
+          </a>
+          <span v-else class="px-3 py-1">...</span>
+        </li>
+
+        <li v-if="billBoards.next_page_url">
+          <a 
+            :href="billBoards.next_page_url" 
+            class="px-3 py-1 border rounded-lg hover:bg-gray-200"
+          >
+            Next
+          </a>
+        </li>
+      </ul>
+    </nav>
+<!-- <div   v-if="tags.length>0" class=" flex-wrap justify-center  md:flex-nowrap  grid  p-7 gap-4 md:gap-2" style="background-color: whitesmoke;">
      <div class="w-full mb-5 text-center">
         <h1 class=" text-4xl lg:text-3xl font-semibold leading-[55px]">Explore More {{ catDetail.name }} Services</h1>
     </div>
@@ -102,7 +130,7 @@
             <FaqItem :faq="faq" />
        </div>
     </div>
-</div>
+</div> -->
 </CatApp>
     </template>
     <style scoped>
@@ -151,6 +179,7 @@ import CatApp from '@/Layouts/CatApp.vue'
 import FaqItem from '@/Components/Landing/FaqItem.vue'
 import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
+import { computed } from 'vue';
 
 const  baseUrl=window.Laravel.baseUrl
 
@@ -160,11 +189,9 @@ const  baseUrl=window.Laravel.baseUrl
     },
     billBoards:Array,
     tags:Array,
-    faqs:Array,
-    catDetail:Object,
+
 
  });
-      const bannerImage=props.catDetail.banner?baseUrl+props.catDetail.banner:'https://atech-tc.com/wp-content/plugins/elementor/assets/images/placeholder.png'
 
    const isMenuOpen=ref(false);
 const isDropdownOpen=ref([]);
@@ -185,4 +212,22 @@ const nextSlide = () => {
 const prevSlide = () => {
   carousel.value.prev()
 }
+
+const pages = computed(() => {
+  const result = [];
+  const { current_page, last_page } = props.billBoards;
+  for (let i = 1; i <= last_page; i++) {
+    if (i === 1 || i === last_page || (i >= current_page - 2 && i <= current_page + 2)) {
+      result.push(i);
+    } else if (result[result.length - 1] !== '...') {
+      result.push('...');
+    }
+  }
+  return result;
+});
+
+// Generate the URL for a specific page
+const pageUrl = (page) => {
+  return `${props.billBoards.path}?page=${page}`;
+};
 </script>

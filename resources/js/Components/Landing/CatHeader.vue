@@ -5,13 +5,13 @@
         <div class='flex flex-col md:flex-row justify-center items-center w-full md:w-max gap-4 '>
             <a :href="route('/')"><img src='@/assets/images/main_logo.png' class='h-[40px] w-[200px]' alt='profile' height={50}
             width={150} /></a>
-            <div class='flex w-full'>
-                <input class='border w-full border-black rounded-l-md outline-0  px-5 md:w-[350px]'
+            <form :action="route('all-banners')" class='flex w-full'>
+                <input name="search" class='border w-full border-black rounded-l-md outline-0  px-5 md:w-[350px]'
                 placeholder=' What services are you looking for today? ' type='text' parentClass='mb-4' />
                 <span class='bg-black text-white p-3 font-bold'>
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
-            </div>
+            </form>
         </div>
         <div class='flex'>
             <ul  v-if="$page?.props?.auth?.user?.name" class=' flex gap-4 py-2 px-6'>
@@ -31,7 +31,7 @@
                
                 <h2 class='font-bold'> Orders</h2>
                 <figure class='shrink-0 relative'  @click="toggleMenu">
-                    <img src='@/assets/images/image119.png' class='rounded-full h-[40px] w-[40px]' alt='profile'
+                    <img :src='$page?.props?.auth?.user?.image ? baseUrl+$page?.props?.auth?.user?.name:"https://cdn-icons-png.freepik.com/512/6322/6322558.png"' class='rounded-full h-[40px] w-[40px]' alt='profile'
                     height={40} width={40} />
                 </figure>
                 <span class='font-bold text-green-700'>{{ $page?.props?.auth?.user?.name }}</span>
@@ -79,6 +79,8 @@
 </template>
 <script setup >
 import { ref } from 'vue'
+
+const  baseUrl=window.Laravel.baseUrl
 
    const props = defineProps({
     categories: {
