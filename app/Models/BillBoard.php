@@ -24,4 +24,8 @@ class BillBoard extends Model
         'doc1',
         'doc2',
     ];
+
+    public function user_detail(){
+      return $this->belongsTo(User::class,'users_id')->with('profile_detail');
+    }
 }

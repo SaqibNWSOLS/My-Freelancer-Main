@@ -35,6 +35,8 @@ Route::get('/category/{slug}', [CategoriesController::class, 'SubCategories'])->
 Route::get('/front-view', [WebFreelancerController::class, 'FrontView'])->name('front-view');
 
 Route::get('/banners/{slug}', [WebFreelancerController::class, 'banners'])->name('banners');
+Route::get('/banners', [WebFreelancerController::class, 'allBanners'])->name('all-banners');
+Route::get('/bill-board/{id}', [WebFreelancerController::class, 'billBoardDetail'])->name('bill-board');
 
 Route::get('admin-login',[AuthenticatedSessionController::class,'adminLogin'])->name('admin-dashboard');
 
