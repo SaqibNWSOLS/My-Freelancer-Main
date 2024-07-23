@@ -124,36 +124,10 @@
     >
       <ul class="text-base *:px-6 *:py-2">
         <li class="relative group border-b border-blue-200">
-          <input id="drowpdown-1" class="peer hidden w-full" type="checkbox" />
-          <label for="drowpdown-1">
-            <div class="flex justify-between w-full">
-              <span>Find Talent</span>
-              <img class="w-2 pb-1 ml-auto" width="8" src="@/assets/caret-down-solid.svg" />
-            </div>
-          </label>
-          <div class="peer-checked:block hidden bg-white">
-            <ul class="*:px-2 *:py-1">
-              <li><a>-> Link 1</a></li>
-              <li><a>-> Link 2</a></li>
-              <li><a>-> Link 3</a></li>
-            </ul>
-          </div>
+           <a :href="route('all-banners')"> Find Talent</a>
         </li>
         <li class="relative group border-b border-blue-200">
-          <input id="drowpdown-2" class="peer hidden w-full" type="checkbox" />
-          <label for="drowpdown-2">
-            <div class="flex justify-between w-full">
-              <span>Find Work</span>
-              <img class="w-2 pb-1 ml-auto" width="8" src="@/assets/caret-down-solid.svg" />
-            </div>
-          </label>
-          <div class="peer-checked:block hidden bg-white">
-            <ul class="*:px-2 *:py-1">
-              <li><a>-> Link 1</a></li>
-              <li><a>-> Link 2</a></li>
-              <li><a>-> Link 3</a></li>
-            </ul>
-          </div>
+            <a :href="route('find-work')">  Find Work</a>
         </li>
         <li class="relative group border-b border-blue-200">
           <input id="drowpdown-3" class="peer hidden w-full" type="checkbox" />
