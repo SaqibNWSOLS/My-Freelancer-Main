@@ -23,7 +23,7 @@ const showFullContent = ref(false);
 
 // Computed property to display either full or truncated content
 const displayContent = computed(() => {
-  return showFullContent.value ? props.content : truncateContent(props.content, 100);
+  return showFullContent.value ? props.content : truncateContent(props.content, 50);
 });
 
 // Method to toggle content visibility

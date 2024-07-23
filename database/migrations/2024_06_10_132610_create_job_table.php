@@ -20,6 +20,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->text('countries')->nullable();
             $table->string('price', 512)->nullable();
+            $table->string('min_price', 512)->nullable();
+            $table->string('max_price', 512)->nullable();
             $table->string('visile_to', 512)->nullable();
             $table->date('date_till')->nullable();
             $table->string('status', 512)->nullable();

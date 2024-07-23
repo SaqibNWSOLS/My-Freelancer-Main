@@ -60,7 +60,7 @@
           <ScreenIdentity :userDetail="userDetail" :flash="flash"  />
         </div>
           <div key="job" v-show="selectedTab === 'job'">
-          <Jobs />
+          <Jobs :jobs="jobs" />
         </div>
            <div key="email-preference" v-show="selectedTab === 'email-preference'">
           <EmailPreference />
@@ -115,7 +115,8 @@ const props = defineProps({
     },
      flash:{
       type:Object,
-    }
+    },
+    jobs:Array,
 });
 const  baseUrl=window.Laravel.baseUrl
 

@@ -10,10 +10,30 @@
       <div class="border-b bg-card-header">
         <h2 class="p-4 text-lg">My Jobs</h2>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+      <div class="grid grid-cols-1 md:grid-cols-1 gap-4 p-4">
       
       <div>
-        <h2>Working in process</h2>
+      <div class="overflow-hidden overflow-x-hidden">
+  <table class="min-w-full divide-y divide-gray-200">
+    <thead class="bg-gray-50">
+      <tr>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      <tr v-for="(job, index) in jobs" :key="index">
+        <td class="px-6 py-4 whitespace-nowrap">{{ ++index }}</td>
+        <td class="px-6 py-4 ">{{ job.title }}</td>
+        <td class="px-6 py-4 whitespace-nowrap">
+          <!-- Add your action buttons here -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
       </div>
 
        
@@ -50,7 +70,8 @@ import VOtpInput from "vue3-otp-input";
 const props = defineProps({
     flash:{
       type:Object,
-    }
+    },
+    jobs:Array,
 
  });
 

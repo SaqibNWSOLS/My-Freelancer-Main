@@ -17,6 +17,7 @@
         <li v-for="(category, index) in categories" :key="index">
           <label class="inline-flex items-center">
             <input
+             @change="applyFilters"
               type="checkbox"
               name="categories_id[]"
               :value="category.id"
@@ -34,6 +35,7 @@
       <h3 class="text-lg font-semibold mb-2">Price Range</h3>
       <div class="flex items-center space-x-2">
         <input
+          @change="applyFilters"
           type="number"
           class="w-full p-2 border border-gray-300 rounded"
           placeholder="Min"
@@ -41,6 +43,7 @@
         />
         <span>-</span>
         <input
+          @change="applyFilters"
           type="number"
           class="w-full p-2 border border-gray-300 rounded"
           placeholder="Max"
@@ -56,6 +59,7 @@
         <li v-for="rating in ratings" :key="rating.value">
           <label class="inline-flex items-center">
             <input
+              @change="applyFilters"
               type="radio"
               name="rating"
               class="form-radio text-indigo-600"
@@ -69,12 +73,7 @@
     </div>
 
     <!-- Apply Filters Button -->
-    <button
-      type="submit"
-      class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700"
-    >
-      Apply Filters
-    </button>
+  
   </form>
   </div>
   </div>
@@ -84,8 +83,8 @@
         :key="index" class="job-tile cursor-pointer px-6 py-4 w-full bg-white shadow-sm rounded-md mb-4">
     <div class="flex flex-col md:flex-row md:items-start">
         <div class="flex-1 mb-4 md:mb-0">
-            <small class="text-gray-500 mb-1 block">Posted 5 minutes ago</small>
-            <h2 class="text-lg font-semibold mb-2">
+<!--             <small class="text-gray-500 mb-1 block">Posted 5 minutes ago</small>
+ -->            <h2 class="text-lg font-semibold mb-2">
                 <a :href="route('job-detail',job.slug)" class="text-blue-600 hover:underline">{{ job.title }}</a>
             </h2>
         </div>
@@ -98,7 +97,7 @@
     </div>
     <div class="mt-4">
         <ul class="flex flex-wrap text-gray-700 text-sm mb-2">
-            <li class="mr-4">
+           <!--  <li class="mr-4">
                 <div class="flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 mr-1 text-gray-800">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.027 15h3.225v2.46c.083.95.513 1.837 1.207 2.49A3.87 3.87 0 0012.015 21v-3.61l2.905-3.08A3 3 0 0016.01 12V4a1 1 0 00-.999-1H6.265a.997.997 0 00-.998.75l-2.206 8.76a2.003 2.003 0 001.08 2.298c.277.131.58.197.886.193z" />
@@ -114,7 +113,6 @@
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
                                 <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.1 3.386a1 1 0 00.95.691h3.516c.97 0 1.371 1.24.588 1.81l-2.853 2.072a1 1 0 00-.364 1.118l1.1 3.386c.3.921-.755 1.688-1.54 1.118l-2.853-2.072a1 1 0 00-1.175 0l-2.853 2.072c-.784.57-1.838-.197-1.539-1.118l1.1-3.386a1 1 0 00-.364-1.118L2.345 8.814c-.783-.57-.383-1.81.588-1.81h3.516a1 1 0 00.95-.691l1.1-3.386z" />
                             </svg>
-                            <!-- Repeat star SVG as needed -->
                         </div>
                         <span class="ml-1">4.99</span>
                     </div>
@@ -123,7 +121,7 @@
             </li>
             <li class="mr-4">
                 <strong>$4K+</strong> spent
-            </li>
+            </li> -->
             <li class="mr-4" v-if="job?.user_detail?.country">
                 <div class="flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 mr-1">
@@ -136,7 +134,8 @@
         </ul>
         <ul class="flex flex-wrap text-gray-700 text-sm mb-2">
             <li class="mr-4">
-                <strong>Budget:{{ job.price }} </strong>
+                <strong v-if="job.min_price && job.max_price">Budget: <span v-if="job.min_price!=0">${{ job.min_price }} - </span> <span v-else>Over </span> ${{ job.max_price }}</strong>
+                <strong v-else>Budget: {{ job.price }}</strong>
             </li>
            <!--  <li class="mr-4">
                 <strong>Intermediate</strong>
@@ -168,7 +167,7 @@
           </a>
         </li>
 
-        <li v-for="page in pages" :key="page" :class="{ 'font-bold': page === jobs.current_page }">
+        <li v-for="page in pages" v-if="jobs.data.length" :key="page" :class="{ 'font-bold': page === jobs.current_page }">
           <a 
             v-if="page !== '...'" 
             :href="pageUrl(page)" 
