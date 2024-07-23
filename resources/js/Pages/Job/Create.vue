@@ -144,14 +144,14 @@
         <div class="grid grid-cols-3 gap-x-3">
           <label>
             <span>Visible to:</span>
-            <select  v-model="form.visible" class="h-10 border-b-2 border-gray-300 bg-white w-full">
+            <select  v-model="form.visile_to" class="h-10 border-b-2 border-gray-300 bg-white w-full">
               <option value="">SELECT</option>
               <option>Everyone</option>
               <option>MyFreelancer Freelancers</option>
               <option>Invite Only (on MyFreelancer)</option>
             </select>
           </label>
-          <label>
+           <label>
             <span>Location:</span>
             <select  v-model="form.location" class="h-10 border-b-2 border-gray-300 bg-white w-full">
               <option value="">SELECT</option>
@@ -161,6 +161,27 @@
               <!-- Add country options here dynamically -->
             </select>
           </label>
+          <label v-if="form.location=='Specific Location'">
+            <span>Countries:</span>
+          <multiselect
+      v-model="form.countries"
+      :options="countries"
+      :multiple="true"
+      :close-on-select="false"
+      :clear-on-select="false"
+      :preserve-search="true"
+      placeholder="Pick some"
+      label="name"
+      track-by="name"
+    >
+      <template slot="option" slot-scope="props">
+        <div class="option__desc">
+          <span class="option__title">{{ props }}</span>
+        </div>
+      </template>
+    </multiselect>
+          </label>
+         
           <label>
             <span>Get Quotes Till:</span>
             <input class="p-2 mt-1 border-b-2 border-gray-300 w-full" type="date">
@@ -207,7 +228,8 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 import { ref, watch,onMounted} from 'vue'
 import Quill from 'quill'
-import { COUNTRIES } from "@/@data";
+import Multiselect from 'vue-multiselect'
+import 'vue-multiselect/dist/vue-multiselect.css'
 
 const tab = ref(null)
 const newCategory = ref(false)
@@ -216,6 +238,8 @@ import axios from 'axios';
 const categories = ref([]);
 const errors = ref({});
 const editor = ref(null)
+
+const quillInstance = ref(null)
 
 const fetchCategories = async () => {
   try {
@@ -228,15 +252,18 @@ const fetchCategories = async () => {
 
 onMounted(fetchCategories);
 
-
+const props = defineProps({
+  countries: Array,
+});
 const form = useForm({
     title: ref(null),
     job_categories_id:ref(null),
     description: ref('dss'),
     price: ref(null),
     skills: ref(null),
+    countries:ref([]),
     location: ref(null),
-    visible: ref(null),
+    visile_to: ref(null),
 });
 
 
@@ -265,37 +292,28 @@ const form = useForm({
 
 const submitForm = () => {
     if (validateForm()) {
+        form.description = quillInstance.value.root.innerHTML;
     form.post(route('job.store'), {
         onSuccess: () => console.log(1),
     });
 }
 };
-console.log(form.description)
 onMounted(() => {
-  editor.value = new Quill('#editor', {
-    modules: {
-      toolbar: [
-        [{ header: [1, 2, true] }],
-        ['bold', 'italic', 'underline'],
-        ['link', 'blockquote', 'code-block', 'image'],
-        [{ list: 'ordered' }, { list: 'bullet' }],
-      ],
-    },
-    placeholder: 'Type Something',
-    height:'30pc',
-    theme: 'snow', // or 'bubble'
-  })
+    if (editor.value) {
+        quillInstance.value = new Quill(editor.value, {
+            modules: {
+                toolbar: [
+                    [{ header: [1, 2, false] }],
+                    ['bold', 'italic', 'underline'],
+                    ['image', 'code-block'],
+                ],
+            },
+            placeholder: 'Compose an epic...',
+            theme: 'snow', // or 'bubble'
+        });
+    }
+});
 
-  editor.value.on('text-change', () => {
-    form.description = editor.value
-  })
-})
-
-watch(() => form.description, (newVal) => {
-  if (editor.value && editor.value !== newVal) {
-    editor.value = newVal
-  }
-})
 
 </script>
 <style>

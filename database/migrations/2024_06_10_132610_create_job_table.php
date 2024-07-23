@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('job_categories_id')->nullable();
             $table->string('title', 512)->nullable();
+             $table->string('slug', 512)->nullable();
+              $table->string('users_id', 512)->nullable();
             $table->text('description')->nullable();
             $table->string('price', 512)->nullable();
             $table->string('visile_to', 512)->nullable();

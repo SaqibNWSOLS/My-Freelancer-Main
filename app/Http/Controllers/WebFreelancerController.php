@@ -13,7 +13,7 @@ use App\Models\JobCategory;
 use App\Models\BillBoard;
 use App\Models\Faq;
 use App\Models\Tag;
-
+use App\Models\Job;
 
 class WebFreelancerController extends Controller
 {
@@ -50,6 +50,28 @@ class WebFreelancerController extends Controller
        return Inertia::render('Banner/BillboardDetail',['categories'=>$categories,'billBoardDetail'=>$billBoardDetail]);
     }
     
+    public function findWork(Request $request){
+            $categories=JobCategory::with('child_categories')->where('status','Active')->where('parent_id',null)->get();
+        $query=Job::with('user_detail')->OrderBy('id','DESC');
+
+        if ($request->has('search')) {
+            $query->where('title','LIKE','%'.$request->search.'%');
+        }
+          if ($request->has('categories_id')) {
+            $query->whereIn('job_categories_id', $request->input('categories_id'));
+        }
+
+        $jobs=$query->paginate(10);
+      
+       return Inertia::render('Banner/FindWork',['categories'=>$categories,'jobs'=>$jobs,'filters' => $request->all()]);
+    }
+
+    public function jobDetail($slug){
+       $categories=JobCategory::with('child_categories')->where('status','Active')->where('parent_id',null)->get();
+        $jobDetail=Job::with('user_detail')->where('slug',$slug)->first();
+      
+       return Inertia::render('Banner/JobDetail',['categories'=>$categories,'jobDetail'=>$jobDetail]);
+    }
 
     public function frontView(){
 
