@@ -18,6 +18,7 @@ return new class extends Migration
              $table->string('slug', 512)->nullable();
               $table->string('users_id', 512)->nullable();
             $table->text('description')->nullable();
+            $table->text('countries')->nullable();
             $table->string('price', 512)->nullable();
             $table->string('visile_to', 512)->nullable();
             $table->date('date_till')->nullable();
