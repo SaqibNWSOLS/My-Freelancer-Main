@@ -20,6 +20,8 @@ use App\Models\BillBoard;
 use Session;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Job;
+
 class ProfileController extends Controller
 {
     /**
@@ -33,7 +35,8 @@ class ProfileController extends Controller
          $profileFront=Profile::where('users_id',Auth::id())->first();
          $billBoards=BillBoard::where('users_id',Auth::id())->get();
          $billBoardDraft=BillBoard::where('id',session('billBoardId'))->first();
-        return Inertia::render('Profile/Index', ['userDetail'=>Auth::user(),'countries' => $countries,'verfication'=>$verfication,'profileFront'=> $profileFront,'billBoards'=>$billBoards,'billBoardDraft'=>$billBoardDraft,
+         $jobs=Job::where('users_id',Auth::id())->get();
+        return Inertia::render('Profile/Index', ['userDetail'=>Auth::user(),'countries' => $countries,'verfication'=>$verfication,'jobs'=>$jobs,'profileFront'=> $profileFront,'billBoards'=>$billBoards,'billBoardDraft'=>$billBoardDraft,
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),'flash' => session('flash'),
         ]);

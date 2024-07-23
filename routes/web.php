@@ -34,8 +34,8 @@ Route::get('/category/{slug}', [CategoriesController::class, 'SubCategories'])->
 
 Route::get('/front-view', [WebFreelancerController::class, 'FrontView'])->name('front-view');
 
-Route::get('/banners/{slug}', [WebFreelancerController::class, 'banners'])->name('banners');
-Route::get('/banners', [WebFreelancerController::class, 'allBanners'])->name('all-banners');
+Route::get('/billboard/{slug}', [WebFreelancerController::class, 'banners'])->name('banners');
+Route::get('/bill-boards', [WebFreelancerController::class, 'allBanners'])->name('all-banners');
 Route::get('/bill-board/{id}', [WebFreelancerController::class, 'billBoardDetail'])->name('bill-board');
 Route::get('/find-work', [WebFreelancerController::class, 'findWork'])->name('find-work');
 Route::get('job-detail/{slug}', [WebFreelancerController::class, 'jobDetail'])->name('job-detail');
