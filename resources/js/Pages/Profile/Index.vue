@@ -59,6 +59,9 @@
            <div key="screen-identity" v-show="selectedTab === 'screen-identity'">
           <ScreenIdentity :userDetail="userDetail" :flash="flash"  />
         </div>
+          <div key="job" v-show="selectedTab === 'job'">
+          <Jobs />
+        </div>
            <div key="email-preference" v-show="selectedTab === 'email-preference'">
           <EmailPreference />
         </div>
@@ -88,6 +91,7 @@ import EmailPreference from '@/Components/Profile/Tabs/EmailPreference.vue';
 import IdVerification from '@/Components/Profile/Tabs/IdVerification.vue';
 import MyFreelancerStore from '@/Components/Profile/Tabs/MyFreelancerStore.vue';
 import Password from '@/Components/Profile/Tabs/Password.vue';
+import Jobs from '@/Components/Profile/Tabs/Jobs.vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 import { Head } from '@inertiajs/vue3';
 const props = defineProps({
@@ -186,6 +190,11 @@ const employerTabs = reactive([
     title: "Contact Information",
     value: "contact-information",
     icon: "mdi-account-box",
+  },
+   {
+    title: "Jobs",
+    value: "job",
+    icon: "mdi-sitemap-outline",
   },
   {
     title: "Screen Identity",

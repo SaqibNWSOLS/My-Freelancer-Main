@@ -57,7 +57,7 @@
                 : 'hover:text-blue-950 hover:bg-white'
             "
           >
-            Find Work
+          <a :href="route('find-work')">  Find Work</a>
          <!--    <svg
               width="8"
               class="inline-block pb-1 fill-white group-hover:fill-black"
