@@ -6,7 +6,7 @@
   <div class="grid grid-cols-10 mt-5  s gap-10">
       <div class="col-span-3  shadow-sm">
        <div class=" sticky top-5 p-0">
-            <div class="bg-white relative shadow-sm rounded-lg p-6 max-w-md mx-auto">
+            <div class="bg-[#f9f9f9] relative shadow-sm rounded-lg p-6 max-w-md mx-auto">
             <h2 class="text-2xl font-bold mb-4">Filters</h2>
 
             <!-- Categories Filter -->
@@ -89,7 +89,7 @@
             </h2>
         </div>
         <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4">
-           <a :href="route('job-detail',job.slug)"  class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center">
+           <a :href="route('job-detail',job.slug)"  class="bg-[#1e3a62] hover:bg-gray-200 text-white font-semibold py-2 px-4 rounded inline-flex items-center">
                
                 Apply Now
             </a>
@@ -156,7 +156,7 @@
     </div>
 </div>
 
-          <nav>
+ <nav>
       <ul class="flex justify-center mt-4 space-x-2">
         <li v-if="jobs.prev_page_url">
           <a 
@@ -167,11 +167,11 @@
           </a>
         </li>
 
-        <li v-for="page in pages" v-if="jobs.data.length" :key="page" :class="{ 'font-bold': page === jobs.current_page }">
+        <li v-for="page in pages" :key="page" :class="{ 'font-bold': page === jobs.current_page }">
           <a 
             v-if="page !== '...'" 
             :href="pageUrl(page)" 
-            class="px-3 py-1 border rounded-lg hover:bg-gray-200"
+            class="px-4 py-2 border rounded-full text-white bg-[#1f3a63] hover:bg-[red]"
           >
             {{ page }}
           </a>
@@ -188,6 +188,8 @@
         </li>
       </ul>
     </nav>
+
+         
       </div>
   </div>
 </main>
