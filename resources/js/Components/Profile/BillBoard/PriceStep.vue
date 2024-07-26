@@ -4,8 +4,7 @@
     <div class="stepper-window-item">
         <div class="card space-y-3 p-4 shadow-md rounded-lg">
             
-            <div class="h-48" ref="editor">
-                {{ content }}
+            <div class="h-48" v-html="content" ref="editor">
             </div>
                       <div class="mt-4 col-span-3 text-right">
                 <button type="button" @click="submitForm"  class="bg-primary text-white px-4 py-2 rounded">Save and continue</button>

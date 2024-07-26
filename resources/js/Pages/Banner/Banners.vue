@@ -41,7 +41,7 @@
    <div class=" md:px-2 md:py-4">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
       <div 
-        class="bg-white rounded-lg shadow-md overflow-hidden mb-6"
+        class="bg-white rounded-sm shadow-sm overflow-hidden mb-6"
         v-for="(billBoard, index) in billBoards?.data"
         :key="index"
       >
@@ -54,9 +54,16 @@
             :loop="true"
             :navigation-enabled="false"
           >
-          <slide v-for="(image, imgIndex) in [billBoard.img1, billBoard.img2, billBoard.img3]" :key="imgIndex" >
-            <img :src="baseUrl + image" class="h-[150px] w-full" :alt="`Gig Image ${imgIndex + 1}`">
-        </slide>
+           <template v-for="(image, imgIndex) in [billBoard.video, billBoard.img1, billBoard.img2, billBoard.img3]" :key="imgIndex" >
+         <slide v-if="image" >
+  <template v-if="isVideo(image)">
+    <VideoPlayer :videoUrl="(baseUrl + image)" vidoeHeight="200px" class="h-[200px]" />
+  </template>
+  <template v-else>
+    <img :src="baseUrl + image" class="h-[200px] w-full" :alt="`Gig Image ${imgIndex + 1}`">
+  </template>
+</slide>
+</template>
           <template #addons>
       <Navigation />
       <Pagination />
@@ -67,7 +74,7 @@
         </div>
         <!-- Gig Details -->
         <div class="p-4">
-          <h2 class="text-md font-medium mb-2">{{ billBoard.title }}</h2>
+          <h2 class="text-md font-medium mb-2 min-h-[70px]">{{ billBoard.title }}</h2>
           <p class="text-gray-700 mb-4">{{ billBoard.description }}</p>
           <div class="flex items-center justify-between">
             <span class="text-lg font-semibold text-green-600" v-if="billBoard.price">From ${{billBoard.price }}</span>
@@ -95,7 +102,7 @@
           <a 
             v-if="page !== '...'" 
             :href="pageUrl(page)" 
-            class="px-3 py-1 border rounded-lg hover:bg-gray-200"
+            class="px-4 py-2 border rounded-full text-white bg-[#1f3a63] hover:bg-[red]"
           >
             {{ page }}
           </a>
@@ -180,6 +187,7 @@ import FaqItem from '@/Components/Landing/FaqItem.vue'
 import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 import { computed } from 'vue';
+import VideoPlayer from '@/Components/VideoPlayer.vue';
 
 const  baseUrl=window.Laravel.baseUrl
 
@@ -229,5 +237,12 @@ const pages = computed(() => {
 // Generate the URL for a specific page
 const pageUrl = (page) => {
   return `${props.billBoards.path}?page=${page}`;
+};
+const isVideo = (file) => {
+    if(file){
+  const videoExtensions = ['mp4', 'webm', 'ogg'];
+  const extension = file.split('.').pop();
+  return videoExtensions.includes(extension);
+  }
 };
 </script>

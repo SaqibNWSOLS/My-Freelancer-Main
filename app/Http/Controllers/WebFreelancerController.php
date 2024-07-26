@@ -46,8 +46,10 @@ class WebFreelancerController extends Controller
     public function billBoardDetail($id){
            $categories=JobCategory::with('child_categories')->where('status','Active')->where('parent_id',null)->get();
         $billBoardDetail=BillBoard::with('user_detail')->where('id',$id)->first();
+
+         $related=BillBoard::OrderBy('id','DESC')->limit(8)->get();
       
-       return Inertia::render('Banner/BillboardDetail',['categories'=>$categories,'billBoardDetail'=>$billBoardDetail]);
+       return Inertia::render('Banner/BillboardDetail',['categories'=>$categories,'billBoardDetail'=>$billBoardDetail,'related'=>$related]);
     }
     
     public function findWork(Request $request){

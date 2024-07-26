@@ -2,8 +2,8 @@
   <CatApp :categories="categories">
     <main class="max-w-[1250px] mx-auto w-full;">
       <div class="mt-5">
-        <div class="grid grid-cols-5 gap-5 relative">
-          <div class="col-span-3">
+        <div class="grid grid-cols-6 gap-5 relative">
+          <div class="col-span-4">
             <h1 class="text-3xl font-bold mb-5">{{ jobDetail.title }}</h1>
          
           <div>
@@ -13,16 +13,26 @@
              </div>
           <div class="col-span-2">
             <div class=" sticky top-5 p-0">
-            <div class="bg-white relative shadow-sm rounded-lg p-6 max-w-md mx-auto">
-              <h1 class="text-3xl font-bold mb-5">About Employer</h1>
-              <div class="flex flex-col items-center">
-                <div class="w-100 h-100">
-                  <img class="rounded-full" :src="jobDetail?.user_detail?.image ? baseUrl + jobDetail?.user_detail?.image : 'https://cdn-icons-png.freepik.com/512/6322/6322558.png'" alt="Profile Image">
+                <div class="bg-[#f9f9f9] relative shadow-sm rounded-sm p-6 max-w-md mx-auto">
+                     <h1 class="text-xl font-medium mb-5"> <strong v-if="jobDetail.min_price && jobDetail.max_price">Budget: <span v-if="jobDetail.min_price!=0">${{ jobDetail.min_price }} - </span> <span v-else>Over </span> ${{ jobDetail.max_price }}</strong>
+                <strong v-else>Budget: {{ jobDetail.price }}</strong></h1>
+                    
+                     <div class="w-full text-center  bg-[#203964]  rounded-lg p-3 ">
+                         <a href="#" class="mt-6 text-md text-white font-medium w-full">Submit Proposal</a>
+                     </div>
+            </div>
+            <div class="bg-[#f9f9f9] mt-7 relative shadow-sm rounded-sm p-6 max-w-md mx-auto">
+              <h1 class="text-2xl font-medium mb-5">About Employer</h1>
+              <div class="flex flex-row items-center">
+                <div class="w-[50%] h-50">
+                  <img class="rounded-full w-[120px]" :src="jobDetail?.user_detail?.image ? baseUrl + jobDetail?.user_detail?.image : 'https://cdn-icons-png.freepik.com/512/6322/6322558.png'" alt="Profile Image">
                 </div>
-                <h2 class="text-xl font-semibold mt-4">
+              <div>
+                  <h2 class="text-xl font-semibold mt-4">
                   <a :href="`/infamousteam?source=gig_page&gigs=slug%3Afixing-bugs-in-wordpress-php-django-python%2Cpckg_id%3A1`">{{ jobDetail?.user_detail?.name }}</a>
                 </h2>
                 <p class="text-gray-600">{{ jobDetail?.user_detail?.country }}</p>
+              </div>
               </div>
               <div class="mt-6">
                 <p class="text-gray-700 font-bold">{{ jobDetail?.user_detail?.profile_detail?.headline }}</p>
