@@ -54,7 +54,7 @@
                      <h1 class="text-xl font-medium mb-5">Order in just $600</h1>
                     
                      <div class="w-full text-center  bg-[#203964]  rounded-lg p-3 ">
-                         <a href="#" class="mt-6 text-md text-white font-medium w-full">Continue</a>
+                         <a :href="route('chat', { id: billBoardDetail.user_detail?.id })" class="mt-6 text-md text-white font-medium w-full">Continue to Chat</a>
                      </div>
             </div>
             <div class="bg-[#f9f9f9] mt-5 relative shadow-sm rounded-sm p-6 max-w-md mx-auto">

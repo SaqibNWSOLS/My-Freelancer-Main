@@ -1,5 +1,5 @@
 <template>
-  <Auth>
+  <Auth :flash="flash">
     <div class="container mx-auto max-w-screen-lg">
       <div class="flex md:flex-row mt-10 shadow-lg rounded-lg overflow-hidden">
         <div class="hidden md:flex items-center justify-center w-full md:w-1/2 p-10 bg-primary">
@@ -69,6 +69,7 @@ defineProps({
   status: {
     type: String,
   },
+  flash:Object,
 });
 
 const form = useForm({

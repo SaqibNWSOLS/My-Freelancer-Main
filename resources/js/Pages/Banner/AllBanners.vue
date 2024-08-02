@@ -1,5 +1,5 @@
 <template>
-    <CatApp :categories="categories">
+    <CatApp :categories="categories" :flash="flash">
 
 <main class="max-w-[1250px] mx-auto w-full;">
     <div class=" mt-5 ">
@@ -204,7 +204,7 @@ const  baseUrl=window.Laravel.baseUrl
     },
     billBoards:Array,
     tags:Array,
-
+    flash:Object,
 
  });
 

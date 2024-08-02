@@ -40,7 +40,7 @@ import LinkedIn from '@/assets/linkedin.svg'
   <div class="grid gap-6 grid-cols- md:grid-cols-2 lg:grid-cols-5 bg-white px-12 py-12 justify-center">
     <div>
       <h4 class="font-bold pb-2">Category</h4>
-      <ul class="text-gray-700" v-if="categories.length<1">
+      <ul class="text-gray-700" v-if="categories=[]">
         <li class="py-1"><a class="cursor-pointer hover:underline">Graphics & Design</a></li>
         <li class="py-1"><a class="cursor-pointer hover:underline">Digital Marketing</a></li>
         <li class="py-1"><a class="cursor-pointer hover:underline">Writing & Translation</a></li>
@@ -55,7 +55,7 @@ import LinkedIn from '@/assets/linkedin.svg'
         <li class="py-1"><a class="cursor-pointer hover:underline">End-to-End Projects</a></li>
         <li class="py-1"><a class="cursor-pointer hover:underline">Sitemap</a></li>
       </ul>
-       <ul class="text-gray-700" v-if="categories.length>0">
+       <ul class="text-gray-700" v-if="categories!=[]">
         <li v-for="(category, index) in props.categories" :key="index"  class="py-1"><a :href="route('category',category.slug)" class="cursor-pointer hover:underline">{{ category.name }}</a></li>
        
       </ul>

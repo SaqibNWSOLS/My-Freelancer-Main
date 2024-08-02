@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Fonts -->
     <link rel="shortcut icon" href="{{asset('fav.png')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.4/build/css/intlTelInput.css">
@@ -52,6 +53,8 @@
           
         </html>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXGsx1M8NgD6v08sSROn2Wud8j-XKjK0U&libraries=places"></script>
+        <script type="module" src="https://unpkg.com/emoji-picker-element@latest/dist/index.js"></script>
+
 
 <script>
     window.Laravel = <?php echo json_encode([

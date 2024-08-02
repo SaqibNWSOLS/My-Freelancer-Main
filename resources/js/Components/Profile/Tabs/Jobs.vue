@@ -27,7 +27,9 @@
         <td class="px-6 py-4 whitespace-nowrap">{{ ++index }}</td>
         <td class="px-6 py-4 ">{{ job.title }}</td>
         <td class="px-6 py-4 whitespace-nowrap">
-          <!-- Add your action buttons here -->
+          <a :href="route('job.proposal',job.slug)"><i class="mdi mdi-application-cog-outline mx-2 text-[green]"></i></a>
+          <a :href="route('job.edit',job.id)"><i class="mdi mdi-pencil text-[#34415e]"></i></a>
+         <a href="#"> <i @click="deleteJob(job.id)" class="mdi mdi-trash-can mx-2 text-[red]"></i></a>
         </td>
       </tr>
     </tbody>
@@ -40,23 +42,7 @@
       </div>
     </div>
   </div>
-  <div class="p-5">
-    <Modal :show="showModal" @close="showModal = false">
-      <div class="mr-3">
-        <h1 class="text-xl">OTP Verfication</h1>
-        <p class="mb-3 mt-4">A digit OTP has been sent to your connected email.<br>Kindly verify to change your password.</p>
-        <div class="relative">
-          <v-otp-input v-model:value="form.codeInputs" :num-inputs="6" class="otp-input"></v-otp-input>
-          <p class="text-danger">{{ otpError }}</p>
-        </div>
-        <div class="text-right">
-          <button type="submit" @click="submitForm" class="px-3 py-2 mt-4 text-white font-semibold bg-blue-800 hover:bg-blue-700 rounded-md">
-            Submit
-          </button>
-        </div>
-      </div>
-    </Modal>
-  </div>
+  
 </template>
 
 <script setup>
@@ -66,6 +52,7 @@ import { ref, computed } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import Modal from '@/Components/Modal.vue';
 import VOtpInput from "vue3-otp-input";
+import { Inertia } from '@inertiajs/inertia';
 
 const props = defineProps({
     flash:{
@@ -123,6 +110,25 @@ const submitForm = () => {
     },
   });
 };
+
+
+const deleteJob=(id)=>{
+   if (confirm('Are you sure you want to delete this tag?')) {
+            try {
+                const response = Inertia.delete(route('job.destroy', id));
+                if (response && response.statusCode === 200) {
+                    location.reload();
+                } else {
+                   
+                    console.error('Failed to delete Faq:', response);
+                   
+                }
+            } catch (error) {
+                console.error('An error occurred while deleting Faq:', error);
+            
+            }
+        }
+}
 
 const verifyOTP = () => {
   // Implement OTP verification logic here
