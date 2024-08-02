@@ -14,11 +14,10 @@ class ChatController extends Controller
     {
       $conversation=[];
       if (!empty($request->id)) {
-        $conversation=Conversation::where('sender_id', $request->id)
-                                     ->orWhere('receiver_id', $request->id)->delete();
+      
          $conversation=Conversation::where('sender_id', $request->id)
                                      ->orWhere('receiver_id', $request->id)->first();
-         if (empty($conversation)) {
+         if (empty($conversation) && !empty(Auth::user())) {
           
          $conversation=new Conversation();
          $conversation->sender_id=Auth::id();
@@ -28,7 +27,6 @@ class ChatController extends Controller
          }
       }
 
-      echo json_encode($conversation); exit;
         return Inertia::render('Chat/Index',['conversationProp'=>$conversation]);
     }
 
