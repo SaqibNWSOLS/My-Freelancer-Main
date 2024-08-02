@@ -14,6 +14,8 @@ class ChatController extends Controller
     {
       $conversation=[];
       if (!empty($request->id)) {
+        $conversation=Conversation::where('sender_id', $request->id)
+                                     ->orWhere('receiver_id', $request->id)->delete();
          $conversation=Conversation::where('sender_id', $request->id)
                                      ->orWhere('receiver_id', $request->id)->first();
          if (empty($conversation)) {
