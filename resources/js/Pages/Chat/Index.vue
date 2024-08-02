@@ -12,19 +12,19 @@
             <div class="msg-detail">
               <div class="msg-username">{{ conversation?.sender?.name }}</div>
               <div class="msg-content">
-                <span class="msg-message">{{ conversation.title }}</span>
-                <span class="msg-date">{{ conversation.created_at }}</span>
+                <span class="msg-message">{{ conversation?.title }}</span>
+                <span class="msg-date">{{ conversation?.created_at }}</span>
               </div>
             </div>
            </template>
 
-           <template v-if="conversation.receiver_id!=userId">
+           <template v-if="conversation?.receiver_id!=userId">
                 <img class="msg-profile" :src="conversation.receiver?.image" alt="" />
             <div class="msg-detail">
               <div class="msg-username">{{ conversation.receiver?.name }}</div>
               <div class="msg-content">
-                <span class="msg-message">{{ conversation.title }}</span>
-                <span class="msg-date">{{ format(conversation.created_at, 'd MMMM Y') }}</span>
+                <span class="msg-message">{{ conversation?.title }}</span>
+                <span class="msg-date">{{ format(conversation?.created_at, 'd MMMM Y') }}</span>
               </div>
             </div>
            </template>
