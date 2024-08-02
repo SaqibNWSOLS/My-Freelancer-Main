@@ -1,0 +1,1 @@
+import{o as t,f as a,i as o,a as e,l as r,F as c}from"./app-BJa61M4o.js";import{A as n}from"./AuthHeader-BZrSxUqf.js";const _={class:"container bg-white"},i={class:""},l={class:"m-5",style:{margin:"10px"}},u={__name:"ChatLayout",setup(d){return(s,m)=>(t(),a(c,null,[o(n),e("div",_,[e("div",i,[e("div",l,[r(s.$slots,"default")])])])],64))}};export{u as _};

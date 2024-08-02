@@ -35,13 +35,13 @@
           <div class="chat-area-header bg-[#f9fafb]" v-if="activeConversation?.sender_id!=userId">
             <div class="chat-area-title">{{ activeConversation?.title }}</div>
             <div class="chat-area-group">
-              <img class="chat-area-profile" :src="activeConversation.sender?.image" alt="" />
+              <img class="chat-area-profile" :src="activeConversation?.sender?.image" alt="" />
             </div>
           </div>
             <div class="chat-area-header bg-[#f9fafb]" v-if="activeConversation?.receiver_id!=userId">
-            <div class="chat-area-title">{{ activeConversation.receiver?.name }}</div>
+            <div class="chat-area-title">{{ activeConversation?.receiver?.name }}</div>
             <div class="chat-area-group">
-              <img class="chat-area-profile" :src="activeConversation.receiver?.image" alt="" />
+              <img class="chat-area-profile" :src="activeConversation?.receiver?.image" alt="" />
             </div>
           </div>
           <div class="chat-area-main">
@@ -81,10 +81,10 @@
 
     <div class="detail-area-header" v-if="activeConversation?.receiver_id!=userId">
     <div class="msg-profile group">
-     <img :src="activeConversation.receiver?.image" class="rounded-full">
+     <img :src="activeConversation?.receiver?.image" class="rounded-full">
     </div>
-    <div class="detail-title">{{ activeConversation.receiver?.name }}</div>
-    <div class="detail-subtitle">Created by {{ activeConversation.sender?.name }}, {{ format(activeConversation.created_at, 'd MMMM Y') }}</div>
+    <div class="detail-title">{{ activeConversation?.receiver?.name }}</div>
+    <div class="detail-subtitle">Created by {{ activeConversation?.sender?.name }}, {{ format(activeConversation.created_at, 'd MMMM Y') }}</div>
    
    </div>
   
