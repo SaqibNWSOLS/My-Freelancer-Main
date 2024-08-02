@@ -55,7 +55,7 @@ export default {
   data() {
     return {
       playerOptions: {
-        autoplay: true,
+        autoplay: false,
         controls: true,
         sources: [
           {

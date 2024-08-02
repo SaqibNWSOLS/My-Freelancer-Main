@@ -18,6 +18,8 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\Admin\VerificationController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProxyController;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\ProposalController;
 
 
 Route::get('/', function () {
@@ -32,6 +34,8 @@ Route::get('/', function () {
 Route::get('/categories', [CategoriesController::class, 'Categories'])->name('categories');
 Route::get('/category/{slug}', [CategoriesController::class, 'SubCategories'])->name('category');
 
+Route::get('/chat', [ChatController::class, 'index'])->name('chat');
+
 Route::get('/front-view', [WebFreelancerController::class, 'FrontView'])->name('front-view');
 
 Route::get('/billboard/{slug}', [WebFreelancerController::class, 'banners'])->name('banners');
@@ -40,6 +44,9 @@ Route::get('/bill-board/{id}', [WebFreelancerController::class, 'billBoardDetail
 Route::get('/find-work', [WebFreelancerController::class, 'findWork'])->name('find-work');
 Route::get('job-detail/{slug}', [WebFreelancerController::class, 'jobDetail'])->name('job-detail');
 Route::get('admin-login',[AuthenticatedSessionController::class,'adminLogin'])->name('admin-dashboard');
+
+Route::get('proposal/{slug}', [WebFreelancerController::class, 'jobProposal'])->name('proposal');
+Route::post('proposal', [ProposalController::class, 'store'])->name('proposal.store');
 
 Route::get('admin-dashboard',[DashboardController::class,'index'])->name('admin-dashboard');
 
@@ -52,7 +59,7 @@ Route::middleware(['auth', 'verifiedUser'])->group(function () {
 
     Route::post('updatePassword', [ProfileController::class, 'updatePassword'])->name('updatePassword');
     Route::resource('job',JobController::class);
-
+     Route::get('job/proposal/{slug}',[JobController::class,'jobProposal'])->name('job.proposal');
     Route::get('/category-list', [BillBoardController::class, 'categoryList'])->name('category-list');
     Route::get('/sub-category-list/{id}', [BillBoardController::class, 'subCategories'])->name('sub-category-list');
     Route::post('/update-profile-pic', [ProfileController::class, 'profilePicUpload'])->name('update-profile-pic');
@@ -70,7 +77,12 @@ Route::get('/proxy', [ProxyController::class, 'proxy']);
 
 
 
+Route::post('/broadcasting/auth', function () {
+    return 1;
+});
 
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
+require __DIR__.'/api.php';
+require __DIR__.'/channels.php';

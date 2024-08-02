@@ -79,7 +79,11 @@ class User extends Authenticatable implements MustVerifyEmail
         
         return $this->belongsTo(Profile::class,'id','users_id');
     }
+    
+    public function conversations(){
 
+        return $this->hasMany(Conversation::class,'users_id');
+    }
     
 
     /**

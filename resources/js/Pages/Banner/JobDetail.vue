@@ -18,7 +18,7 @@
                 <strong v-else>Budget: {{ jobDetail.price }}</strong></h1>
                     
                      <div class="w-full text-center  bg-[#203964]  rounded-lg p-3 ">
-                         <a href="#" class="mt-6 text-md text-white font-medium w-full">Submit Proposal</a>
+                         <a :href="route('proposal',jobDetail.slug)" class="mt-6 text-md text-white font-medium w-full">Submit Proposal</a>
                      </div>
             </div>
             <div class="bg-[#f9f9f9] mt-7 relative shadow-sm rounded-sm p-6 max-w-md mx-auto">

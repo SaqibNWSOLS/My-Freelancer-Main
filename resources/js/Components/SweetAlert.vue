@@ -30,6 +30,7 @@ export default defineComponent({
     }
   },
   mounted() {
+    console.log(this.type)
     Swal.fire({
       icon: this.type,
       title: this.title,

@@ -10,6 +10,9 @@ import 'datatables.net';
 import 'datatables.net-dt/css/dataTables.dataTables.css';
 
 import $ from 'jquery';
+
+
+
 window.jQuery = $;
 window.$ = $;
 

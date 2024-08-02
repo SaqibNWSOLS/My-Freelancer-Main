@@ -27,7 +27,7 @@ class WebFreelancerController extends Controller
         $billBoards=BillBoard::where('sub_job_categories_id',$catDetail->id)->paginate(10);
         $faqs=Faq::where('job_categories_id',$catDetail->id)->get();
            $tags=Tag::where('job_categories_id',$catDetail->id)->get();
-       return Inertia::render('Banner/Banners',['categories'=>$categories,'catDetail'=>$catDetail,'billBoards'=>$billBoards,'faqs'=>$faqs,'tags'=>$tags]);
+       return Inertia::render('Banner/Banners',['categories'=>$categories,'catDetail'=>$catDetail,'billBoards'=>$billBoards,'faqs'=>$faqs,'tags'=>$tags,'flash' => session('flash')]);
     }
 
     public function allBanners(Request $request){
@@ -40,7 +40,7 @@ class WebFreelancerController extends Controller
 
         $billBoards=$query->paginate(10);
       
-       return Inertia::render('Banner/AllBanners',['categories'=>$categories,'billBoards'=>$billBoards]);
+       return Inertia::render('Banner/AllBanners',['categories'=>$categories,'billBoards'=>$billBoards,'flash' => session('flash')]);
     }
 
     public function billBoardDetail($id){
@@ -49,7 +49,7 @@ class WebFreelancerController extends Controller
 
          $related=BillBoard::OrderBy('id','DESC')->limit(8)->get();
       
-       return Inertia::render('Banner/BillboardDetail',['categories'=>$categories,'billBoardDetail'=>$billBoardDetail,'related'=>$related]);
+       return Inertia::render('Banner/BillboardDetail',['categories'=>$categories,'billBoardDetail'=>$billBoardDetail,'related'=>$related,'flash' => session('flash')]);
     }
     
     public function findWork(Request $request){
@@ -65,14 +65,21 @@ class WebFreelancerController extends Controller
 
         $jobs=$query->paginate(10);
       
-       return Inertia::render('Banner/FindWork',['categories'=>$categories,'jobs'=>$jobs,'filters' => $request->all()]);
+       return Inertia::render('Banner/FindWork',['categories'=>$categories,'jobs'=>$jobs,'filters' => $request->all(),'flash' => session('flash')]);
     }
 
     public function jobDetail($slug){
        $categories=JobCategory::with('child_categories')->where('status','Active')->where('parent_id',null)->get();
         $jobDetail=Job::with('user_detail')->where('slug',$slug)->first();
       
-       return Inertia::render('Banner/JobDetail',['categories'=>$categories,'jobDetail'=>$jobDetail]);
+       return Inertia::render('Banner/JobDetail',['categories'=>$categories,'jobDetail'=>$jobDetail,'flash' => session('flash')]);
+    }
+
+    public function jobProposal($slug){
+        $categories=JobCategory::with('child_categories')->where('status','Active')->where('parent_id',null)->get();
+        $jobDetail=Job::with('user_detail')->where('slug',$slug)->first();
+      
+       return Inertia::render('Banner/JobProposal',['categories'=>$categories,'jobDetail'=>$jobDetail,'flash' => session('flash')]);
     }
 
     public function frontView(){
@@ -80,6 +87,6 @@ class WebFreelancerController extends Controller
 
         $profileFront=Profile::where('users_id',Auth::id())->first();
 
-        return Inertia::render('Freelancer/FrontView',['profileFront'=>$profileFront]);
+        return Inertia::render('Freelancer/FrontView',['profileFront'=>$profileFront,'flash' => session('flash')]);
     }
 }
