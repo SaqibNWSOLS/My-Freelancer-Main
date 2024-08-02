@@ -4,13 +4,13 @@
       <div class="wrapper">
         <div class="conversation-area shadow-md">
           <div class="search-barss">
-            <input type="text" placeholder="Search..." />
+            <input type="text" class="border-2 border-[#f9fafb]" placeholder="Search..." />
           </div>
           <div v-for="conversation in conversations" :key="conversation.id" class="msg " :class="{ active: conversation.id === activeConversation.id }" @click="selectConversation(conversation.id)">
            <template v-if="conversation.sender_id!=userId">
                 <img class="msg-profile" :src="conversation.sender.image" alt="" />
             <div class="msg-detail">
-              <div class="msg-username">{{ conversation.sender.name }}</div>
+              <div class="msg-username">{{ conversation?.sender?.name }}</div>
               <div class="msg-content">
                 <span class="msg-message">{{ conversation.title }}</span>
                 <span class="msg-date">{{ conversation.created_at }}</span>
@@ -32,13 +32,13 @@
           </div>
         </div>
         <div class="chat-area">
-          <div class="chat-area-header bg-[red]" v-if="activeConversation.sender_id!=userId">
+          <div class="chat-area-header bg-[#f9fafb]" v-if="activeConversation.sender_id!=userId">
             <div class="chat-area-title">{{ activeConversation.title }}</div>
             <div class="chat-area-group">
               <img class="chat-area-profile" :src="activeConversation.sender?.image" alt="" />
             </div>
           </div>
-            <div class="chat-area-header bg-[red]" v-if="activeConversation.receiver_id!=userId">
+            <div class="chat-area-header bg-[#f9fafb]" v-if="activeConversation.receiver_id!=userId">
             <div class="chat-area-title">{{ activeConversation.receiver?.name }}</div>
             <div class="chat-area-group">
               <img class="chat-area-profile" :src="activeConversation.receiver?.image" alt="" />
@@ -64,7 +64,7 @@
             <!-- Emoji Picker -->
             <emoji-picker v-if="showEmojiPicker" @emoji-click="addEmoji"></emoji-picker>
             
-            <input type="text" placeholder="Type something here..." v-model="newMessage" @keyup.enter="sendMessage" />
+            <input type="text" class="border-2 border-[#f9fafb] focus: border-[#f9fafb]" placeholder="Type something here..." v-model="newMessage" @keyup.enter="sendMessage" />
             <!-- Existing code for other icons... -->
           </div>
         </div>

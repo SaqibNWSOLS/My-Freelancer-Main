@@ -131,6 +131,7 @@ public function resendEmailOtp(Request $request){
 
         $user = User::create([
             'name' => $request->name,
+            'image'=>'default.png',
             'email' => $request->email,
             'password' => Hash::make(rand(1,100)),
         ]);
