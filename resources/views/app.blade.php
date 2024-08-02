@@ -53,8 +53,7 @@
           
         </html>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXGsx1M8NgD6v08sSROn2Wud8j-XKjK0U&libraries=places"></script>
-        <script type="module" src="https://unpkg.com/emoji-picker-element@latest/dist/index.js"></script>
-
+        
 
 <script>
     window.Laravel = <?php echo json_encode([
