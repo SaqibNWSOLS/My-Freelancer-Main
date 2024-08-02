@@ -25,6 +25,8 @@ class ChatController extends Controller
 
          }
       }
+
+      echo json_encode($conversation); exit;
         return Inertia::render('Chat/Index',['conversationProp'=>$conversation]);
     }
 
