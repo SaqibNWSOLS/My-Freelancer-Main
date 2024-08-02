@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('job_id')->nullable();
             $table->bigInteger('users_id')->nullable();
-            $table->text('proposal_content')->default('');
+            $table->text('proposal_content')->nullable();
             $table->decimal('price', 11, 2)->nullable();
             $table->string('time', 256)->nullable();
             $table->string('status', 256)->nullable();
