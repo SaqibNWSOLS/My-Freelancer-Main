@@ -12,6 +12,11 @@ class ChatController extends Controller
 {
     public function index(Request $request)
     {
+
+     if (empty(Auth::user())) {
+         
+         return redirect('login')->with('flash',['success'=>true,'type'=>'warning','title'=>'Ligin to chat','message'=> 'Kindly login to your account to chat this user.!']);
+     }
       $conversation=[];
       if (!empty($request->id)) {
       
